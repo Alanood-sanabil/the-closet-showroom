@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-black;
+  }
+
+  ::selection {
+    @apply bg-black/10 text-black;
+  }
+}
+
+@layer components {
+  .section-reveal {
+    @apply opacity-0 translate-y-5;
+  }
+
+  .section-reveal.visible {
+    @apply opacity-100 translate-y-0 transition-all duration-700 ease-out;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom focus styles */
+*:focus-visible {
+  @apply outline-none ring-2 ring-black ring-offset-2 ring-offset-white;
+}
+
+/* Smooth scroll offset for sticky header */
+html {
+  scroll-padding-top: 5rem;
+}

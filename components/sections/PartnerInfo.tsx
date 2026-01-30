@@ -1,0 +1,40 @@
+'use client'
+
+import { getPartnerLandingContent } from '@/content/brandLanding'
+
+export default function PartnerInfo() {
+  const content = getPartnerLandingContent()
+
+  return (
+    <section id="partnership-info" className="py-20 lg:py-28 px-6 lg:px-8 bg-white">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="font-serif text-3xl lg:text-4xl tracking-tight mb-4">
+            {content.partnershipInfo.sectionTitle}
+          </h2>
+          <p className="text-lg text-black/60 max-w-2xl mx-auto">
+            {content.partnershipInfo.sectionDescription}
+          </p>
+        </div>
+
+        {/* Benefits Grid */}
+        <div className="grid sm:grid-cols-2 gap-8">
+          {content.partnershipInfo.benefits.map((benefit, index) => (
+            <div
+              key={index}
+              className="p-6 border border-black/10 rounded-lg hover:border-black/20 hover:shadow-sm transition-all duration-200"
+            >
+              <h3 className="font-serif text-xl mb-3 tracking-tight">
+                {benefit.title}
+              </h3>
+              <p className="text-black/60 leading-relaxed">
+                {benefit.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
