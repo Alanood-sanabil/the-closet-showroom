@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { track } from '@/lib/track'
-import { submitCustomerRequest } from '@/utils/storage/adapter'
+import { supabase } from '@/utils/supabase/client'
 import { ACCESS_FORM_CONTENT } from '@/content/customer'
 import { useBasket } from '@/contexts/BasketContext'
 import BasketSummary from '@/components/ui/BasketSummary'
@@ -129,15 +129,18 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
 
     try {
       // Submit to Supabase
-      await submitCustomerRequest({
+      const { error } = await supabase.from('customer_requests').insert({
         name: formData.name,
         phone: formData.phone,
-        location: formData.location,
-        customCity: formData.customCity,
+        location: formData.location === 'Other' ? formData.customCity : formData.location,
         preferences: formData.preferences,
-        priceRange: formData.priceRange,
-        basketItems,
+        price_range: formData.priceRange,
+        basket_items: basketItems,
       })
+
+      if (error) {
+        throw new Error(error.message)
+      }
 
       // Track submission
       track('form_submit', {

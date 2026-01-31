@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
+import { supabase } from '@/utils/supabase/client'
 
 interface CustomerSubmission {
   id: string
@@ -61,21 +62,48 @@ export default function AdminSubmissionsPage() {
     setError(null)
 
     try {
+      // Fetch from Supabase
       const [customerResponse, brandResponse] = await Promise.all([
-        fetch('/api/submissions/customer'),
-        fetch('/api/submissions/brand'),
+        supabase.from('customer_requests').select('*').order('created_at', { ascending: false }),
+        supabase.from('brand_applications').select('*').order('created_at', { ascending: false }),
       ])
 
-      const customerData = await customerResponse.json()
-      const brandData = await brandResponse.json()
+      if (customerResponse.error) throw customerResponse.error
+      if (brandResponse.error) throw brandResponse.error
 
-      if (customerData.success) {
-        setCustomerSubmissions(customerData.data)
-      }
+      // Map Supabase column names to frontend interface
+      const customers: CustomerSubmission[] = customerResponse.data.map((row: any) => ({
+        id: row.id,
+        name: row.name,
+        phone: row.phone,
+        location: row.location,
+        preferences: row.preferences || [],
+        priceRange: row.price_range,
+        basketItems: row.basket_items || [],
+        submittedAt: row.created_at,
+      }))
 
-      if (brandData.success) {
-        setBrandSubmissions(brandData.data)
-      }
+      const brands: BrandSubmission[] = brandResponse.data.map((row: any) => ({
+        id: row.id,
+        contactName: row.contact_name,
+        title: row.title,
+        email: row.email,
+        phone: row.phone,
+        brandName: row.brand_name,
+        websiteUrl: row.website_url,
+        countryOfOrigin: row.country_of_origin,
+        productTypes: row.product_types || [],
+        pricePoint: row.price_point,
+        numberOfSKUs: row.number_of_skus,
+        sellsVia: row.sells_via,
+        hasMiddleEastPresence: row.has_middle_east_presence,
+        middleEastPresenceDetails: row.middle_east_presence_details,
+        instagramHandle: row.instagram_handle,
+        submittedAt: row.created_at,
+      }))
+
+      setCustomerSubmissions(customers)
+      setBrandSubmissions(brands)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load submissions')
     } finally {

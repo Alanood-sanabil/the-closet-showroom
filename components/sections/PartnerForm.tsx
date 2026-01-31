@@ -3,7 +3,7 @@
 import { useState, FormEvent } from 'react'
 import { getPartnerLandingContent } from '@/content/brandLanding'
 import { track } from '@/lib/track'
-import { submitBrandRequest } from '@/utils/storage/adapter'
+import { supabase } from '@/utils/supabase/client'
 
 interface FormData {
   contactName: string
@@ -154,22 +154,26 @@ export default function PartnerForm() {
 
     try {
       // Submit to Supabase
-      await submitBrandRequest({
-        contactName: formData.contactName,
+      const { error } = await supabase.from('brand_applications').insert({
+        contact_name: formData.contactName,
         title: formData.title,
         email: formData.email,
         phone: formData.phone,
-        brandName: formData.brandName,
-        websiteUrl: formData.websiteUrl,
-        countryOfOrigin: formData.countryOfOrigin,
-        productTypes: formData.productTypes,
-        pricePoint: formData.pricePoint,
-        numberOfSKUs: formData.numberOfSKUs,
-        sellsVia: formData.sellsVia,
-        hasMiddleEastPresence: formData.hasMiddleEastPresence,
-        middleEastPresenceDetails: formData.middleEastPresenceDetails,
-        instagramHandle: formData.instagramHandle,
+        brand_name: formData.brandName,
+        website_url: formData.websiteUrl,
+        country_of_origin: formData.countryOfOrigin,
+        product_types: formData.productTypes,
+        price_point: formData.pricePoint,
+        number_of_skus: parseInt(formData.numberOfSKUs, 10),
+        sells_via: formData.sellsVia,
+        has_middle_east_presence: formData.hasMiddleEastPresence === 'yes',
+        middle_east_presence_details: formData.middleEastPresenceDetails || null,
+        instagram_handle: formData.instagramHandle || null,
       })
+
+      if (error) {
+        throw new Error(error.message)
+      }
 
       // Track submission
       track('partner_form_submit', {
