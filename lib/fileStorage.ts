@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 
 const DATA_DIR = path.join(process.cwd(), 'data')
-const CUSTOMERS_FILE = path.join(DATA_DIR, 'customers.json')
-const BRANDS_FILE = path.join(DATA_DIR, 'brands.json')
+const CUSTOMERS_FILE = path.join(DATA_DIR, 'customer_submissions.json')
+const BRANDS_FILE = path.join(DATA_DIR, 'brand_applications.json')
 
 // Ensure data directory and files exist
 function ensureDataFiles() {
