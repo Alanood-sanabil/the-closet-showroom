@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { track } from '@/lib/track'
+import { submitCustomerRequest } from '@/lib/supabase'
 import { ACCESS_FORM_CONTENT } from '@/content/customer'
 import { useBasket } from '@/contexts/BasketContext'
 import BasketSummary from '@/components/ui/BasketSummary'
@@ -40,6 +41,7 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isHighlighted, setIsHighlighted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -123,39 +125,43 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
     }
 
     setIsSubmitting(true)
+    setSubmitError(null)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      // Submit to Supabase
+      await submitCustomerRequest({
+        name: formData.name,
+        phone: formData.phone,
+        location: formData.location,
+        customCity: formData.customCity,
+        preferences: formData.preferences,
+        priceRange: formData.priceRange,
+        basketItems,
+      })
 
-    // Store in localStorage
-    const payload = {
-      ...formData,
-      basketItems,
-      timestamp: new Date().toISOString(),
+      // Track submission
+      track('form_submit', {
+        location: formData.location === 'Other' ? formData.customCity : formData.location,
+        priceRange: formData.priceRange,
+        preferencesCount: formData.preferences.length,
+        basketItemsCount: basketItems.length,
+        hadBasketItems: basketItems.length > 0,
+      })
+
+      // Clear basket after successful submission
+      clearBasket()
+
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Submission error:', error)
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : 'Failed to submit form. Please try again.'
+      )
+    } finally {
+      setIsSubmitting(false)
     }
-
-    const existingRequests = JSON.parse(
-      localStorage.getItem('accessRequests') || '[]'
-    )
-    localStorage.setItem(
-      'accessRequests',
-      JSON.stringify([...existingRequests, payload])
-    )
-
-    // Track submission
-    track('form_submit', {
-      location: formData.location === 'Other' ? formData.customCity : formData.location,
-      priceRange: formData.priceRange,
-      preferencesCount: formData.preferences.length,
-      basketItemsCount: basketItems.length,
-      hadBasketItems: basketItems.length > 0,
-    })
-
-    // Clear basket after successful submission
-    clearBasket()
-
-    setIsSubmitting(false)
-    setIsSubmitted(true)
   }
 
   const handleInputChange = (
@@ -497,6 +503,13 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                     </p>
                   )}
                 </fieldset>
+
+                {/* Error Message */}
+                {submitError && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+                    <p className="text-sm text-red-600">{submitError}</p>
+                  </div>
+                )}
 
                 {/* Submit Button */}
                 <button

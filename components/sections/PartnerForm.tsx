@@ -3,6 +3,7 @@
 import { useState, FormEvent } from 'react'
 import { getPartnerLandingContent } from '@/content/brandLanding'
 import { track } from '@/lib/track'
+import { submitBrandRequest } from '@/lib/supabase'
 
 interface FormData {
   contactName: string
@@ -32,6 +33,7 @@ export default function PartnerForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [errors, setErrors] = useState<FormErrors>({})
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const [formData, setFormData] = useState<FormData>({
     contactName: '',
@@ -148,40 +150,55 @@ export default function PartnerForm() {
     }
 
     setIsSubmitting(true)
+    setSubmitError(null)
 
-    // Simulate submission delay
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    // Store in localStorage
-    const timestamp = new Date().toISOString()
-    const submissionKey = `partner_application_${timestamp}`
-    localStorage.setItem(
-      submissionKey,
-      JSON.stringify({
-        ...formData,
-        submittedAt: timestamp,
+    try {
+      // Submit to Supabase
+      await submitBrandRequest({
+        contactName: formData.contactName,
+        title: formData.title,
+        email: formData.email,
+        phone: formData.phone,
+        brandName: formData.brandName,
+        websiteUrl: formData.websiteUrl,
+        countryOfOrigin: formData.countryOfOrigin,
+        productTypes: formData.productTypes,
+        pricePoint: formData.pricePoint,
+        numberOfSKUs: formData.numberOfSKUs,
+        sellsVia: formData.sellsVia,
+        hasMiddleEastPresence: formData.hasMiddleEastPresence,
+        middleEastPresenceDetails: formData.middleEastPresenceDetails,
+        instagramHandle: formData.instagramHandle,
       })
-    )
 
-    // Track submission
-    track('partner_form_submit', {
-      brandName: formData.brandName,
-      productTypes: formData.productTypes.join(', '),
-      pricePoint: formData.pricePoint,
-      sellsVia: formData.sellsVia,
-      hasMiddleEastPresence: formData.hasMiddleEastPresence,
-    })
+      // Track submission
+      track('partner_form_submit', {
+        brandName: formData.brandName,
+        productTypes: formData.productTypes.join(', '),
+        pricePoint: formData.pricePoint,
+        sellsVia: formData.sellsVia,
+        hasMiddleEastPresence: formData.hasMiddleEastPresence,
+      })
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+      setIsSubmitted(true)
 
-    // Scroll to success message
-    setTimeout(() => {
-      const form = document.getElementById('partner-form')
-      if (form) {
-        form.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
-    }, 100)
+      // Scroll to success message
+      setTimeout(() => {
+        const form = document.getElementById('partner-form')
+        if (form) {
+          form.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    } catch (error) {
+      console.error('Submission error:', error)
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : 'Failed to submit application. Please try again.'
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   // Success state
@@ -645,6 +662,13 @@ export default function PartnerForm() {
               <p className="text-red-500 text-sm mt-1">{errors.agreement}</p>
             )}
           </div>
+
+          {/* Error Message */}
+          {submitError && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md">
+              <p className="text-sm text-red-600">{submitError}</p>
+            </div>
+          )}
 
           {/* Submit Button */}
           <button
