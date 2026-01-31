@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { track } from '@/lib/track'
-import { submitCustomerRequest } from '@/lib/supabase'
+import { submitCustomerRequest } from '@/utils/supabase/client'
 import { ACCESS_FORM_CONTENT } from '@/content/customer'
 import { useBasket } from '@/contexts/BasketContext'
 import BasketSummary from '@/components/ui/BasketSummary'

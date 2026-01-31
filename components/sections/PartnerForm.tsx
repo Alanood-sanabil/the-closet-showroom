@@ -3,7 +3,7 @@
 import { useState, FormEvent } from 'react'
 import { getPartnerLandingContent } from '@/content/brandLanding'
 import { track } from '@/lib/track'
-import { submitBrandRequest } from '@/lib/supabase'
+import { submitBrandRequest } from '@/utils/supabase/client'
 
 interface FormData {
   contactName: string
