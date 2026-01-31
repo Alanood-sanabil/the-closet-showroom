@@ -179,12 +179,6 @@ const partnerLandingContent: PartnerLandingContent = {
         required: false,
         helpText: 'Select your current distribution channels',
       },
-      instagramHandle: {
-        label: 'Instagram Handle',
-        placeholder: '@yourbrand',
-        required: false,
-        optionalText: 'Optional',
-      },
       agreement: {
         label:
           'I understand that partnership is subject to mutual agreement on terms.',

@@ -38,7 +38,6 @@ interface BrandSubmission {
   sellsVia: string
   hasMiddleEastPresence: boolean
   middleEastPresenceDetails?: string | null
-  instagramHandle?: string | null
   submittedAt: string
 }
 
@@ -98,7 +97,6 @@ export default function AdminSubmissionsPage() {
         sellsVia: row.sells_via,
         hasMiddleEastPresence: row.has_middle_east_presence,
         middleEastPresenceDetails: row.middle_east_presence_details,
-        instagramHandle: row.instagram_handle,
         submittedAt: row.created_at,
       }))
 
@@ -624,9 +622,6 @@ function BrandCard({ submission }: { submission: BrandSubmission }) {
               <Field label="Title/Role" value={submission.title} />
               <Field label="Email Address" value={submission.email} />
               <Field label="Phone Number" value={submission.phone} />
-              {submission.instagramHandle && (
-                <Field label="Instagram" value={submission.instagramHandle} />
-              )}
             </div>
           </div>
 

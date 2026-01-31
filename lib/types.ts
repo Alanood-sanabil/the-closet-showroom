@@ -351,7 +351,6 @@ export interface PartnerFormContent {
     middleEastPresenceDetails: PartnerFormFieldContent
     distribution: PartnerFormFieldContent
     agreement: PartnerFormFieldContent
-    instagramHandle: PartnerFormFieldContent
   }
   productTypeOptions: ProductTypeOption[]
   pricePointOptions: PricePointOption[]

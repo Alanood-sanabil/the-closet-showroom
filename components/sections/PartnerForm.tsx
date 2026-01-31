@@ -19,7 +19,6 @@ interface FormData {
   sellsVia: string
   hasMiddleEastPresence: string
   middleEastPresenceDetails: string
-  instagramHandle: string
   agreement: boolean
 }
 
@@ -49,7 +48,6 @@ export default function PartnerForm() {
     sellsVia: '',
     hasMiddleEastPresence: '',
     middleEastPresenceDetails: '',
-    instagramHandle: '',
     agreement: false,
   })
 
@@ -168,7 +166,6 @@ export default function PartnerForm() {
         sells_via: formData.sellsVia,
         has_middle_east_presence: formData.hasMiddleEastPresence === 'yes',
         middle_east_presence_details: formData.middleEastPresenceDetails || null,
-        instagram_handle: formData.instagramHandle || null,
       })
 
       if (error) {
