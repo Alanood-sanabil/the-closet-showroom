@@ -53,3 +53,7 @@ Thumbs.db
 
 # Local claude files
 .claude/
+
+# Local data files (form submissions)
+/data/*.json
+data/
