@@ -1,35 +1,28 @@
 import { createClient } from '@supabase/supabase-js'
 
+// Use standard Supabase environment variable names
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
 // Debug: Log env vars (only in development)
 if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
   console.log('Supabase Client Debug:', {
-    url: process.env.NEXT_PUBLIC_SUPABASE_URL ? 'Set' : 'Missing',
-    key: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ? 'Set' : 'Missing',
-    urlValue: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    keyPrefix: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY?.substring(0, 20),
+    url: supabaseUrl ? 'Set' : 'Missing',
+    key: supabaseAnonKey ? 'Set' : 'Missing',
+    urlValue: supabaseUrl,
+    keyPrefix: supabaseAnonKey?.substring(0, 20),
   })
 }
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY
-
-if (!supabaseUrl || !supabaseKey) {
-  console.error('Supabase configuration error:', {
-    url: supabaseUrl ? 'present' : 'MISSING',
-    key: supabaseKey ? 'present' : 'MISSING',
-  })
-}
-
-// Create Supabase client
-export const supabase = createClient(
-  supabaseUrl || '',
-  supabaseKey || '',
-  {
-    auth: {
-      persistSession: false, // We're not using auth for public forms
-    },
-  }
-)
+// Safe initialization - only create client if both env vars are present
+export const supabase =
+  supabaseUrl && supabaseAnonKey
+    ? createClient(supabaseUrl, supabaseAnonKey, {
+        auth: {
+          persistSession: false, // We're not using auth for public forms
+        },
+      })
+    : null
 
 // Helper function to submit customer requests
 export async function submitCustomerRequest(formData: {
@@ -51,9 +44,9 @@ export async function submitCustomerRequest(formData: {
   }>
 }) {
   // Validate Supabase is configured
-  if (!supabaseUrl || !supabaseKey) {
+  if (!supabase) {
     throw new Error(
-      'Supabase is not configured. Please check your environment variables.'
+      'Supabase is not configured. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY environment variables.'
     )
   }
 
@@ -101,9 +94,9 @@ export async function submitBrandRequest(formData: {
   instagramHandle?: string
 }) {
   // Validate Supabase is configured
-  if (!supabaseUrl || !supabaseKey) {
+  if (!supabase) {
     throw new Error(
-      'Supabase is not configured. Please check your environment variables.'
+      'Supabase is not configured. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY environment variables.'
     )
   }
 
