@@ -6,7 +6,6 @@ import PreviewGrid from '@/components/sections/PreviewGrid'
 import ShowroomsSection from '@/components/sections/ShowroomsSection'
 import AccessForm from '@/components/sections/AccessForm'
 import Footer from '@/components/layout/Footer'
-import { getCustomerLandingContent } from '@/content'
 
 export default function CustomerPage() {
   const [selectedProduct, setSelectedProduct] = useState<{
@@ -14,13 +13,11 @@ export default function CustomerPage() {
     productName: string
   } | null>(null)
 
-  const content = getCustomerLandingContent()
-
   return (
     <main className="min-h-screen">
       <Hero />
       <PreviewGrid onProductSelect={setSelectedProduct} />
-      <ShowroomsSection content={content.showroomsSection} />
+      <ShowroomsSection mode="customer" />
       <AccessForm selectedProduct={selectedProduct} />
       <Footer />
     </main>

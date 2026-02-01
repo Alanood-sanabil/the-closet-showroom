@@ -2,11 +2,15 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { track } from '@/lib/track'
-import { HERO_CONTENT, HERO_VIDEO_CONTENT } from '@/content/customer'
+import { HERO_VIDEO_CONTENT } from '@/content/customer'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslations } from '@/content/translations'
 import Image from 'next/image'
 
 export default function Hero() {
-  const content = { hero: HERO_CONTENT, heroVideo: HERO_VIDEO_CONTENT }
+  const { language } = useLanguage()
+  const t = getTranslations(language)
+  const content = { heroVideo: HERO_VIDEO_CONTENT }
   const videoRef = useRef<HTMLVideoElement>(null)
   const [hasError, setHasError] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
@@ -75,17 +79,17 @@ export default function Hero() {
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Headline */}
         <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-6 lg:mb-8 text-balance">
-          {content.hero.headline.map((line, index) => (
+          {t.customerHero.headline.map((line, index) => (
             <span key={index}>
               {line}
-              {index < content.hero.headline.length - 1 && <br />}
+              {index < t.customerHero.headline.length - 1 && <br />}
             </span>
           ))}
         </h1>
 
         {/* Subheadline */}
         <p className="text-lg lg:text-xl text-black/60 max-w-xl mx-auto mb-10 lg:mb-14 leading-relaxed">
-          {content.hero.subheadline}
+          {t.customerHero.subheadline}
         </p>
 
         {/* CTA Buttons */}
@@ -95,7 +99,7 @@ export default function Hero() {
             onClick={() => handleCtaClick('access')}
             className="w-full sm:w-auto px-8 py-4 bg-black text-white font-medium tracking-wide rounded-sm hover:bg-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
           >
-            {content.hero.primaryCta}
+            {t.customerHero.primaryCta}
           </button>
 
           {/* Secondary CTA */}
@@ -103,7 +107,7 @@ export default function Hero() {
             onClick={() => handleCtaClick('preview')}
             className="w-full sm:w-auto px-8 py-4 border border-black text-black font-medium tracking-wide rounded-sm hover:bg-black hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
           >
-            {content.hero.secondaryCta}
+            {t.customerHero.secondaryCta}
           </button>
         </div>
       </div>
