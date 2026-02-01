@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { PREVIEW_CONTENT } from '@/content/customer'
 import type { GenderTag, StyleTag } from '@/lib/types'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslations } from '@/content/translations'
 
 interface FilterModalProps {
   isOpen: boolean
@@ -25,10 +26,27 @@ export default function FilterModal({
   onClearFilters,
   resultCount,
 }: FilterModalProps) {
-  const content = { preview: PREVIEW_CONTENT }
-  const previewContent = content.preview
+  const { language } = useLanguage()
+  const t = getTranslations(language)
   const modalRef = useRef<HTMLDivElement>(null)
   const hasActiveFilters = selectedGender !== 'all' || selectedStyles.length > 0
+
+  const genderOptions = [
+    { value: 'all' as const, label: t.preview.allGender },
+    { value: 'mens' as GenderTag, label: t.preview.mens },
+    { value: 'womens' as GenderTag, label: t.preview.womens },
+    { value: 'unisex' as GenderTag, label: t.preview.unisex },
+  ]
+
+  const styleOptions = [
+    { value: 'streetwear' as StyleTag, label: t.preview.streetwear },
+    { value: 'formal' as StyleTag, label: t.preview.formal },
+    { value: 'gymwear' as StyleTag, label: t.preview.gymwear },
+    { value: 'smart-casual' as StyleTag, label: t.preview.smartCasual },
+    { value: 'shoes' as StyleTag, label: t.preview.shoes },
+    { value: 'jewellery' as StyleTag, label: t.preview.jewellery },
+    { value: 'accessories' as StyleTag, label: t.preview.accessories },
+  ]
 
   // Handle escape key
   useEffect(() => {
@@ -78,7 +96,7 @@ export default function FilterModal({
         <div className="sticky top-0 bg-white pt-3 pb-2 px-6">
           <div className="w-10 h-1 bg-black/10 rounded-full mx-auto mb-4" />
           <div className="flex items-center justify-between">
-            <h2 className="font-serif text-xl font-semibold">Filters</h2>
+            <h2 className="font-serif text-xl font-semibold">{t.preview.filterModalTitle}</h2>
             <button
               onClick={onClose}
               className="p-2 -mr-2 text-black/60 hover:text-black transition-colors"
@@ -105,10 +123,10 @@ export default function FilterModal({
           {/* Gender Filter */}
           <div>
             <label className="block text-xs uppercase tracking-widest text-black/50 mb-4">
-              {previewContent.filters.genderLabel}
+              {t.preview.genderLabel}
             </label>
             <div className="grid grid-cols-2 gap-2" role="tablist">
-              {previewContent.genderOptions.map((option) => (
+              {genderOptions.map((option) => (
                 <button
                   key={option.value}
                   role="tab"
@@ -129,10 +147,10 @@ export default function FilterModal({
           {/* Style Filter */}
           <div>
             <label className="block text-xs uppercase tracking-widest text-black/50 mb-4">
-              {previewContent.filters.styleLabel}
+              {t.preview.styleLabel}
             </label>
             <div className="flex flex-wrap gap-2" role="group">
-              {previewContent.styleOptions.map((option) => {
+              {styleOptions.map((option) => {
                 const isSelected = selectedStyles.includes(option.value)
                 return (
                   <button
@@ -160,14 +178,14 @@ export default function FilterModal({
               onClick={onClearFilters}
               className="flex-1 px-4 py-3 text-sm border border-black/20 text-black hover:bg-black/5 transition-colors"
             >
-              Clear all
+              {t.preview.clearAllButton}
             </button>
           )}
           <button
             onClick={onClose}
             className="flex-1 px-4 py-3 text-sm bg-black text-white hover:bg-black/90 transition-colors"
           >
-            Show {resultCount} {resultCount === 1 ? previewContent.filters.brandCount : previewContent.filters.brandsCount}
+            {t.preview.showButton} {resultCount} {resultCount === 1 ? t.preview.brandCount : t.preview.brandsCount}
           </button>
         </div>
       </div>

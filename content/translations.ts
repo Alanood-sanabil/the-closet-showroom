@@ -57,6 +57,9 @@ interface Translations {
     styleLabel: string
     clearFilters: string
     filterButton: string
+    filterModalTitle: string
+    clearAllButton: string
+    showButton: string
     noResults: string
     brandsCount: string
     brandCount: string
@@ -81,6 +84,8 @@ interface Translations {
     featured: string
     priceLowToHigh: string
     priceHighToLow: string
+    // Product label
+    productsLabel: string
   }
 
   // Showrooms Section
@@ -323,6 +328,9 @@ export const translations: Record<Language, Translations> = {
       styleLabel: 'Style',
       clearFilters: 'Clear filters',
       filterButton: 'Filter',
+      filterModalTitle: 'Filters',
+      clearAllButton: 'Clear all',
+      showButton: 'Show',
       noResults: 'No brands match your filters',
       brandsCount: 'brands',
       brandCount: 'brand',
@@ -347,6 +355,8 @@ export const translations: Record<Language, Translations> = {
       featured: 'Featured',
       priceLowToHigh: 'Price: Low to High',
       priceHighToLow: 'Price: High to Low',
+      // Product label
+      productsLabel: 'Products',
     },
 
     // Showrooms
@@ -605,6 +615,9 @@ export const translations: Record<Language, Translations> = {
       styleLabel: 'الستايل',
       clearFilters: 'امسح الفلتر',
       filterButton: 'فلتر',
+      filterModalTitle: 'الفلاتر',
+      clearAllButton: 'امسح الكل',
+      showButton: 'شوف',
       noResults: 'ما في براندات تطابق الفلتر',
       brandsCount: 'براند',
       brandCount: 'براند',
@@ -629,6 +642,8 @@ export const translations: Record<Language, Translations> = {
       featured: 'مميز',
       priceLowToHigh: 'السعر: من الأرخص للأغلى',
       priceHighToLow: 'السعر: من الأغلى للأرخص',
+      // Product label
+      productsLabel: 'منتجات',
     },
 
     // Showrooms

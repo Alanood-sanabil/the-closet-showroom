@@ -1,7 +1,8 @@
 'use client'
 
-import { PREVIEW_CONTENT } from '@/content/customer'
 import type { GenderTag, StyleTag } from '@/lib/types'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslations } from '@/content/translations'
 
 interface FilterBarProps {
   selectedGender: GenderTag | 'all'
@@ -20,23 +21,40 @@ export default function FilterBar({
   onClearFilters,
   resultCount,
 }: FilterBarProps) {
-  const content = { preview: PREVIEW_CONTENT }
-  const previewContent = content.preview
+  const { language } = useLanguage()
+  const t = getTranslations(language)
   const hasActiveFilters = selectedGender !== 'all' || selectedStyles.length > 0
+
+  const genderOptions = [
+    { value: 'all' as const, label: t.preview.allGender },
+    { value: 'mens' as GenderTag, label: t.preview.mens },
+    { value: 'womens' as GenderTag, label: t.preview.womens },
+    { value: 'unisex' as GenderTag, label: t.preview.unisex },
+  ]
+
+  const styleOptions = [
+    { value: 'streetwear' as StyleTag, label: t.preview.streetwear },
+    { value: 'formal' as StyleTag, label: t.preview.formal },
+    { value: 'gymwear' as StyleTag, label: t.preview.gymwear },
+    { value: 'smart-casual' as StyleTag, label: t.preview.smartCasual },
+    { value: 'shoes' as StyleTag, label: t.preview.shoes },
+    { value: 'jewellery' as StyleTag, label: t.preview.jewellery },
+    { value: 'accessories' as StyleTag, label: t.preview.accessories },
+  ]
 
   return (
     <div className="space-y-6">
       {/* Gender Filter - Segmented Control */}
       <div>
         <label className="block text-xs uppercase tracking-widest text-black/50 mb-3">
-          {previewContent.filters.genderLabel}
+          {t.preview.genderLabel}
         </label>
         <div
           className="inline-flex border border-black/10 p-1"
           role="tablist"
           aria-label="Filter by gender"
         >
-          {previewContent.genderOptions.map((option) => (
+          {genderOptions.map((option) => (
             <button
               key={option.value}
               role="tab"
@@ -57,10 +75,10 @@ export default function FilterBar({
       {/* Style Filter - Multi-select Chips */}
       <div>
         <label className="block text-xs uppercase tracking-widest text-black/50 mb-3">
-          {previewContent.filters.styleLabel}
+          {t.preview.styleLabel}
         </label>
         <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by style">
-          {previewContent.styleOptions.map((option) => {
+          {styleOptions.map((option) => {
             const isSelected = selectedStyles.includes(option.value)
             return (
               <button
@@ -83,14 +101,14 @@ export default function FilterBar({
       {/* Results Count + Clear */}
       <div className="flex items-center justify-between pt-2">
         <span className="text-sm text-black/50">
-          {resultCount} {resultCount === 1 ? previewContent.filters.brandCount : previewContent.filters.brandsCount}
+          {resultCount} {resultCount === 1 ? t.preview.brandCount : t.preview.brandsCount}
         </span>
         {hasActiveFilters && (
           <button
             onClick={onClearFilters}
             className="text-sm text-black hover:text-black transition-colors"
           >
-            {previewContent.filters.clearFilters}
+            {t.preview.clearFilters}
           </button>
         )}
       </div>

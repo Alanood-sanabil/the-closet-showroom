@@ -12,6 +12,8 @@ import { track } from '@/lib/track'
 import FilterBar from '@/components/ui/FilterBar'
 import FilterModal from '@/components/ui/FilterModal'
 import ProductPanel from '@/components/ui/ProductPanel'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslations } from '@/content/translations'
 
 const FALLBACK_IMAGE = '/images/ui/fallback.svg'
 
@@ -20,6 +22,8 @@ interface PreviewGridProps {
 }
 
 export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
+  const { language } = useLanguage()
+  const t = getTranslations(language)
   const content = getCustomerLandingContent()
   const previewContent = content.preview
 
@@ -162,10 +166,10 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
         {/* Section Header */}
         <div className="max-w-2xl mb-10 lg:mb-12">
           <h2 className="font-serif text-3xl lg:text-4xl font-bold mb-6">
-            {previewContent.sectionTitle}
+            {t.preview.sectionTitle}
           </h2>
           <p className="text-lg text-black/60 leading-relaxed">
-            {previewContent.sectionDescription}
+            {t.preview.sectionDescription}
           </p>
         </div>
 
@@ -188,7 +192,7 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
                 d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
               />
             </svg>
-            {previewContent.filters.filterButton}
+            {t.preview.filterButton}
             {activeFilterCount > 0 && (
               <span className="w-5 h-5 flex items-center justify-center bg-black text-white text-xs rounded-full">
                 {activeFilterCount}
@@ -223,7 +227,7 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
 
         {/* Mobile Results Count */}
         <div className="lg:hidden mb-6 text-sm text-black/50">
-          {filteredBrands.length} {filteredBrands.length === 1 ? previewContent.filters.brandCount : previewContent.filters.brandsCount}
+          {filteredBrands.length} {filteredBrands.length === 1 ? t.preview.brandCount : t.preview.brandsCount}
         </div>
 
         {/* Brand Grid */}
@@ -237,17 +241,18 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
                 isVisible={isVisible}
                 isSelected={selectedBrand?.id === brand.id}
                 onSelect={() => handleBrandSelect(brand)}
+                productsLabel={t.preview.productsLabel}
               />
             ))}
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-black/50 mb-4">{previewContent.filters.noResults}</p>
+            <p className="text-black/50 mb-4">{t.preview.noResults}</p>
             <button
               onClick={handleClearFilters}
               className="text-black hover:text-black transition-colors"
             >
-              {previewContent.filters.clearFilters}
+              {t.preview.clearFilters}
             </button>
           </div>
         )}
@@ -271,6 +276,7 @@ interface BrandCardProps {
   isVisible: boolean
   isSelected: boolean
   onSelect: () => void
+  productsLabel: string
 }
 
 function BrandCard({
@@ -279,6 +285,7 @@ function BrandCard({
   isVisible,
   isSelected,
   onSelect,
+  productsLabel,
 }: BrandCardProps) {
   const hasProducts = brand.products.length > 0
   const [imgError, setImgError] = useState(false)
@@ -328,7 +335,7 @@ function BrandCard({
         {hasProducts && (
           <div className="absolute top-3 left-3">
             <span className="text-[10px] tracking-widest uppercase bg-white px-2 py-1">
-              {brand.products.length} Products
+              {brand.products.length} {productsLabel}
             </span>
           </div>
         )}
