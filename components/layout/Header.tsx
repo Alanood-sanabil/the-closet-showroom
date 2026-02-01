@@ -1,13 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import BasketIcon from '@/components/ui/BasketIcon'
 
-interface HeaderProps {
-  onMenuToggle: () => void
-}
-
-export default function Header({ onMenuToggle }: HeaderProps) {
+export default function Header() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -28,33 +25,15 @@ export default function Header({ onMenuToggle }: HeaderProps) {
       }`}
     >
       <div className="relative h-16">
-        {/* Burger Icon - Fixed to top-left */}
-        <button
-          onClick={onMenuToggle}
-          className="pointer-events-auto absolute left-6 top-5 w-10 h-10 flex items-center justify-center hover:bg-black/5 rounded-md transition-colors"
-          aria-label="Open menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-
         {/* Brand Wordmark - Fixed top-center */}
-        <div className="absolute left-1/2 top-5 -translate-x-1/2 pointer-events-auto">
+        <Link
+          href="/customer"
+          className="absolute left-1/2 top-5 -translate-x-1/2 pointer-events-auto hover:opacity-70 transition-opacity"
+        >
           <p className="font-sans font-medium text-sm tracking-[0.35em] uppercase text-black">
             The Closet
           </p>
-        </div>
+        </Link>
 
         {/* Basket Icon - Fixed top-right */}
         <div className="absolute right-6 top-5 pointer-events-auto">
