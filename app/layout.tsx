@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Inter, Playfair_Display, Cairo } from 'next/font/google'
 import Script from 'next/script'
 import ClientLayout from './ClientLayout'
 import './globals.css'
@@ -16,6 +16,12 @@ const playfair = Playfair_Display({
   display: 'swap',
 })
 
+const cairo = Cairo({
+  subsets: ['arabic', 'latin'],
+  variable: '--font-cairo',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: 'The Closet | Luxury Fashion Showroom',
   description: 'A curated luxury fashion showroom experience. Launching soon in Riyadh & Jeddah.',
@@ -27,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${cairo.variable}`}>
       <body className="font-sans bg-white text-black antialiased">
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
