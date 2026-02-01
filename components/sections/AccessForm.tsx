@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { track } from '@/lib/track'
 import { supabase } from '@/utils/supabase/client'
-import { ACCESS_FORM_CONTENT } from '@/content/customer'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslations } from '@/content/translations'
 import { useBasket } from '@/contexts/BasketContext'
 import BasketSummary from '@/components/ui/BasketSummary'
 
@@ -32,8 +33,20 @@ interface AccessFormProps {
 }
 
 export default function AccessForm({ selectedProduct }: AccessFormProps) {
-  const formContent = ACCESS_FORM_CONTENT
+  const { language } = useLanguage()
+  const t = getTranslations(language)
   const { items: basketItems, clearBasket } = useBasket()
+
+  const locationOptions = [t.accessForm.locationRiyadh, t.accessForm.locationJeddah, t.accessForm.locationOther]
+  const fashionPreferences = [
+    t.accessForm.prefStreetweear,
+    t.accessForm.prefFormal,
+    t.accessForm.prefGymwear,
+    t.accessForm.prefSmartCasual,
+    t.accessForm.prefShoes,
+    t.accessForm.prefJewellery,
+  ]
+  const priceRanges = [t.accessForm.priceRange1, t.accessForm.priceRange2, t.accessForm.priceRange3]
 
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -92,25 +105,25 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
     const newErrors: FormErrors = {}
 
     if (!formData.name.trim()) {
-      newErrors.name = formContent.validation.nameRequired
+      newErrors.name = t.accessForm.nameRequired
     }
 
     if (!formData.phone.trim()) {
-      newErrors.phone = formContent.validation.phoneRequired
+      newErrors.phone = t.accessForm.phoneRequired
     } else if (formData.phone.replace(/\D/g, '').length < 8) {
-      newErrors.phone = formContent.validation.phoneMinLength
+      newErrors.phone = t.accessForm.phoneMinLength
     }
 
     if (!formData.location) {
-      newErrors.location = formContent.validation.locationRequired
+      newErrors.location = t.accessForm.locationRequired
     }
 
     if (formData.location === 'Other' && !formData.customCity.trim()) {
-      newErrors.customCity = formContent.validation.customCityRequired
+      newErrors.customCity = t.accessForm.customCityRequired
     }
 
     if (!formData.priceRange) {
-      newErrors.priceRange = formContent.validation.priceRangeRequired
+      newErrors.priceRange = t.accessForm.priceRangeRequired
     }
 
     setErrors(newErrors)
@@ -200,13 +213,13 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
           {/* Left Column - Content */}
           <div className="max-w-lg">
             <h2 className="font-serif text-3xl lg:text-4xl font-bold mb-6">
-              {formContent.sectionTitle}
+              {t.accessForm.sectionTitle}
             </h2>
             <p className="text-lg text-black/60 leading-relaxed mb-8">
-              {formContent.sectionDescription}
+              {t.accessForm.sectionDescription}
             </p>
             <div className="space-y-4 text-sm text-black/50">
-              {formContent.benefits.map((benefit, index) => (
+              {t.accessForm.benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <svg
                     className="w-5 h-5 text-black"
@@ -268,11 +281,11 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                     />
                   </svg>
                   <span className="font-serif text-xl font-semibold">
-                    {formContent.successTitle}
+                    {t.accessForm.successTitle}
                   </span>
                 </div>
                 <p className="text-black/60 leading-relaxed">
-                  {formContent.successMessage}
+                  {t.accessForm.successMessage}
                 </p>
               </div>
             ) : (
@@ -287,10 +300,7 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                     htmlFor="name"
                     className="block text-sm font-medium mb-2"
                   >
-                    {formContent.fields.name.label}{' '}
-                    {formContent.fields.name.required && (
-                      <span className="text-black">*</span>
-                    )}
+                    {t.accessForm.nameLabel} <span className="text-black">*</span>
                   </label>
                   <input
                     type="text"
@@ -303,7 +313,7 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                         ? 'border-red-500'
                         : 'border-black/20 focus:border-black'
                     }`}
-                    placeholder={formContent.fields.name.placeholder}
+                    placeholder={t.accessForm.namePlaceholder}
                   />
                   {errors.name && (
                     <p className="mt-1 text-sm text-red-500">{errors.name}</p>
@@ -316,10 +326,7 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                     htmlFor="phone"
                     className="block text-sm font-medium mb-2"
                   >
-                    {formContent.fields.phone.label}{' '}
-                    {formContent.fields.phone.required && (
-                      <span className="text-black">*</span>
-                    )}
+                    {t.accessForm.phoneLabel} <span className="text-black">*</span>
                   </label>
                   <input
                     type="tel"
@@ -332,7 +339,7 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                         ? 'border-red-500'
                         : 'border-black/20 focus:border-black'
                     }`}
-                    placeholder={formContent.fields.phone.placeholder}
+                    placeholder={t.accessForm.phonePlaceholder}
                   />
                   {errors.phone && (
                     <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
@@ -345,10 +352,7 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                     htmlFor="location"
                     className="block text-sm font-medium mb-2"
                   >
-                    {formContent.fields.location.label}{' '}
-                    {formContent.fields.location.required && (
-                      <span className="text-black">*</span>
-                    )}
+                    {t.accessForm.locationLabel} <span className="text-black">*</span>
                   </label>
                   <select
                     id="location"
@@ -361,8 +365,8 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                         : 'border-black/20 focus:border-black'
                     }`}
                   >
-                    <option value="">{formContent.fields.location.placeholder}</option>
-                    {formContent.locationOptions.map((loc) => (
+                    <option value="">{t.accessForm.locationPlaceholder}</option>
+                    {locationOptions.map((loc) => (
                       <option key={loc} value={loc}>
                         {loc}
                       </option>
@@ -382,10 +386,7 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                       htmlFor="customCity"
                       className="block text-sm font-medium mb-2"
                     >
-                      {formContent.fields.customCity.label}{' '}
-                      {formContent.fields.customCity.required && (
-                        <span className="text-black">*</span>
-                      )}
+                      {t.accessForm.customCityLabel} <span className="text-black">*</span>
                     </label>
                     <input
                       type="text"
@@ -398,7 +399,7 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                           ? 'border-red-500'
                           : 'border-black/20 focus:border-black'
                       }`}
-                      placeholder={formContent.fields.customCity.placeholder}
+                      placeholder={t.accessForm.customCityPlaceholder}
                     />
                     {errors.customCity && (
                       <p className="mt-1 text-sm text-red-500">
@@ -411,10 +412,10 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                 {/* Fashion Preferences */}
                 <fieldset>
                   <legend className="block text-sm font-medium mb-3">
-                    {formContent.fields.preferences.label}
+                    {t.accessForm.preferencesLabel}
                   </legend>
                   <div className="grid grid-cols-2 gap-3">
-                    {formContent.fashionPreferences.map((pref) => (
+                    {fashionPreferences.map((pref) => (
                       <label
                         key={pref}
                         className={`flex items-center gap-3 p-3 border cursor-pointer transition-colors ${
@@ -462,13 +463,10 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                 {/* Price Range */}
                 <fieldset>
                   <legend className="block text-sm font-medium mb-3">
-                    {formContent.fields.priceRange.label}{' '}
-                    {formContent.fields.priceRange.required && (
-                      <span className="text-black">*</span>
-                    )}
+                    {t.accessForm.priceRangeLabel} <span className="text-black">*</span>
                   </legend>
                   <div className="space-y-2">
-                    {formContent.priceRanges.map((range) => (
+                    {priceRanges.map((range) => (
                       <label
                         key={range}
                         className={`flex items-center gap-3 p-3 border cursor-pointer transition-colors ${
@@ -543,10 +541,10 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         />
                       </svg>
-                      {formContent.submittingText}
+                      {t.accessForm.submittingText}
                     </span>
                   ) : (
-                    formContent.submitButton
+                    t.accessForm.submitButton
                   )}
                 </button>
               </form>

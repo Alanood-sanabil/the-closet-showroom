@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
-import { getPartnerLandingContent } from '@/content/brandLanding'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslations } from '@/content/translations'
 import { track } from '@/lib/track'
 import { supabase } from '@/utils/supabase/client'
 
@@ -27,7 +28,31 @@ interface FormErrors {
 }
 
 export default function PartnerForm() {
-  const content = getPartnerLandingContent()
+  const { language } = useLanguage()
+  const t = getTranslations(language)
+
+  const productTypeOptions = [
+    { value: 'streetwear', label: t.partnerForm.productTypeStreetwear },
+    { value: 'formal', label: t.partnerForm.productTypeFormal },
+    { value: 'gymwear', label: t.partnerForm.productTypeGymwear },
+    { value: 'smart-casual', label: t.partnerForm.productTypeSmartCasual },
+    { value: 'shoes', label: t.partnerForm.productTypeShoes },
+    { value: 'jewellery', label: t.partnerForm.productTypeJewellery },
+    { value: 'accessories', label: t.partnerForm.productTypeAccessories },
+  ]
+
+  const pricePointOptions = [
+    { value: 'entry', label: t.partnerForm.pricePointEntry },
+    { value: 'mid', label: t.partnerForm.pricePointMid },
+    { value: 'premium', label: t.partnerForm.pricePointPremium },
+  ]
+
+  const sellsViaOptions = [
+    { value: 'dtc', label: t.partnerForm.sellsViaDTC },
+    { value: 'wholesale', label: t.partnerForm.sellsViaWholesale },
+    { value: 'both', label: t.partnerForm.sellsViaBoth },
+  ]
+
   const [hasStarted, setHasStarted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -62,7 +87,7 @@ export default function PartnerForm() {
   // Validation function
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
-    const v = content.partnerForm.validation
+    const v = t.partnerForm
 
     if (!formData.contactName.trim()) {
       newErrors.contactName = v.contactNameRequired
@@ -91,7 +116,7 @@ export default function PartnerForm() {
     if (!formData.websiteUrl.trim()) {
       newErrors.websiteUrl = v.websiteInvalid
     } else if (!/^https?:\/\/.+\..+/.test(formData.websiteUrl)) {
-      newErrors.websiteUrl = v.linkedinInvalid
+      newErrors.websiteUrl = v.websiteInvalid
     }
 
     if (!formData.countryOfOrigin.trim()) {
@@ -226,10 +251,10 @@ export default function PartnerForm() {
             </svg>
           </div>
           <h2 className="font-serif text-3xl mb-4">
-            {content.partnerForm.successTitle}
+            {t.partnerForm.successTitle}
           </h2>
           <p className="text-lg text-black/60">
-            {content.partnerForm.successMessage}
+            {t.partnerForm.successMessage}
           </p>
         </div>
       </section>
@@ -245,10 +270,10 @@ export default function PartnerForm() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl lg:text-4xl tracking-tight mb-4">
-            {content.partnerForm.sectionTitle}
+            {t.partnerForm.sectionTitle}
           </h2>
           <p className="text-lg text-black/60">
-            {content.partnerForm.sectionDescription}
+            {t.partnerForm.sectionDescription}
           </p>
         </div>
 
@@ -267,10 +292,8 @@ export default function PartnerForm() {
             {/* Full Name */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.contactName.label}
-                {content.partnerForm.fields.contactName.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.contactNameLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <input
                 type="text"
@@ -278,7 +301,7 @@ export default function PartnerForm() {
                 onChange={(e) =>
                   setFormData({ ...formData, contactName: e.target.value })
                 }
-                placeholder={content.partnerForm.fields.contactName.placeholder}
+                placeholder={t.partnerForm.contactNamePlaceholder}
                 className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-black/20 ${
                   errors.contactName ? 'border-red-500' : 'border-black/20'
                 }`}
@@ -291,10 +314,8 @@ export default function PartnerForm() {
             {/* Role / Title */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.title.label}
-                {content.partnerForm.fields.title.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.titleLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <input
                 type="text"
@@ -302,7 +323,7 @@ export default function PartnerForm() {
                 onChange={(e) =>
                   setFormData({ ...formData, title: e.target.value })
                 }
-                placeholder={content.partnerForm.fields.title.placeholder}
+                placeholder={t.partnerForm.titlePlaceholder}
                 className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-black/20 ${
                   errors.title ? 'border-red-500' : 'border-black/20'
                 }`}
@@ -315,10 +336,8 @@ export default function PartnerForm() {
             {/* Email */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.email.label}
-                {content.partnerForm.fields.email.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.emailLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <input
                 type="email"
@@ -326,7 +345,7 @@ export default function PartnerForm() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                placeholder={content.partnerForm.fields.email.placeholder}
+                placeholder={t.partnerForm.emailPlaceholder}
                 className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-black/20 ${
                   errors.email ? 'border-red-500' : 'border-black/20'
                 }`}
@@ -339,10 +358,8 @@ export default function PartnerForm() {
             {/* Phone Number */}
             <div className="mb-0">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.phone.label}
-                {content.partnerForm.fields.phone.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.phoneLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <input
                 type="tel"
@@ -350,7 +367,7 @@ export default function PartnerForm() {
                 onChange={(e) =>
                   setFormData({ ...formData, phone: e.target.value })
                 }
-                placeholder={content.partnerForm.fields.phone.placeholder}
+                placeholder={t.partnerForm.phonePlaceholder}
                 className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-black/20 ${
                   errors.phone ? 'border-red-500' : 'border-black/20'
                 }`}
@@ -370,10 +387,8 @@ export default function PartnerForm() {
             {/* Brand Name */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.brandName.label}
-                {content.partnerForm.fields.brandName.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.brandNameLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <input
                 type="text"
@@ -381,7 +396,7 @@ export default function PartnerForm() {
                 onChange={(e) =>
                   setFormData({ ...formData, brandName: e.target.value })
                 }
-                placeholder={content.partnerForm.fields.brandName.placeholder}
+                placeholder={t.partnerForm.brandNamePlaceholder}
                 className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-black/20 ${
                   errors.brandName ? 'border-red-500' : 'border-black/20'
                 }`}
@@ -394,10 +409,8 @@ export default function PartnerForm() {
             {/* Website or LinkedIn */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.websiteUrl.label}
-                {content.partnerForm.fields.websiteUrl.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.websiteLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <input
                 type="url"
@@ -405,7 +418,7 @@ export default function PartnerForm() {
                 onChange={(e) =>
                   setFormData({ ...formData, websiteUrl: e.target.value })
                 }
-                placeholder={content.partnerForm.fields.websiteUrl.placeholder}
+                placeholder={t.partnerForm.websitePlaceholder}
                 className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-black/20 ${
                   errors.websiteUrl ? 'border-red-500' : 'border-black/20'
                 }`}
@@ -418,10 +431,8 @@ export default function PartnerForm() {
             {/* Country of Origin */}
             <div className="mb-0">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.countryOfOrigin.label}
-                {content.partnerForm.fields.countryOfOrigin.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.countryLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <input
                 type="text"
@@ -429,7 +440,7 @@ export default function PartnerForm() {
                 onChange={(e) =>
                   setFormData({ ...formData, countryOfOrigin: e.target.value })
                 }
-                placeholder={content.partnerForm.fields.countryOfOrigin.placeholder}
+                placeholder={t.partnerForm.countryPlaceholder}
                 className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-black/20 ${
                   errors.countryOfOrigin ? 'border-red-500' : 'border-black/20'
                 }`}
@@ -449,18 +460,16 @@ export default function PartnerForm() {
             {/* Product Categories */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.productTypes.label}
-                {content.partnerForm.fields.productTypes.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.productTypesLabel}
+                <span className="text-black ml-1">*</span>
               </label>
-              {content.partnerForm.fields.productTypes.helpText && (
+              {t.partnerForm.productTypesHelpText && (
                 <p className="text-xs text-black/50 mb-3">
-                  {content.partnerForm.fields.productTypes.helpText}
+                  {t.partnerForm.productTypesHelpText}
                 </p>
               )}
               <div className="space-y-2">
-                {content.partnerForm.productTypeOptions.map((option) => (
+                {productTypeOptions.map((option) => (
                   <label
                     key={option.value}
                     className="flex items-center gap-2 cursor-pointer"
@@ -485,10 +494,8 @@ export default function PartnerForm() {
             {/* Average Retail Price Range */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.pricePoint.label}
-                {content.partnerForm.fields.pricePoint.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.pricePointLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <select
                 value={formData.pricePoint}
@@ -500,9 +507,9 @@ export default function PartnerForm() {
                 }`}
               >
                 <option value="">
-                  {content.partnerForm.fields.pricePoint.placeholder}
+                  {t.partnerForm.pricePointPlaceholder}
                 </option>
-                {content.partnerForm.pricePointOptions.map((option) => (
+                {pricePointOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
@@ -516,10 +523,8 @@ export default function PartnerForm() {
             {/* Number of SKUs */}
             <div className="mb-0">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.numberOfSKUs.label}
-                {content.partnerForm.fields.numberOfSKUs.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.numberOfSKUsLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <input
                 type="number"
@@ -527,7 +532,7 @@ export default function PartnerForm() {
                 onChange={(e) =>
                   setFormData({ ...formData, numberOfSKUs: e.target.value })
                 }
-                placeholder={content.partnerForm.fields.numberOfSKUs.placeholder}
+                placeholder={t.partnerForm.numberOfSKUsPlaceholder}
                 className={`w-full px-4 py-2.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-black/20 ${
                   errors.numberOfSKUs ? 'border-red-500' : 'border-black/20'
                 }`}
@@ -547,10 +552,8 @@ export default function PartnerForm() {
             {/* Do you currently sell */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.sellsVia.label}
-                {content.partnerForm.fields.sellsVia.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.sellsViaLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <select
                 value={formData.sellsVia}
@@ -562,9 +565,9 @@ export default function PartnerForm() {
                 }`}
               >
                 <option value="">
-                  {content.partnerForm.fields.sellsVia.placeholder}
+                  {t.partnerForm.sellsViaPlaceholder}
                 </option>
-                {content.partnerForm.sellsViaOptions.map((option) => (
+                {sellsViaOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
@@ -578,10 +581,8 @@ export default function PartnerForm() {
             {/* Middle East Presence */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">
-                {content.partnerForm.fields.hasMiddleEastPresence.label}
-                {content.partnerForm.fields.hasMiddleEastPresence.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.hasMiddleEastPresenceLabel}
+                <span className="text-black ml-1">*</span>
               </label>
               <div className="space-y-2">
                 <label className="flex items-center gap-2 cursor-pointer">
@@ -624,14 +625,14 @@ export default function PartnerForm() {
             {formData.hasMiddleEastPresence === 'yes' && (
               <div className="mb-0">
                 <label className="block text-sm font-medium mb-2">
-                  {content.partnerForm.fields.middleEastPresenceDetails.label}
+                  {t.partnerForm.middleEastPresenceDetailsLabel}
                 </label>
                 <textarea
                   value={formData.middleEastPresenceDetails}
                   onChange={(e) =>
                     setFormData({ ...formData, middleEastPresenceDetails: e.target.value })
                   }
-                  placeholder={content.partnerForm.fields.middleEastPresenceDetails.placeholder}
+                  placeholder={t.partnerForm.middleEastPresenceDetailsPlaceholder}
                   rows={3}
                   className="w-full px-4 py-2.5 border border-black/20 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
                 />
@@ -653,10 +654,8 @@ export default function PartnerForm() {
                 }`}
               />
               <span className="text-sm text-black/70">
-                {content.partnerForm.fields.agreement.label}
-                {content.partnerForm.fields.agreement.required && (
-                  <span className="text-black ml-1">*</span>
-                )}
+                {t.partnerForm.agreementLabel}
+                <span className="text-black ml-1">*</span>
               </span>
             </label>
             {errors.agreement && (
@@ -678,8 +677,8 @@ export default function PartnerForm() {
             className="w-full px-8 py-3.5 bg-black text-white rounded-md hover:bg-gray-900 transition-all duration-200 font-medium tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting
-              ? content.partnerForm.submittingText
-              : content.partnerForm.submitButton}
+              ? t.partnerForm.submittingText
+              : t.partnerForm.submitButton}
           </button>
         </form>
       </div>
