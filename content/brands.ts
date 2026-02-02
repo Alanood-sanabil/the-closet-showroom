@@ -139,37 +139,20 @@ export const BRANDS_DATA: BrandPreview[] = [
     ]
   },
   {
-    id: 'toteme',
-    name: 'Toteme',
+    id: 'stax',
+    name: 'STAX',
     countryCode: 'SE',
     countryName: 'Sweden',
-    genderTags: ['womens'],
-    styleTags: ['formal', 'smart-casual'],
+    genderTags: ['womens','mens'],
+    styleTags: ['gymwear'],
 
-    priceHint: '2,000–9,000 SAR',
-    logoImage: '/images/brands/toteme/image.png',
+    priceHint: '150–1,000 SAR',
+    logoImage: '/images/brands/STAX/image.png',
     products: [
-      { id: 'tt-1', name: 'Tailored Wool Blazer', category: 'Jacket', price: 4800, isNew: true, image: '/images/products/toteme/blazer.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
-      { id: 'tt-2', name: 'Wide-Leg Tailored Trousers', category: 'Bottoms', price: 2850, image: '/images/products/toteme/trousers.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
-      { id: 'tt-3', name: 'Cashmere Ribbed Knit Sweater', category: 'Tops', price: 3400, image: '/images/products/toteme/knit.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
-      { id: 'tt-4', name: 'Double-Breasted Wool Coat', category: 'Outerwear', price: 6900, isNew: true, image: '/images/products/toteme/coat.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
-    ]
-  },
-  {
-    id: 'lemaire',
-    name: 'Lemaire',
-    countryCode: 'FR',
-    countryName: 'France',
-    genderTags: ['mens', 'womens'],
-    styleTags: ['formal', 'smart-casual'],
-
-    priceHint: '1,800–12,000 SAR',
-    logoImage: '/images/brands/lemaire/image.png',
-    products: [
-      { id: 'lm-1', name: 'Curved Collar Shirt in Cotton', category: 'Tops', price: 2200, image: '/images/products/lemaire/shirt.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
-      { id: 'lm-2', name: 'Twisted Straight Trousers', category: 'Bottoms', price: 3600, isNew: true, image: '/images/products/lemaire/trousers.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
-      { id: 'lm-3', name: 'Oversized Wool Coat', category: 'Outerwear', price: 8400, image: '/images/products/lemaire/coat.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
-      { id: 'lm-4', name: 'Soft Derby Leather Shoes', category: 'Shoes', price: 3800, image: '/images/products/lemaire/shoes.png', sizeType: 'shoes', sizes: ['38', '39', '40', '41', '42', '43'] },
+      { id: 'tt-1', name: 'Dymo Zip Up', category: 'Jacket', price: 400, isNew: true, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.40.32 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
+      { id: 'tt-2', name: 'Fold Over Flares Airlyte', category: 'Bottoms', price: 450, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.42.09 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
+      { id: 'tt-3', name: 'Zip Jacket NANDEX™', category: 'Jacket', price: 700, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.43.22 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
+      { id: 'tt-4', name: 'Motion Panel Tee', category: 'Tops', price: 300, isNew: true, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.44.34 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
     ]
   },
 ]

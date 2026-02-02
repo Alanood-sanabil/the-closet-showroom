@@ -60,7 +60,7 @@ const partnerLandingContent: PartnerLandingContent = {
     headline: ['Access the Middle East Through', 'One Simple Partnership'],
     subheadline:
       'Show your collection in premium showrooms and reach high-intent clients across Saudi Arabia and the region without setting up locally.',
-    primaryCta: 'Apply to Partner',
+    primaryCta: 'Expand with us',
     secondaryCta: 'Learn More',
     note: 'Limited brand slots available per location.',
   },
