@@ -28,6 +28,12 @@ export default function ProductPanel({ brand, onClose, onProductClick }: Product
   const content = getCustomerLandingContent()
   const previewContent = content.preview
 
+  const sortOptions = [
+    { value: 'featured' as const, label: t.preview.featured },
+    { value: 'price-asc' as const, label: t.preview.priceLowToHigh },
+    { value: 'price-desc' as const, label: t.preview.priceHighToLow },
+  ]
+
   const panelRef = useRef<HTMLDivElement>(null)
   const [sortBy, setSortBy] = useState<SortOption>('featured')
   const [isVisible, setIsVisible] = useState(false)
@@ -112,7 +118,7 @@ export default function ProductPanel({ brand, onClose, onProductClick }: Product
                 d="M15 19l-7-7 7-7"
               />
             </svg>
-            {previewContent.productPanel.backButton}
+            {t.preview.backButton}
           </button>
 
           {/* Brand Name */}
@@ -145,7 +151,7 @@ export default function ProductPanel({ brand, onClose, onProductClick }: Product
 
           {/* Soft CTA */}
           <p className="text-sm text-black">
-            {previewContent.productPanel.accessCta}
+            {t.preview.accessCta}
           </p>
         </div>
 
@@ -155,7 +161,7 @@ export default function ProductPanel({ brand, onClose, onProductClick }: Product
             htmlFor="sort-select"
             className="text-sm text-black/50 whitespace-nowrap"
           >
-            {previewContent.productPanel.sortLabel}
+            {t.preview.sortLabel}
           </label>
           <select
             id="sort-select"
@@ -169,7 +175,7 @@ export default function ProductPanel({ brand, onClose, onProductClick }: Product
               backgroundSize: '16px',
             }}
           >
-            {previewContent.sortOptions.map((option) => (
+            {sortOptions.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -199,7 +205,7 @@ export default function ProductPanel({ brand, onClose, onProductClick }: Product
           onClick={onClose}
           className="w-full py-3 text-sm border border-black/20 text-black hover:bg-black hover:text-white transition-colors"
         >
-          {previewContent.productPanel.mobileBackButton}
+          {t.preview.mobileBackButton}
         </button>
       </div>
     </div>
