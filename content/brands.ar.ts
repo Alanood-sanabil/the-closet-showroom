@@ -1,0 +1,134 @@
+// Brands/Partner Page - Arabic
+const brandsAr = {
+  // Common
+  common: {
+    theCloset: 'ذا كلوزت',
+    loading: 'جاري التحميل...',
+    close: 'إغلاق',
+    back: 'رجوع',
+    new: 'جديد',
+  },
+
+  // Header
+  header: {
+    brandName: 'ذا كلوزت',
+    languageLabel: 'اللغة',
+    english: 'English',
+    arabic: 'العربية',
+  },
+
+  // Partner Hero Section
+  partnerHero: {
+    badge: 'لعلامات الأزياء',
+    headline: ['وصّل علامتك للسوق السعودي'],
+    subheadline:
+      'اشترك مع ذا كلوزت عشان تعرض كولكشناتك في معارضنا الفاخرة في الرياض وجدة ودبي.',
+    primaryCta: 'قدّم طلب شراكة',
+    secondaryCta: 'اعرف أكثر',
+    note: 'حالياً نستقبل طلبات من علامات الأزياء العالمية',
+  },
+
+  // Partner Info Section
+  partnerInfo: {
+    sectionTitle: 'ليش تشترك معنا',
+    benefit1: 'وصول للسوق السعودي الراقي',
+    benefit2: 'معارض فاخرة في مدن رئيسية',
+    benefit3: 'قاعدة عملاء مختارة تدور علامات عالمية',
+    benefit4: 'دعم تشغيلي ولوجستي كامل',
+    benefit5: 'مساعدة في التسويق وموضعة العلامة',
+  },
+
+  // Partner Form
+  partnerForm: {
+    sectionTitle: 'قدّم طلب شراكة مع ذا كلوزيت',
+    sectionDescription: 'خبّرنا عن براندك. بنراجع التفاصيل وبنتواصل معك قريب.',
+    contactNameLabel: 'الاسم',
+    contactNamePlaceholder: 'اسمك كامل',
+    titleLabel: 'المسمى الوظيفي',
+    titlePlaceholder: 'مثلاً: مؤسس، مدير البراند',
+    emailLabel: 'الإيميل',
+    emailPlaceholder: 'you@yourbrand.com',
+    phoneLabel: 'رقم الجوال',
+    phonePlaceholder: '+XXX XX XXX XXXX',
+    brandNameLabel: 'اسم البراند',
+    brandNamePlaceholder: 'اكتب اسم البراند',
+    websiteLabel: 'الموقع أو LinkedIn',
+    websitePlaceholder: 'https://yourbrand.com أو رابط LinkedIn',
+    countryLabel: 'بلد المنشأ',
+    countryPlaceholder: 'مثلاً: أمريكا',
+    productTypesLabel: 'نوع المنتجات',
+    productTypesPlaceholder: 'اختر اللي ينطبق',
+    productTypesHelpText: 'اختر كل الفئات اللي يقدمها براندك',
+    pricePointLabel: 'متوسط الأسعار',
+    pricePointPlaceholder: 'اختر نطاق الأسعار',
+    numberOfSKUsLabel: 'عدد المنتجات اللي بتعرضها',
+    numberOfSKUsPlaceholder: 'مثلاً: 50',
+    sellsViaLabel: 'كيف تبيع حالياً؟',
+    sellsViaPlaceholder: 'اختر واحد',
+    hasMiddleEastPresenceLabel: 'عندك تواجد في الشرق الأوسط (موزعين، وكلاء، إلخ)؟',
+    hasMiddleEastPresencePlaceholder: 'اختر واحد',
+    middleEastPresenceDetailsLabel: 'وين أو مع مين؟',
+    middleEastPresenceDetailsPlaceholder: 'اكتب التفاصيل',
+    agreementLabel: 'أفهم إن الشراكة تحتاج اتفاق متبادل على الشروط',
+    productTypeStreetwear: 'ستريت وير',
+    productTypeFormal: 'رسمي',
+    productTypeGymwear: 'رياضي',
+    productTypeSmartCasual: 'كاجوال شيك',
+    productTypeShoes: 'أحذية',
+    productTypeJewellery: 'مجوهرات',
+    productTypeAccessories: 'إكسسوارات',
+    pricePointEntry: '100 - 500 دولار',
+    pricePointMid: '500 - 1,200 دولار',
+    pricePointPremium: '1,200 دولار وفوق',
+    sellsViaDTC: 'مباشرة للمستهلك',
+    sellsViaWholesale: 'جملة',
+    sellsViaBoth: 'الاثنين',
+    brandNameRequired: 'اسم البراند مطلوب',
+    contactNameRequired: 'الاسم مطلوب',
+    titleRequired: 'المسمى الوظيفي مطلوب',
+    emailRequired: 'الإيميل مطلوب',
+    emailInvalid: 'اكتب إيميل صحيح',
+    phoneRequired: 'رقم الجوال مطلوب',
+    phoneMinLength: 'رقم الجوال لازم يكون 10 أرقام على الأقل',
+    websiteInvalid: 'اكتب رابط صحيح (مع https://)',
+    countryOfOriginRequired: 'بلد المنشأ مطلوب',
+    productTypesRequired: 'اختر فئة منتج واحدة على الأقل',
+    pricePointRequired: 'اختر نطاق الأسعار',
+    numberOfSKUsRequired: 'عدد المنتجات مطلوب',
+    numberOfSKUsInvalid: 'اكتب رقم صحيح',
+    sellsViaRequired: 'اختر كيف تبيع حالياً',
+    hasMiddleEastPresenceRequired: 'اختر نعم أو لا',
+    agreementRequired: 'لازم توافق على الشروط عشان تقدر ترسل الطلب',
+    submitButton: 'أرسل الطلب',
+    submittingText: 'جاري الإرسال...',
+    successTitle: 'وصلنا طلبك!',
+    successMessage: 'شكراً على اهتمامك بالشراكة معنا. فريقنا بيراجع طلبك وبيتواصل معك قريب.',
+  },
+
+  // Showrooms Section
+  showrooms: {
+    sectionTitle: 'معارضنا في المنطقة',
+    intro: 'معارض في أهم المدن، توصّلك لبراندات عالمية من مواقع متعددة عشان تزور اللي يناسبك.',
+    riyadh: 'الرياض',
+    jeddah: 'جدة',
+    dubai: 'دبي',
+    riyadhLocations: 'مواقع متعددة في الرياض، منها سوليتير مول، برج المملكة، سنتريا مول، الرياض بارك، بانوراما مول، النخيل مول، ويستفيلد، الفيصلية مول، وأفنيوز مول.',
+    jeddahLocations: 'مواقع في جدة: ريد سي مول، بوليفارد مول، ومركز الخياط.',
+    dubaiLocations: 'مواقع في دبي: دبي مول ومول الإمارات.',
+    appointmentNote: 'الزيارة بموعد مسبق',
+    bottomLine: 'اختر الموقع اللي يناسبك وتعال اكتشف البراندات العالمية.',
+    pricingNoteRiyadh: 'الأسعار تبدأ من تقريباً 3,000 دولار للمتر المربع، حسب الموقع والمساحة وحركة الزوار.',
+    pricingNoteJeddah: 'الأسعار تبدأ من تقريباً 2,000 دولار للمتر المربع، حسب الموقع والتموضع.',
+    pricingNoteDubai: 'الأسعار تبدأ من تقريباً 5,000 دولار للمتر المربع، حسب الموقع والمساحة والظهور.',
+    partnerBottomLine: 'زر معارضنا عشان تشوف المكان وتجرب بنفسك وين بيكون براندك معروض.',
+  },
+
+  // Footer
+  footer: {
+    brandName: 'ذا كلوزت',
+    tagline: 'اشترك معنا',
+    copyright: 'ذا كلوزت. جميع الحقوق محفوظة',
+  },
+}
+
+export default brandsAr
