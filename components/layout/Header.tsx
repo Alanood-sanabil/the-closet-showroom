@@ -8,7 +8,11 @@ import BasketIcon from '@/components/ui/BasketIcon'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { getPageContent, type PageType } from '@/content'
 
-export default function Header() {
+interface HeaderProps {
+  showBasket?: boolean
+}
+
+export default function Header({ showBasket = true }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -103,9 +107,11 @@ export default function Header() {
         </Link>
 
         {/* Basket Icon - Fixed top-right */}
-        <div className="absolute right-6 top-5 pointer-events-auto">
-          <BasketIcon />
-        </div>
+        {showBasket && (
+          <div className="absolute right-6 top-5 pointer-events-auto">
+            <BasketIcon />
+          </div>
+        )}
       </div>
     </header>
   )
