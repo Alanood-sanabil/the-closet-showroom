@@ -1,7 +1,7 @@
 'use client'
 
 import { useLanguage } from '@/contexts/LanguageContext'
-import { getTranslations } from '@/content/translations'
+import { getCustomerContent, getBrandsContent } from '@/content'
 
 interface ShowroomsSectionProps {
   mode?: 'customer' | 'partner'
@@ -9,7 +9,7 @@ interface ShowroomsSectionProps {
 
 export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSectionProps) {
   const { language } = useLanguage()
-  const t = getTranslations(language)
+  const t = mode === 'customer' ? getCustomerContent(language) : getBrandsContent(language)
 
   const cities = [
     {
@@ -32,25 +32,16 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
     },
   ]
 
-  const bottomLine = mode === 'partner' ? t.showrooms.partnerBottomLine : t.showrooms.bottomLine
-
   return (
     <section className="py-20 lg:py-28 px-6 lg:px-8 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-12">
           <h2 className="font-serif text-3xl lg:text-4xl tracking-tight mb-4">
             {t.showrooms.sectionTitle}
           </h2>
           <p className="text-lg text-black/60 max-w-3xl mx-auto leading-relaxed">
             {t.showrooms.intro}
-          </p>
-        </div>
-
-        {/* Bottom Line (moved above cards) */}
-        <div className="text-center mb-12">
-          <p className="text-lg font-semibold text-black max-w-3xl mx-auto leading-relaxed">
-            {bottomLine}
           </p>
         </div>
 

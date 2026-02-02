@@ -2,7 +2,7 @@
 
 import type { GenderTag, StyleTag } from '@/lib/types'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { getTranslations } from '@/content/translations'
+import { getCustomerContent } from '@/content'
 
 interface FilterBarProps {
   selectedGender: GenderTag | 'all'
@@ -22,14 +22,13 @@ export default function FilterBar({
   resultCount,
 }: FilterBarProps) {
   const { language } = useLanguage()
-  const t = getTranslations(language)
+  const t = getCustomerContent(language)
   const hasActiveFilters = selectedGender !== 'all' || selectedStyles.length > 0
 
   const genderOptions = [
     { value: 'all' as const, label: t.preview.allGender },
-    { value: 'mens' as GenderTag, label: t.preview.mens },
     { value: 'womens' as GenderTag, label: t.preview.womens },
-    { value: 'unisex' as GenderTag, label: t.preview.unisex },
+    { value: 'mens' as GenderTag, label: t.preview.mens },
   ]
 
   const styleOptions = [

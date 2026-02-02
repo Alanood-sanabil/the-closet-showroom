@@ -92,11 +92,11 @@ export default function Header() {
           href="/customer"
           className="absolute left-1/2 top-3 -translate-x-1/2 pointer-events-auto hover:opacity-70 transition-opacity text-center"
         >
-          <div className="flex flex-col items-center gap-0.5">
+          <div className="flex flex-col items-center gap-1">
             <p className="font-sans font-medium text-sm tracking-[0.35em] uppercase text-black">
               {t.header.brandName}
             </p>
-            <p className="font-sans text-[10px] tracking-wide text-black/50 font-normal">
+            <p className="font-sans text-xs tracking-wide text-black/50 font-normal leading-tight">
               {t.header.brandTagline}
             </p>
           </div>

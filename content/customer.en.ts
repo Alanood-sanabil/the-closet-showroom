@@ -96,19 +96,15 @@ const customerEn = {
   // Showrooms Section
   showrooms: {
     sectionTitle: 'Our Showrooms Across the Region',
-    intro:
-      'A network of showrooms across key cities, giving you access to international fashion brands through multiple locations, so you can visit what suits you best.',
+    intro: 'Choose the showroom location that suits you to discover international fashion in person.',
     riyadh: 'Riyadh',
     jeddah: 'Jeddah',
     dubai: 'Dubai',
-    riyadhLocations:
-      'Multiple locations in Riyadh including Solitaire Mall, Kingdom Tower, Centria Mall, Riyadh Park, Panorama Mall, Al Nakheel Mall, Westfield, Al Faisaliah Mall, and The Avenues Mall.',
-    jeddahLocations:
-      'Locations in Jeddah: Red Sea Mall, Boulevard Mall, and Al Khayat Center.',
+    riyadhLocations: 'Multiple locations in Riyadh including Solitaire Mall, Kingdom Centre, and Westfield.',
+    jeddahLocations: 'Locations in Jeddah: Red Sea Mall, Boulevard Mall, and Al Khayat Center.',
     dubaiLocations: 'Locations in Dubai: Dubai Mall and Mall of the Emirates.',
     appointmentNote: 'By appointment',
-    bottomLine:
-      'Choose the location that works for you and come discover international brands.',
+    bottomLine: '',
     pricingNoteRiyadh: '',
     pricingNoteJeddah: '',
     pricingNoteDubai: '',
