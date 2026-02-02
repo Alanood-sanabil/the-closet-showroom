@@ -35,7 +35,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.riyadhLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteRiyadh : undefined,
-      pinPosition: { top: '47%', left: '53%' }, // Central Saudi Arabia
+      pinPosition: { top: '50%', left: '55%' }, // Central Saudi Arabia
     },
     {
       id: 'jeddah',
@@ -44,7 +44,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.jeddahLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteJeddah : undefined,
-      pinPosition: { top: '52%', left: '33%' }, // West coast Saudi Arabia
+      pinPosition: { top: '45%', left: '25%' }, // West coast Saudi Arabia
     },
     {
       id: 'dubai',
@@ -53,7 +53,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.dubaiLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteDubai : undefined,
-      pinPosition: { top: '58%', left: '78%' }, // UAE region
+      pinPosition: { top: '55%', left: '82%' }, // UAE region
     },
   ]
 
@@ -96,11 +96,11 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
                 <strong>🛠️ CALIBRATION MODE:</strong> Click on the map to see coordinates in console
               </div>
             )}
-            <div className="relative w-full aspect-[71/61] bg-gradient-to-br from-black/[0.02] to-black/[0.04] rounded-lg overflow-hidden border border-black/5 flex items-center justify-center p-6 lg:px-10 lg:py-6">
+            <div className="relative w-full aspect-[71/61]">
               {/* GCC Map PNG */}
               <div
                 ref={mapContainerRef}
-                className="relative w-full h-full cursor-crosshair"
+                className="relative w-full h-full"
                 onClick={handleMapClick}
               >
                 <Image
