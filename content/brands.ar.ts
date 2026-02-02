@@ -12,6 +12,7 @@ const brandsAr = {
   // Header
   header: {
     brandName: 'ذا كلوزت',
+    brandTagline: 'وُلد في السعودية',
     languageLabel: 'اللغة',
     english: 'English',
     arabic: 'العربية',

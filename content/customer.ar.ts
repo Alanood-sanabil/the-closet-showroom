@@ -12,6 +12,7 @@ const customerAr = {
   // Header
   header: {
     brandName: 'ذا كلوزت',
+    brandTagline: 'وُلد في السعودية',
     languageLabel: 'اللغة',
     english: 'English',
     arabic: 'العربية',
@@ -106,6 +107,10 @@ const customerAr = {
     dubaiLocations: 'مواقع في دبي: دبي مول ومول الإمارات.',
     appointmentNote: 'بالموعد',
     bottomLine: 'اختر الموقع اللي يناسبك وتعال اكتشف علامات عالمية.',
+    pricingNoteRiyadh: '',
+    pricingNoteJeddah: '',
+    pricingNoteDubai: '',
+    partnerBottomLine: '',
   },
 
   // Access Form

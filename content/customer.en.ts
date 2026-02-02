@@ -12,6 +12,7 @@ const customerEn = {
   // Header
   header: {
     brandName: 'The Closet',
+    brandTagline: 'Born in Saudi',
     languageLabel: 'Language',
     english: 'English',
     arabic: 'العربية',

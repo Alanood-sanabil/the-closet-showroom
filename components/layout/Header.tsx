@@ -1,18 +1,23 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { Globe } from 'lucide-react'
 import BasketIcon from '@/components/ui/BasketIcon'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { getTranslations } from '@/content/translations'
+import { getPageContent, type PageType } from '@/content'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const { language, setLanguage } = useLanguage()
-  const t = getTranslations(language)
+  const pathname = usePathname()
+
+  // Determine page type from pathname
+  const pageType: PageType = pathname?.includes('/brands') ? 'brands' : 'customer'
+  const t = getPageContent(pageType, language)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,11 +90,16 @@ export default function Header() {
         {/* Brand Wordmark - Fixed top-center */}
         <Link
           href="/customer"
-          className="absolute left-1/2 top-5 -translate-x-1/2 pointer-events-auto hover:opacity-70 transition-opacity"
+          className="absolute left-1/2 top-3 -translate-x-1/2 pointer-events-auto hover:opacity-70 transition-opacity text-center"
         >
-          <p className="font-sans font-medium text-sm tracking-[0.35em] uppercase text-black">
-            The Closet
-          </p>
+          <div className="flex flex-col items-center gap-0.5">
+            <p className="font-sans font-medium text-sm tracking-[0.35em] uppercase text-black">
+              {t.header.brandName}
+            </p>
+            <p className="font-sans text-[10px] tracking-wide text-black/50 font-normal">
+              {t.header.brandTagline}
+            </p>
+          </div>
         </Link>
 
         {/* Basket Icon - Fixed top-right */}

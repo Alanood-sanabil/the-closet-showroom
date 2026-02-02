@@ -12,6 +12,7 @@ const brandsEn = {
   // Header
   header: {
     brandName: 'The Closet',
+    brandTagline: 'Born in Saudi',
     languageLabel: 'Language',
     english: 'English',
     arabic: 'العربية',
@@ -23,7 +24,7 @@ const brandsEn = {
     headline: ['Bring Your Brand to Saudi Arabia'],
     subheadline:
       'Partner with The Closet to showcase your collections in our premium showrooms across Riyadh, Jeddah, and Dubai.',
-    primaryCta: 'Apply to Partner',
+    primaryCta: 'Expand with us',
     secondaryCta: 'Learn More',
     note: 'Currently accepting applications from international fashion brands',
   },
