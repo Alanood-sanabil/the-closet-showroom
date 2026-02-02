@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { getCustomerContent, getBrandsContent } from '@/content'
 
@@ -31,7 +32,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.riyadhLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteRiyadh : undefined,
-      pinPosition: { top: '48%', left: '52%' },
+      pinPosition: { top: '52%', left: '60%' }, // Central Saudi Arabia
     },
     {
       id: 'jeddah',
@@ -40,7 +41,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.jeddahLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteJeddah : undefined,
-      pinPosition: { top: '52%', left: '38%' },
+      pinPosition: { top: '48%', left: '28%' }, // West coast Saudi Arabia
     },
     {
       id: 'dubai',
@@ -49,7 +50,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.dubaiLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteDubai : undefined,
-      pinPosition: { top: '58%', left: '68%' },
+      pinPosition: { top: '62%', left: '82%' }, // UAE region
     },
   ]
 
@@ -72,116 +73,55 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
         <div className={`flex flex-col lg:flex-row gap-8 lg:gap-12 ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
           {/* Map Container */}
           <div className="flex-1 lg:flex-[1.2]">
-            <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-black/[0.02] to-black/[0.04] rounded-lg overflow-hidden border border-black/5">
-              {/* GCC Region Map SVG */}
-              <svg
-                viewBox="0 0 800 600"
-                className="w-full h-full"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Saudi Arabia */}
-                <path
-                  d="M 280,180 L 320,160 L 360,150 L 400,155 L 440,165 L 470,180 L 500,200 L 520,230 L 530,260 L 535,290 L 535,320 L 530,350 L 520,380 L 505,405 L 485,425 L 460,440 L 430,450 L 400,455 L 370,455 L 340,450 L 310,440 L 285,425 L 265,405 L 250,380 L 240,350 L 235,320 L 235,290 L 240,260 L 250,230 L 265,205 L 280,180 Z"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  className="text-black/[0.08]"
+            <div className="relative w-full aspect-[71/61] bg-gradient-to-br from-black/[0.02] to-black/[0.04] rounded-lg overflow-hidden border border-black/5 p-8 lg:p-12">
+              {/* GCC Map SVG */}
+              <div className="relative w-full h-full">
+                <Image
+                  src="/media/runway/Group 1.svg"
+                  alt="GCC Region Map"
+                  fill
+                  className="object-contain"
+                  priority
                 />
 
-                {/* UAE */}
-                <path
-                  d="M 540,350 L 555,345 L 570,345 L 582,350 L 590,360 L 592,372 L 588,385 L 578,395 L 565,398 L 550,395 L 540,385 L 538,372 L 540,360 Z"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  className="text-black/[0.08]"
-                />
-
-                {/* Qatar */}
-                <path
-                  d="M 505,300 L 515,295 L 523,298 L 525,308 L 522,318 L 515,322 L 507,320 L 503,310 Z"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  className="text-black/[0.08]"
-                />
-
-                {/* Kuwait */}
-                <path
-                  d="M 480,210 L 490,205 L 500,208 L 505,215 L 505,225 L 500,232 L 490,235 L 482,230 L 478,220 Z"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  className="text-black/[0.08]"
-                />
-
-                {/* Bahrain (small island) */}
-                <circle
-                  cx="495"
-                  cy="285"
-                  r="3"
-                  fill="currentColor"
-                  className="text-black/[0.08]"
-                />
-
-                {/* Oman */}
-                <path
-                  d="M 590,360 L 605,355 L 620,358 L 630,368 L 635,385 L 635,405 L 630,425 L 620,440 L 605,450 L 590,455 L 575,452 L 565,442 L 560,425 L 560,405 L 565,385 L 575,370 Z"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  className="text-black/[0.08]"
-                />
-
-                {/* Country borders (subtle outlines) */}
-                <path
-                  d="M 280,180 L 320,160 L 360,150 L 400,155 L 440,165 L 470,180 L 500,200 L 520,230 L 530,260 L 535,290 L 535,320 L 530,350 L 520,380 L 505,405 L 485,425 L 460,440 L 430,450 L 400,455 L 370,455 L 340,450 L 310,440 L 285,425 L 265,405 L 250,380 L 240,350 L 235,320 L 235,290 L 240,260 L 250,230 L 265,205 L 280,180 Z
-                     M 540,350 L 555,345 L 570,345 L 582,350 L 590,360 L 592,372 L 588,385 L 578,395 L 565,398 L 550,395 L 540,385 L 538,372 L 540,360 Z
-                     M 505,300 L 515,295 L 523,298 L 525,308 L 522,318 L 515,322 L 507,320 L 503,310 Z
-                     M 480,210 L 490,205 L 500,208 L 505,215 L 505,225 L 500,232 L 490,235 L 482,230 L 478,220 Z
-                     M 590,360 L 605,355 L 620,358 L 630,368 L 635,385 L 635,405 L 630,425 L 620,440 L 605,450 L 590,455 L 575,452 L 565,442 L 560,425 L 560,405 L 565,385 L 575,370 Z"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-black/20"
-                />
-              </svg>
-
-              {/* City Pins */}
-              {cities.map((city) => {
-                const isSelected = selectedCity.id === city.id
-                return (
-                  <button
-                    key={city.id}
-                    onClick={() => setSelectedCity(city)}
-                    className="absolute group"
-                    style={{ top: city.pinPosition.top, left: city.pinPosition.left }}
-                    aria-label={`Select ${city.name}`}
-                  >
-                    {/* Pin Circle */}
-                    <div
-                      className={`w-4 h-4 rounded-full transition-all duration-300 transform -translate-x-1/2 -translate-y-1/2 ${
-                        isSelected
-                          ? 'bg-black scale-125 ring-4 ring-black/20'
-                          : 'bg-black/40 group-hover:bg-black/70 group-hover:scale-110'
-                      }`}
-                    />
-
-                    {/* City Label */}
-                    <div
-                      className={`absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-medium transition-all duration-300 ${
-                        isSelected
-                          ? 'text-black opacity-100'
-                          : 'text-black/50 group-hover:text-black/80 opacity-0 group-hover:opacity-100'
-                      }`}
+                {/* City Pins Overlay */}
+                {cities.map((city) => {
+                  const isSelected = selectedCity.id === city.id
+                  return (
+                    <button
+                      key={city.id}
+                      onClick={() => setSelectedCity(city)}
+                      className="absolute group z-10"
+                      style={{
+                        top: city.pinPosition.top,
+                        left: city.pinPosition.left,
+                        transform: 'translate(-50%, -50%)'
+                      }}
+                      aria-label={`Select ${city.name}`}
                     >
-                      {city.name}
-                    </div>
-                  </button>
-                )
-              })}
+                      {/* Pin Dot */}
+                      <div
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                          isSelected
+                            ? 'bg-black scale-150 ring-4 ring-black/20'
+                            : 'bg-black/50 group-hover:bg-black group-hover:scale-125'
+                        }`}
+                      />
+
+                      {/* City Label (hover/active) */}
+                      <div
+                        className={`absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-medium transition-all duration-300 ${
+                          isSelected
+                            ? 'text-black opacity-100'
+                            : 'text-black/50 group-hover:text-black opacity-0 group-hover:opacity-100'
+                        }`}
+                      >
+                        {city.name}
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
             </div>
           </div>
 
