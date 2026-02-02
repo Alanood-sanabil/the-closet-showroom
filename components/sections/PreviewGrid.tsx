@@ -310,10 +310,10 @@ function BrandCard({
     >
       {/* Brand Image */}
       <div
-        className={`aspect-[3/4] bg-gradient-to-br from-black/5 to-black/10 mb-4 relative overflow-hidden transition-all ${
+        className={`aspect-[3/4] bg-white mb-4 relative overflow-hidden transition-all ${
           isSelected
             ? 'ring-2 ring-black ring-offset-2'
-            : 'group-hover:from-black/8 group-hover:to-black/15'
+            : ''
         }`}
       >
         {/* Brand Logo */}
