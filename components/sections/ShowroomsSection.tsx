@@ -1,9 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { getCustomerContent, getBrandsContent } from '@/content'
+
+// DEV MODE: Set to true to enable calibration mode
+const CALIBRATION_MODE = false
 
 interface ShowroomsSectionProps {
   mode?: 'customer' | 'partner'
@@ -32,7 +35,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.riyadhLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteRiyadh : undefined,
-      pinPosition: { top: '48%', left: '57%' }, // Central Saudi Arabia
+      pinPosition: { top: '47%', left: '53%' }, // Central Saudi Arabia
     },
     {
       id: 'jeddah',
@@ -41,7 +44,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.jeddahLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteJeddah : undefined,
-      pinPosition: { top: '50%', left: '30%' }, // West coast Saudi Arabia
+      pinPosition: { top: '52%', left: '33%' }, // West coast Saudi Arabia
     },
     {
       id: 'dubai',
@@ -50,11 +53,26 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.dubaiLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteDubai : undefined,
-      pinPosition: { top: '60%', left: '85%' }, // UAE region
+      pinPosition: { top: '58%', left: '78%' }, // UAE region
     },
   ]
 
   const [selectedCity, setSelectedCity] = useState<CityData>(cities[0]) // Default: Riyadh
+  const mapContainerRef = useRef<HTMLDivElement>(null)
+
+  // Calibration mode: Click handler to log coordinates
+  const handleMapClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!CALIBRATION_MODE || !mapContainerRef.current) return
+
+    const rect = mapContainerRef.current.getBoundingClientRect()
+    const xPercent = ((e.clientX - rect.left) / rect.width) * 100
+    const yPercent = ((e.clientY - rect.top) / rect.height) * 100
+
+    console.log('📍 Map Click Coordinates:')
+    console.log(`  top: '${yPercent.toFixed(1)}%', left: '${xPercent.toFixed(1)}%'`)
+    console.log(`  Raw: x=${e.clientX - rect.left}px, y=${e.clientY - rect.top}px`)
+    console.log(`  Container: ${rect.width}px × ${rect.height}px`)
+  }
 
   return (
     <section className="py-20 lg:py-28 px-6 lg:px-8 bg-white">
@@ -73,9 +91,18 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
         <div className={`flex flex-col lg:flex-row gap-8 lg:gap-12 ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
           {/* Map Container */}
           <div className="flex-1 lg:flex-[1.2]">
-            <div className="relative w-full aspect-[71/61] bg-gradient-to-br from-black/[0.02] to-black/[0.04] rounded-lg overflow-hidden border border-black/5 p-6 lg:p-10">
+            {CALIBRATION_MODE && (
+              <div className="mb-2 px-3 py-2 bg-yellow-100 border border-yellow-400 text-yellow-800 text-xs rounded">
+                <strong>🛠️ CALIBRATION MODE:</strong> Click on the map to see coordinates in console
+              </div>
+            )}
+            <div className="relative w-full aspect-[71/61] bg-gradient-to-br from-black/[0.02] to-black/[0.04] rounded-lg overflow-hidden border border-black/5 flex items-center justify-center p-6 lg:px-10 lg:py-6">
               {/* GCC Map PNG */}
-              <div className="relative w-full h-full">
+              <div
+                ref={mapContainerRef}
+                className="relative w-full h-full cursor-crosshair"
+                onClick={handleMapClick}
+              >
                 <Image
                   src="/images/brands/Group1.png"
                   alt="GCC Region Map"
