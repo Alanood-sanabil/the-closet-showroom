@@ -123,6 +123,11 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
 
   const handleBrandDeselect = useCallback(() => {
     setSelectedBrand(null)
+
+    // Scroll back to the preview section
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
   }, [])
 
   // Product click handler - scroll to access form
@@ -259,6 +264,7 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
         {/* Product Panel */}
         {selectedBrand && (
           <ProductPanel
+            key={selectedBrand.id}
             brand={selectedBrand}
             onClose={handleBrandDeselect}
             onProductClick={(product) => handleProductClick(product, selectedBrand.name)}
