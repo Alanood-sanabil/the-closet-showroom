@@ -12,7 +12,6 @@ export default function PartnerInfo() {
     { title: t.partnershipInfo.benefit2Title, description: t.partnershipInfo.benefit2Description },
     { title: t.partnershipInfo.benefit3Title, description: t.partnershipInfo.benefit3Description },
     { title: t.partnershipInfo.benefit4Title, description: t.partnershipInfo.benefit4Description },
-    { title: t.partnershipInfo.benefit5Title, description: t.partnershipInfo.benefit5Description },
   ]
 
   return (

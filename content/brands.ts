@@ -147,7 +147,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     styleTags: ['gymwear'],
 
     priceHint: '150–1,000 SAR',
-    logoImage: '/images/brands/STAX/image.png',
+    logoImage: '/images/brands/STAX/image-copy.png',
     products: [
       { id: 'tt-1', name: 'Dymo Zip Up', category: 'Jacket', price: 400, isNew: true, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.40.32 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
       { id: 'tt-2', name: 'Fold Over Flares Airlyte', category: 'Bottoms', price: 450, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.42.09 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },

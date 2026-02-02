@@ -173,8 +173,6 @@ interface Translations {
     benefit3Description: string
     benefit4Title: string
     benefit4Description: string
-    benefit5Title: string
-    benefit5Description: string
   }
 
   // Partner Form
@@ -465,7 +463,7 @@ export const translations: Record<Language, Translations> = {
         'The Closet gives international brands a direct way to enter the Middle East through physical showrooms, without the cost, complexity, or long-term commitment of opening stores or building local teams.',
       benefit1Title: 'Showroom Access Without Setup',
       benefit1Description:
-        'Display your collection in premium showrooms across Saudi Arabia and the region without opening stores or investing in local infrastructure.',
+        'Display your collection in premium, fully equipped showrooms across Saudi Arabia and the region—no stores to open, no local infrastructure to build. Move in, showcase your pieces, and start learning from real customer demand from day one.',
       benefit2Title: 'Direct Access to High-Intent Clients',
       benefit2Description:
         'Connect with customers actively seeking international fashion brands and ready to discover new labels in person.',
@@ -475,14 +473,11 @@ export const translations: Record<Language, Translations> = {
       benefit4Title: 'Local Market Expertise',
       benefit4Description:
         'We help you navigate pricing, positioning, and customer preferences so you can test the market with confidence.',
-      benefit5Title: 'Ready From Day One',
-      benefit5Description:
-        'Fully equipped showrooms. Move in, showcase your collection, and start learning from real customer demand.',
     },
 
     // Partner Form
     partnerForm: {
-      sectionTitle: 'Apply to Partner With The Closet',
+      sectionTitle: 'Extend with us',
       sectionDescription:
         'Tell us a bit about your brand. Our team will review the details and get back to you.',
       contactNameLabel: 'Full Name',
@@ -764,7 +759,7 @@ export const translations: Record<Language, Translations> = {
         'نوفر للبراندات العالمية طريقة مباشرة وسهلة عشان يدخلون سوق الشرق الأوسط من خلال معارض فعلية، بدون تكلفة أو تعقيدات أو التزامات طويلة.',
       benefit1Title: 'معارض جاهزة بدون تعب',
       benefit1Description:
-        'اعرض مجموعتك في معارض مميزة في السعودية والمنطقة، بدون ما تحتاج تفتح متاجر أو تستثمر في بنية تحتية.',
+        'اعرض مجموعتك في معارض فاخرة ومجهزة بالكامل في السعودية والمنطقة — بدون ما تحتاج تفتح متاجر أو تبني بنية تحتية محلية. انتقل، اعرض قطعك، وابدأ تتعلم من طلب العملاء الحقيقي من أول يوم.',
       benefit2Title: 'عملاء جاهزين للشراء',
       benefit2Description:
         'وصّل لعملاء يدورون على براندات عالمية بشكل جدي ومستعدين يكتشفون براندات جديدة.',
@@ -774,14 +769,11 @@ export const translations: Record<Language, Translations> = {
       benefit4Title: 'خبرة محلية تساعدك',
       benefit4Description:
         'نساعدك في الأسعار والتموضع وفهم ذوق العملاء، عشان تجرّب السوق وأنت مرتاح.',
-      benefit5Title: 'جاهز من أول يوم',
-      benefit5Description:
-        'معارض مجهزة بالكامل. انتقل، اعرض مجموعتك، وابدأ تتعلم من ردة فعل العملاء.',
     },
 
     // Partner Form
     partnerForm: {
-      sectionTitle: 'قدّم طلب شراكة مع ذا كلوزيت',
+      sectionTitle: 'تمدّد معنا',
       sectionDescription:
         'خبّرنا عن براندك. بنراجع التفاصيل وبنتواصل معك قريب.',
       contactNameLabel: 'الاسم',
