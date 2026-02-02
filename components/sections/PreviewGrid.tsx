@@ -241,7 +241,6 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
                 isVisible={isVisible}
                 isSelected={selectedBrand?.id === brand.id}
                 onSelect={() => handleBrandSelect(brand)}
-                productsLabel={t.preview.productsLabel}
               />
             ))}
           </div>
@@ -276,7 +275,6 @@ interface BrandCardProps {
   isVisible: boolean
   isSelected: boolean
   onSelect: () => void
-  productsLabel: string
 }
 
 function BrandCard({
@@ -285,9 +283,7 @@ function BrandCard({
   isVisible,
   isSelected,
   onSelect,
-  productsLabel,
 }: BrandCardProps) {
-  const hasProducts = brand.products.length > 0
   const [imgError, setImgError] = useState(false)
   const logoSrc = imgError ? FALLBACK_IMAGE : (brand.logoImage || FALLBACK_IMAGE)
 
@@ -330,15 +326,6 @@ function BrandCard({
             />
           </div>
         </div>
-
-        {/* Collection Preview Badge */}
-        {hasProducts && (
-          <div className="absolute top-3 left-3">
-            <span className="text-[10px] tracking-widest uppercase bg-white px-2 py-1">
-              {brand.products.length} {productsLabel}
-            </span>
-          </div>
-        )}
 
         {/* Selected Indicator */}
         {isSelected && (
