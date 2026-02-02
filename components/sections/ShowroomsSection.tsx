@@ -32,7 +32,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.riyadhLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteRiyadh : undefined,
-      pinPosition: { top: '52%', left: '60%' }, // Central Saudi Arabia
+      pinPosition: { top: '48%', left: '57%' }, // Central Saudi Arabia
     },
     {
       id: 'jeddah',
@@ -41,7 +41,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.jeddahLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteJeddah : undefined,
-      pinPosition: { top: '48%', left: '28%' }, // West coast Saudi Arabia
+      pinPosition: { top: '50%', left: '30%' }, // West coast Saudi Arabia
     },
     {
       id: 'dubai',
@@ -50,7 +50,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.dubaiLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteDubai : undefined,
-      pinPosition: { top: '62%', left: '82%' }, // UAE region
+      pinPosition: { top: '60%', left: '85%' }, // UAE region
     },
   ]
 
@@ -73,11 +73,11 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
         <div className={`flex flex-col lg:flex-row gap-8 lg:gap-12 ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
           {/* Map Container */}
           <div className="flex-1 lg:flex-[1.2]">
-            <div className="relative w-full aspect-[71/61] bg-gradient-to-br from-black/[0.02] to-black/[0.04] rounded-lg overflow-hidden border border-black/5 p-8 lg:p-12">
-              {/* GCC Map SVG */}
+            <div className="relative w-full aspect-[71/61] bg-gradient-to-br from-black/[0.02] to-black/[0.04] rounded-lg overflow-hidden border border-black/5 p-6 lg:p-10">
+              {/* GCC Map PNG */}
               <div className="relative w-full h-full">
                 <Image
-                  src="/media/runway/Group 1.svg"
+                  src="/images/brands/Group 1.png"
                   alt="GCC Region Map"
                   fill
                   className="object-contain"
@@ -104,7 +104,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
                         className={`w-3 h-3 rounded-full transition-all duration-300 ${
                           isSelected
                             ? 'bg-black scale-150 ring-4 ring-black/20'
-                            : 'bg-black/50 group-hover:bg-black group-hover:scale-125'
+                            : 'bg-gray-400 group-hover:bg-black group-hover:scale-125'
                         }`}
                       />
 
