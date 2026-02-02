@@ -31,7 +31,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.riyadhLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteRiyadh : undefined,
-      pinPosition: { top: '45%', left: '58%' },
+      pinPosition: { top: '48%', left: '52%' },
     },
     {
       id: 'jeddah',
@@ -40,7 +40,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.jeddahLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteJeddah : undefined,
-      pinPosition: { top: '50%', left: '48%' },
+      pinPosition: { top: '52%', left: '38%' },
     },
     {
       id: 'dubai',
@@ -49,7 +49,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
       locations: t.showrooms.dubaiLocations,
       appointmentNote: mode === 'customer' ? t.showrooms.appointmentNote : undefined,
       pricingNote: mode === 'partner' ? t.showrooms.pricingNoteDubai : undefined,
-      pinPosition: { top: '55%', left: '68%' },
+      pinPosition: { top: '58%', left: '68%' },
     },
   ]
 
@@ -73,33 +73,79 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
           {/* Map Container */}
           <div className="flex-1 lg:flex-[1.2]">
             <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-black/[0.02] to-black/[0.04] rounded-lg overflow-hidden border border-black/5">
-              {/* Simple Middle East Map SVG */}
+              {/* GCC Region Map SVG */}
               <svg
                 viewBox="0 0 800 600"
                 className="w-full h-full"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Simplified Middle East outline */}
+                {/* Saudi Arabia */}
                 <path
-                  d="M200,150 Q250,100 350,120 Q450,140 550,160 L600,200 L620,280 Q630,350 600,420 L550,480 Q500,520 400,500 Q300,480 250,450 L200,400 Q150,350 160,280 Q170,220 200,150Z"
+                  d="M 280,180 L 320,160 L 360,150 L 400,155 L 440,165 L 470,180 L 500,200 L 520,230 L 530,260 L 535,290 L 535,320 L 530,350 L 520,380 L 505,405 L 485,425 L 460,440 L 430,450 L 400,455 L 370,455 L 340,450 L 310,440 L 285,425 L 265,405 L 250,380 L 240,350 L 235,320 L 235,290 L 240,260 L 250,230 L 265,205 L 280,180 Z"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  className="text-black/[0.08]"
+                />
+
+                {/* UAE */}
+                <path
+                  d="M 540,350 L 555,345 L 570,345 L 582,350 L 590,360 L 592,372 L 588,385 L 578,395 L 565,398 L 550,395 L 540,385 L 538,372 L 540,360 Z"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  className="text-black/[0.08]"
+                />
+
+                {/* Qatar */}
+                <path
+                  d="M 505,300 L 515,295 L 523,298 L 525,308 L 522,318 L 515,322 L 507,320 L 503,310 Z"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  className="text-black/[0.08]"
+                />
+
+                {/* Kuwait */}
+                <path
+                  d="M 480,210 L 490,205 L 500,208 L 505,215 L 505,225 L 500,232 L 490,235 L 482,230 L 478,220 Z"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  className="text-black/[0.08]"
+                />
+
+                {/* Bahrain (small island) */}
+                <circle
+                  cx="495"
+                  cy="285"
+                  r="3"
+                  fill="currentColor"
+                  className="text-black/[0.08]"
+                />
+
+                {/* Oman */}
+                <path
+                  d="M 590,360 L 605,355 L 620,358 L 630,368 L 635,385 L 635,405 L 630,425 L 620,440 L 605,450 L 590,455 L 575,452 L 565,442 L 560,425 L 560,405 L 565,385 L 575,370 Z"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  className="text-black/[0.08]"
+                />
+
+                {/* Country borders (subtle outlines) */}
+                <path
+                  d="M 280,180 L 320,160 L 360,150 L 400,155 L 440,165 L 470,180 L 500,200 L 520,230 L 530,260 L 535,290 L 535,320 L 530,350 L 520,380 L 505,405 L 485,425 L 460,440 L 430,450 L 400,455 L 370,455 L 340,450 L 310,440 L 285,425 L 265,405 L 250,380 L 240,350 L 235,320 L 235,290 L 240,260 L 250,230 L 265,205 L 280,180 Z
+                     M 540,350 L 555,345 L 570,345 L 582,350 L 590,360 L 592,372 L 588,385 L 578,395 L 565,398 L 550,395 L 540,385 L 538,372 L 540,360 Z
+                     M 505,300 L 515,295 L 523,298 L 525,308 L 522,318 L 515,322 L 507,320 L 503,310 Z
+                     M 480,210 L 490,205 L 500,208 L 505,215 L 505,225 L 500,232 L 490,235 L 482,230 L 478,220 Z
+                     M 590,360 L 605,355 L 620,358 L 630,368 L 635,385 L 635,405 L 630,425 L 620,440 L 605,450 L 590,455 L 575,452 L 565,442 L 560,425 L 560,405 L 565,385 L 575,370 Z"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="text-black/20"
-                />
-
-                {/* Saudi Arabia region (approximate) */}
-                <path
-                  d="M300,250 Q350,230 420,240 L460,280 Q470,320 450,360 L400,390 Q350,380 310,360 L280,320 Q270,280 300,250Z"
-                  fill="currentColor"
-                  className="text-black/[0.03]"
-                />
-
-                {/* UAE region (approximate) */}
-                <path
-                  d="M520,340 L550,345 L555,370 L540,380 L520,375 Z"
-                  fill="currentColor"
-                  className="text-black/[0.03]"
                 />
               </svg>
 
