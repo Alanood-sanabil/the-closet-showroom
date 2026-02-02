@@ -77,7 +77,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
               {/* GCC Map PNG */}
               <div className="relative w-full h-full">
                 <Image
-                  src="/images/brands/Group 1.png"
+                  src="/images/brands/Group1.png"
                   alt="GCC Region Map"
                   fill
                   className="object-contain"
