@@ -11,6 +11,8 @@ import {
 import type { BrandPreview, ProductPreview, SortOption } from '@/lib/types'
 import { track } from '@/lib/track'
 import { useBasket } from '@/contexts/BasketContext'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslations } from '@/content/translations'
 
 const FALLBACK_IMAGE = '/images/ui/fallback.svg'
 
@@ -21,6 +23,8 @@ interface ProductPanelProps {
 }
 
 export default function ProductPanel({ brand, onClose, onProductClick }: ProductPanelProps) {
+  const { language } = useLanguage()
+  const t = getTranslations(language)
   const content = getCustomerLandingContent()
   const previewContent = content.preview
 
@@ -184,6 +188,7 @@ export default function ProductPanel({ brand, onClose, onProductClick }: Product
             brandId={brand.id}
             brandName={brand.name}
             onClick={() => onProductClick(product)}
+            translations={t}
           />
         ))}
       </div>
@@ -207,14 +212,16 @@ interface ProductCardProps {
   brandId: string
   brandName: string
   onClick: () => void
+  translations: any
 }
 
-function ProductCard({ product, index, brandId, brandName, onClick }: ProductCardProps) {
+function ProductCard({ product, index, brandId, brandName, onClick, translations }: ProductCardProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [imgError, setImgError] = useState(false)
   const [selectedSize, setSelectedSize] = useState<string>('')
   const imageSrc = imgError ? FALLBACK_IMAGE : (product.image || FALLBACK_IMAGE)
   const { addItem } = useBasket()
+  const t = translations
 
   const requiresSize = product.sizeType && product.sizeType !== 'none' && product.sizes && product.sizes.length > 0
   const canAddToBasket = !requiresSize || selectedSize !== ''
@@ -298,7 +305,7 @@ function ProductCard({ product, index, brandId, brandName, onClick }: ProductCar
         {product.isNew && (
           <div className="absolute top-2 left-2 z-10">
             <span className="text-[10px] tracking-widest uppercase bg-black text-white px-2 py-1">
-              New
+{t.product.new}
             </span>
           </div>
         )}
@@ -306,7 +313,7 @@ function ProductCard({ product, index, brandId, brandName, onClick }: ProductCar
         {/* Hover Overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-[1]" />
 
-        {/* Add to Basket Button */}
+        {/* {t.product.addToBasket} Button */}
         <button
           onClick={handleAddToBasket}
           disabled={!canAddToBasket}
@@ -316,7 +323,7 @@ function ProductCard({ product, index, brandId, brandName, onClick }: ProductCar
               : 'bg-black/30 text-white/50 cursor-not-allowed'
           }`}
         >
-          Add to Basket
+          {t.product.addToBasket}
         </button>
       </div>
 
@@ -349,7 +356,7 @@ function ProductCard({ product, index, brandId, brandName, onClick }: ProductCar
         </div>
 
         {requiresSize && !selectedSize && (
-          <p className="text-xs text-black/40 italic">Select a size</p>
+          <p className="text-xs text-black/40 italic">{t.product.selectSize}</p>
         )}
       </div>
     </article>

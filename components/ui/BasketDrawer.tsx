@@ -4,9 +4,13 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import { useBasket } from '@/contexts/BasketContext'
 import { track } from '@/lib/track'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslations } from '@/content/translations'
 
 export default function BasketDrawer() {
   const { items, itemCount, removeItem, isBasketOpen, closeBasket } = useBasket()
+  const { language } = useLanguage()
+  const t = getTranslations(language)
 
   // Handle Escape key
   useEffect(() => {
@@ -54,7 +58,7 @@ export default function BasketDrawer() {
 
   // Format price in SAR
   const formatPrice = (price: number) => {
-    return `${price.toLocaleString()} SAR`
+    return `${price.toLocaleString()} ${t.product.currency}`
   }
 
   if (!isBasketOpen) return null
@@ -77,7 +81,7 @@ export default function BasketDrawer() {
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-black/10">
-            <h2 className="font-serif text-2xl font-bold">Your Basket</h2>
+            <h2 className="font-serif text-2xl font-bold">{t.basket.title}</h2>
             <button
               onClick={closeBasket}
               className="w-10 h-10 flex items-center justify-center hover:bg-black/5 rounded-md transition-colors"
@@ -118,9 +122,9 @@ export default function BasketDrawer() {
                   />
                 </svg>
               </div>
-              <h3 className="font-medium text-lg mb-2">Your basket is empty</h3>
+              <h3 className="font-medium text-lg mb-2">{t.basket.empty}</h3>
               <p className="text-sm text-black/60 max-w-xs">
-                Add pieces to request showroom access
+                {t.basket.emptyMessage}
               </p>
             </div>
           ) : (
@@ -172,7 +176,7 @@ export default function BasketDrawer() {
                         {item.productName}
                       </h3>
                       {item.selectedSize && (
-                        <p className="text-xs text-black/50 mb-1">Size: {item.selectedSize}</p>
+                        <p className="text-xs text-black/50 mb-1">{t.basket.size}: {item.selectedSize}</p>
                       )}
                       <p className="text-sm font-medium">{formatPrice(item.price)}</p>
                     </div>
@@ -210,10 +214,10 @@ export default function BasketDrawer() {
                 onClick={handleRequestAccess}
                 className="w-full py-4 bg-black text-white font-medium tracking-wide rounded-sm hover:bg-gray-900 transition-colors"
               >
-                Request Showroom Access
+                {t.basket.requestAccessCta}
               </button>
               <p className="text-xs text-center text-black/50 mt-3">
-                {itemCount} {itemCount === 1 ? 'item' : 'items'} selected
+                {itemCount} {itemCount === 1 ? t.basket.item : t.basket.items} {t.basket.itemsSelected}
               </p>
             </div>
           )}

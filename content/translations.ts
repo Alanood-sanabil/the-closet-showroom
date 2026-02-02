@@ -268,8 +268,24 @@ interface Translations {
     emptyMessage: string
     removeItem: string
     requestAccessCta: string
-    itemCount: string
-    total: string
+    item: string
+    items: string
+    itemsSelected: string
+    size: string
+    addToBasket: string
+    selectSize: string
+    // Basket Summary (in form)
+    requestingAccessTo: string
+    moreItems: string
+  }
+
+  // Product details
+  product: {
+    new: string
+    size: string
+    selectSize: string
+    addToBasket: string
+    currency: string
   }
 }
 
@@ -551,13 +567,26 @@ export const translations: Record<Language, Translations> = {
     // Basket
     basket: {
       title: 'Your Basket',
-      empty: 'Empty',
-      emptyMessage:
-        'Your basket is empty. Add pieces to request showroom access.',
+      empty: 'Your basket is empty',
+      emptyMessage: 'Add pieces to request showroom access',
       removeItem: 'Remove',
       requestAccessCta: 'Request Showroom Access',
-      itemCount: 'items',
-      total: 'Total',
+      item: 'item',
+      items: 'items',
+      itemsSelected: 'selected',
+      size: 'Size',
+      addToBasket: 'Add to Basket',
+      selectSize: 'Select a size',
+      requestingAccessTo: "You're requesting access to view",
+      moreItems: 'more',
+    },
+
+    product: {
+      new: 'New',
+      size: 'Size',
+      selectSize: 'Select a size',
+      addToBasket: 'Add to Basket',
+      currency: 'SAR',
     },
   },
 
@@ -834,12 +863,26 @@ export const translations: Record<Language, Translations> = {
     // Basket
     basket: {
       title: 'سلتك',
-      empty: 'فاضية',
-      emptyMessage: 'سلتك فاضية. أضف قطع عشان تطلب دخول للمعرض.',
+      empty: 'سلتك فاضية',
+      emptyMessage: 'أضف قطع عشان تطلب دخول للمعرض',
       removeItem: 'احذف',
       requestAccessCta: 'اطلب دخول للمعرض',
-      itemCount: 'قطعة',
-      total: 'المجموع',
+      item: 'قطعة',
+      items: 'قطع',
+      itemsSelected: 'محددة',
+      size: 'المقاس',
+      addToBasket: 'أضف للسلة',
+      selectSize: 'اختر المقاس',
+      requestingAccessTo: 'طالب تشوف',
+      moreItems: 'قطع إضافية',
+    },
+
+    product: {
+      new: 'جديد',
+      size: 'المقاس',
+      selectSize: 'اختر المقاس',
+      addToBasket: 'أضف للسلة',
+      currency: 'ر.س',
     },
   },
 }
