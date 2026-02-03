@@ -448,10 +448,10 @@ export const translations: Record<Language, Translations> = {
     // Partner Hero
     partnerHero: {
       badge: 'For Brands & Designers',
-      headline: ['Access the Middle East Through', 'One Simple Partnership'],
+      headline: ['One Click Away from Expanding', 'to Saudi and Dubai'],
       subheadline:
         'Show your collection in premium showrooms and reach high-intent clients across Saudi Arabia and the region without setting up locally.',
-      primaryCta: 'Apply to Partner',
+      primaryCta: 'Expand with us',
       secondaryCta: 'Learn More',
       note: 'Limited brand slots available per location.',
     },
@@ -744,10 +744,10 @@ export const translations: Record<Language, Translations> = {
     // Partner Hero
     partnerHero: {
       badge: 'للبراندات والمصممين',
-      headline: ['وصّل براندك للشرق الأوسط', 'بشراكة بسيطة وسهلة'],
+      headline: ['على بُعد نقرة واحدة', 'من التوسع للسعودية ودبي'],
       subheadline:
         'اعرض مجموعتك في معارض مميزة ووصّل لعملاء في السعودية والمنطقة، بدون ما تحتاج تفتح فروع أو تعقيدات.',
-      primaryCta: 'قدّم طلب شراكة',
+      primaryCta: 'تمدّد معنا',
       secondaryCta: 'اعرف أكثر',
       note: 'الأماكن محدودة لكل موقع',
     },
