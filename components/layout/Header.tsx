@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
-import Link from 'next/link'
 import { Globe } from 'lucide-react'
 import BasketIcon from '@/components/ui/BasketIcon'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -92,10 +91,7 @@ export default function Header({ showBasket = true }: HeaderProps) {
         </div>
 
         {/* Brand Wordmark - Fixed top-center */}
-        <Link
-          href="/customer"
-          className="absolute left-1/2 top-3 -translate-x-1/2 pointer-events-auto hover:opacity-70 transition-opacity text-center"
-        >
+        <div className="absolute left-1/2 top-3 -translate-x-1/2 pointer-events-auto text-center">
           <div className="flex flex-col items-center gap-1">
             <p className="font-sans font-medium text-sm tracking-[0.35em] uppercase text-black">
               {t.header.brandName}
@@ -104,7 +100,7 @@ export default function Header({ showBasket = true }: HeaderProps) {
               {t.header.brandTagline}
             </p>
           </div>
-        </Link>
+        </div>
 
         {/* Basket Icon - Fixed top-right */}
         {showBasket && (
