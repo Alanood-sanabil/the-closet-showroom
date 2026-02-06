@@ -329,7 +329,7 @@ export const translations: Record<Language, Translations> = {
       badge: 'Launching soon in Riyadh & Jeddah',
       headline: ['Brands You Can\'t Find Anywhere Else'],
       subheadline:
-        'A private showroom giving you access to international fashion brands you have never had access to before.',
+        'A showroom giving you access to international fashion brands you have never had access to before.',
       primaryCta: 'Request Early Showroom Access',
       secondaryCta: 'Explore Featured Brands',
     },
@@ -627,7 +627,7 @@ export const translations: Record<Language, Translations> = {
       badge: 'قريباً في الرياض وجدة',
       headline: ['براندات ما راح تلقاها في أي مكان ثاني'],
       subheadline:
-        'معرض خاص يوصّلك لبراندات عالمية ما كانت متوفرة قبل كذا.',
+        'معرض يوصّلك لبراندات عالمية ما كانت متوفرة قبل كذا.',
       primaryCta: 'اطلب دخول مبكر للمعرض',
       secondaryCta: 'شوف البراندات',
     },

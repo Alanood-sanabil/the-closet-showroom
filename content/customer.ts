@@ -31,7 +31,7 @@ export const HERO_CONTENT: HeroContent = {
   badge: 'Launching soon in Riyadh & Jeddah',
   headline: ['Brands You Can’t Find Anywhere Else'],
   subheadline:
-    'A private showroom giving you access to international fashion brands you have never had access to before.',
+    'A showroom giving you access to international fashion brands you have never had access to before.',
   primaryCta: 'Request Early Showroom Access',
   secondaryCta: 'Explore Featured Brands',
 }
