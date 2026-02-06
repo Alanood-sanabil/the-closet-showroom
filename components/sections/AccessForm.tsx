@@ -13,8 +13,6 @@ interface FormData {
   phone: string
   location: string
   customCity: string
-  preferences: string[]
-  priceRange: string
 }
 
 interface FormErrors {
@@ -22,7 +20,6 @@ interface FormErrors {
   phone?: string
   location?: string
   customCity?: string
-  priceRange?: string
 }
 
 interface AccessFormProps {
@@ -38,15 +35,6 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
   const { items: basketItems, clearBasket } = useBasket()
 
   const locationOptions = [t.accessForm.locationRiyadh, t.accessForm.locationJeddah, t.accessForm.locationOther]
-  const fashionPreferences = [
-    t.accessForm.prefStreetweear,
-    t.accessForm.prefFormal,
-    t.accessForm.prefGymwear,
-    t.accessForm.prefSmartCasual,
-    t.accessForm.prefShoes,
-    t.accessForm.prefJewellery,
-  ]
-  const priceRanges = [t.accessForm.priceRange1, t.accessForm.priceRange2, t.accessForm.priceRange3]
 
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -61,8 +49,6 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
     phone: '',
     location: '',
     customCity: '',
-    preferences: [],
-    priceRange: '',
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
@@ -122,10 +108,6 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
       newErrors.customCity = t.accessForm.customCityRequired
     }
 
-    if (!formData.priceRange) {
-      newErrors.priceRange = t.accessForm.priceRangeRequired
-    }
-
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -146,8 +128,6 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
         name: formData.name,
         phone: formData.phone,
         location: formData.location === 'Other' ? formData.customCity : formData.location,
-        preferences: formData.preferences,
-        price_range: formData.priceRange,
         basket_items: basketItems,
       })
 
@@ -158,8 +138,6 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
       // Track submission
       track('form_submit', {
         location: formData.location === 'Other' ? formData.customCity : formData.location,
-        priceRange: formData.priceRange,
-        preferencesCount: formData.preferences.length,
         basketItemsCount: basketItems.length,
         hadBasketItems: basketItems.length > 0,
       })
@@ -189,15 +167,6 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
     }
-  }
-
-  const handlePreferenceChange = (preference: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      preferences: prev.preferences.includes(preference)
-        ? prev.preferences.filter((p) => p !== preference)
-        : [...prev.preferences, preference],
-    }))
   }
 
   return (
@@ -408,102 +377,6 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
                     )}
                   </div>
                 )}
-
-                {/* Fashion Preferences */}
-                <fieldset>
-                  <legend className="block text-sm font-medium mb-3">
-                    {t.accessForm.preferencesLabel}
-                  </legend>
-                  <div className="grid grid-cols-2 gap-3">
-                    {fashionPreferences.map((pref) => (
-                      <label
-                        key={pref}
-                        className={`flex items-center gap-3 p-3 border cursor-pointer transition-colors ${
-                          formData.preferences.includes(pref)
-                            ? 'border-black bg-black/5'
-                            : 'border-black/10 hover:border-black/20'
-                        }`}
-                      >
-                        <input
-                          type="checkbox"
-                          checked={formData.preferences.includes(pref)}
-                          onChange={() => handlePreferenceChange(pref)}
-                          className="sr-only"
-                        />
-                        <span
-                          className={`w-4 h-4 border flex items-center justify-center ${
-                            formData.preferences.includes(pref)
-                              ? 'border-black bg-black'
-                              : 'border-black/30'
-                          }`}
-                        >
-                          {formData.preferences.includes(pref) && (
-                            <svg
-                              className="w-3 h-3 text-white"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                              aria-hidden="true"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={3}
-                                d="M5 13l4 4L19 7"
-                              />
-                            </svg>
-                          )}
-                        </span>
-                        <span className="text-sm">{pref}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-
-                {/* Price Range */}
-                <fieldset>
-                  <legend className="block text-sm font-medium mb-3">
-                    {t.accessForm.priceRangeLabel} <span className="text-black">*</span>
-                  </legend>
-                  <div className="space-y-2">
-                    {priceRanges.map((range) => (
-                      <label
-                        key={range}
-                        className={`flex items-center gap-3 p-3 border cursor-pointer transition-colors ${
-                          formData.priceRange === range
-                            ? 'border-black bg-black/5'
-                            : 'border-black/10 hover:border-black/20'
-                        }`}
-                      >
-                        <input
-                          type="radio"
-                          name="priceRange"
-                          value={range}
-                          checked={formData.priceRange === range}
-                          onChange={handleInputChange}
-                          className="sr-only"
-                        />
-                        <span
-                          className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                            formData.priceRange === range
-                              ? 'border-black'
-                              : 'border-black/30'
-                          }`}
-                        >
-                          {formData.priceRange === range && (
-                            <span className="w-2 h-2 rounded-full bg-black" />
-                          )}
-                        </span>
-                        <span className="text-sm">{range}</span>
-                      </label>
-                    ))}
-                  </div>
-                  {errors.priceRange && (
-                    <p className="mt-2 text-sm text-red-500">
-                      {errors.priceRange}
-                    </p>
-                  )}
-                </fieldset>
 
                 {/* Error Message */}
                 {submitError && (
