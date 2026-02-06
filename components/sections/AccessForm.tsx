@@ -34,7 +34,7 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
   const t = getTranslations(language)
   const { items: basketItems, clearBasket } = useBasket()
 
-  const locationOptions = [t.accessForm.locationRiyadh, t.accessForm.locationJeddah, t.accessForm.locationOther]
+  const locationOptions = [t.accessForm.locationRiyadh, t.accessForm.locationJeddah, t.accessForm.locationDubai, t.accessForm.locationOther]
 
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)

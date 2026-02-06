@@ -138,6 +138,7 @@ interface Translations {
     // Options
     locationRiyadh: string
     locationJeddah: string
+    locationDubai: string
     locationOther: string
     priceRange1: string
     priceRange2: string
@@ -433,6 +434,7 @@ export const translations: Record<Language, Translations> = {
       successMessage: "Thank you — we'll notify you when early access opens.",
       locationRiyadh: 'Riyadh',
       locationJeddah: 'Jeddah',
+      locationDubai: 'Dubai',
       locationOther: 'Other',
       priceRange1: '500 - 2,000 SAR',
       priceRange2: '2,000 - 4,500 SAR',
@@ -729,6 +731,7 @@ export const translations: Record<Language, Translations> = {
       successMessage: 'شكراً — بنخبرك أول ما يفتح التسجيل.',
       locationRiyadh: 'الرياض',
       locationJeddah: 'جدة',
+      locationDubai: 'دبي',
       locationOther: 'مدينة ثانية',
       priceRange1: '500 - 2,000 ريال',
       priceRange2: '2,000 - 4,500 ريال',
