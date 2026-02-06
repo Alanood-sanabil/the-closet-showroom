@@ -479,7 +479,7 @@ export const translations: Record<Language, Translations> = {
 
     // Partner Form
     partnerForm: {
-      sectionTitle: 'Extend with us',
+      sectionTitle: 'Expand with us',
       sectionDescription:
         'Tell us a bit about your brand. Our team will review the details and get back to you.',
       contactNameLabel: 'Full Name',
@@ -776,7 +776,7 @@ export const translations: Record<Language, Translations> = {
 
     // Partner Form
     partnerForm: {
-      sectionTitle: 'تمدّد معنا',
+      sectionTitle: 'توسّع معنا',
       sectionDescription:
         'خبّرنا عن براندك. بنراجع التفاصيل وبنتواصل معك قريب.',
       contactNameLabel: 'الاسم',
