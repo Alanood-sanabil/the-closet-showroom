@@ -27,19 +27,6 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
   const content = getCustomerLandingContent()
   const previewContent = content.preview
 
-  // DEBUG: Check brands data
-  console.log('🔍 PreviewGrid mounted')
-  console.log('📦 Content object:', content)
-  console.log('📊 Brands exists?', !!content.brands)
-  console.log('📊 Brands is array?', Array.isArray(content.brands))
-  console.log('📊 Brands count:', content.brands?.length || 0)
-
-  // Safety check
-  if (!content.brands || !Array.isArray(content.brands)) {
-    console.error('❌ ERROR: content.brands is not an array!', content.brands)
-    return <div className="p-8 text-center">Error loading brands data</div>
-  }
-
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 

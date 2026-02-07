@@ -13,9 +13,6 @@ export default function CustomerPage() {
     productName: string
   } | null>(null)
 
-  // DEBUG: Check what's being loaded
-  console.log('🔍 Customer page mounted ✅')
-
   return (
     <main className="min-h-screen">
       <Hero />
