@@ -4,7 +4,7 @@ import type { BrandPreview } from '@/lib/types'
  * BRANDS NEEDING LOGOS:
  * Save logos to: /public/images/brands/logos/<brand-slug>.png
  *
- * Missing logos (using placeholder):
+ * Missing logos (using fallback):
  * - joseph-altuzarra.png, proenza-schouler.png, gabriela-hearst.png, another-tomorrow.png
  * - thom-browne.png, jw-pei.png, tibi.png, billy-reid.png, buck-mason.png, noah-nyc.png
  * - john-elliott.png, autry.png, sebago.png, gh-bass.png, beams-f.png, todd-snyder.png
@@ -19,6 +19,8 @@ import type { BrandPreview } from '@/lib/types'
  * - cqp.png, axel-arigato.png, nubikk.png, morobe.png, morjas.png
  * - crop-shop-boutique.png, lskd.png
  */
+
+const PLACEHOLDER_LOGO = '/images/ui/fallback.svg'
 
 export const BRANDS_DATA: BrandPreview[] = [
   // ========== WOMENWEAR ==========
@@ -63,7 +65,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['formal', 'smart-casual'],
     priceHint: '2,000–8,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -74,7 +76,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['formal', 'smart-casual'],
     priceHint: '1,500–6,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -85,7 +87,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['formal', 'smart-casual'],
     priceHint: '2,500–10,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -96,7 +98,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['smart-casual'],
     priceHint: '1,800–5,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -107,7 +109,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens', 'mens'],
     styleTags: ['formal'],
     priceHint: '2,000–15,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -134,7 +136,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['accessories'],
     priceHint: '300–1,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -145,7 +147,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['smart-casual'],
     priceHint: '1,200–4,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
 
@@ -158,7 +160,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual'],
     priceHint: '800–3,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -169,7 +171,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual'],
     priceHint: '500–2,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -180,7 +182,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear', 'smart-casual'],
     priceHint: '600–2,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -191,7 +193,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear', 'smart-casual'],
     priceHint: '800–3,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -202,7 +204,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
     priceHint: '600–1,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -213,7 +215,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
     priceHint: '500–1,200 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -224,7 +226,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
     priceHint: '400–1,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -235,7 +237,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual'],
     priceHint: '1,000–4,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -246,7 +248,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual', 'formal'],
     priceHint: '800–3,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -257,7 +259,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual'],
     priceHint: '1,000–4,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -268,7 +270,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual'],
     priceHint: '600–2,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -279,7 +281,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual'],
     priceHint: '800–2,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -290,7 +292,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['streetwear'],
     priceHint: '400–1,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -301,7 +303,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear', 'smart-casual'],
     priceHint: '1,500–8,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -312,7 +314,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear', 'smart-casual'],
     priceHint: '800–3,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -323,7 +325,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual', 'formal'],
     priceHint: '1,000–4,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -334,7 +336,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual'],
     priceHint: '800–3,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
 
@@ -363,7 +365,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['streetwear'],
     priceHint: '600–2,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -390,7 +392,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear'],
     priceHint: '400–1,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -401,7 +403,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear'],
     priceHint: '300–1,200 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -412,7 +414,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['streetwear'],
     priceHint: '500–2,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -423,7 +425,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear'],
     priceHint: '800–3,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -434,7 +436,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear'],
     priceHint: '1,200–5,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -445,7 +447,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear'],
     priceHint: '400–1,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -456,7 +458,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear'],
     priceHint: '300–1,200 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -467,7 +469,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['streetwear'],
     priceHint: '300–1,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -478,7 +480,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['streetwear'],
     priceHint: '400–1,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
 
@@ -491,7 +493,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['smart-casual'],
     priceHint: '1,500–6,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -502,7 +504,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual'],
     priceHint: '800–3,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -513,7 +515,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['smart-casual'],
     priceHint: '600–2,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -524,7 +526,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['smart-casual', 'streetwear'],
     priceHint: '1,200–5,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -535,7 +537,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['formal', 'smart-casual'],
     priceHint: '2,000–10,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
 
@@ -548,7 +550,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
     priceHint: '1,200–3,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -559,7 +561,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['shoes'],
     priceHint: '800–2,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -602,7 +604,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['shoes'],
     priceHint: '2,000–5,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -613,7 +615,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['shoes'],
     priceHint: '3,000–8,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -624,7 +626,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['shoes'],
     priceHint: '1,500–3,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -635,7 +637,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
     priceHint: '1,200–3,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -646,7 +648,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
     priceHint: '400–1,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -657,7 +659,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
     priceHint: '1,000–3,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -668,7 +670,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['shoes'],
     priceHint: '1,200–3,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -679,7 +681,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['shoes'],
     priceHint: '800–2,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -690,7 +692,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['shoes'],
     priceHint: '1,500–4,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -701,7 +703,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['shoes', 'accessories'],
     priceHint: '1,000–3,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -712,7 +714,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['shoes'],
     priceHint: '1,200–2,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -723,7 +725,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['shoes'],
     priceHint: '800–1,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -734,7 +736,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
     priceHint: '900–2,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -745,7 +747,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
     priceHint: '600–1,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -756,7 +758,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['shoes'],
     priceHint: '1,000–2,500 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -767,7 +769,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens'],
     styleTags: ['shoes'],
     priceHint: '1,200–3,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
 
@@ -780,7 +782,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['womens'],
     styleTags: ['gymwear'],
     priceHint: '200–800 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
@@ -791,7 +793,7 @@ export const BRANDS_DATA: BrandPreview[] = [
     genderTags: ['mens', 'womens'],
     styleTags: ['gymwear'],
     priceHint: '300–1,000 SAR',
-    logoImage: '/images/brands/logos/placeholder.png',
+    logoImage: '/images/ui/fallback.svg',
     products: []
   },
   {
