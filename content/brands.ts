@@ -1,7 +1,27 @@
 import type { BrandPreview } from '@/lib/types'
 
+/*
+ * BRANDS NEEDING LOGOS:
+ * Save logos to: /public/images/brands/logos/<brand-slug>.png
+ *
+ * Missing logos (using fallback /images/ui/fallback.svg):
+ * - joseph-altuzarra.png, proenza-schouler.png, gabriela-hearst.png, another-tomorrow.png
+ * - thom-browne.png, billy-reid.png, buck-mason.png, noah-nyc.png, john-elliott.png
+ * - autry.png, sebago.png, gh-bass.png, beams-f.png, todd-snyder.png, rowing-blazers.png
+ * - corridor.png, carhartt-wip.png, fear-of-god.png, aime-leon-dore.png, cole-buxton.png
+ * - illicit-bloc.png, picante.png, daily-paper.png, needles.png, the-real-mccoys.png
+ * - officine-generale.png, aurelien.png, lemaire.png, husbands-paris.png, studio-tomboy.png
+ * - casablanca.png, maison-margiela.png, drakes.png, private-white-vc.png, rejina-pyo.png
+ * - tove.png, joseph.png, jw-anderson.png
+ * - paraboot.png, bexley.png, crockett-and-jones.png, gaziano-and-girling.png
+ * - baudoin-and-lange.png, grenson.png, stepney-workers-club.png, fabi-shoes.png
+ * - loriblu.png, agl-shoes.png, dear-frances.png, by-far.png, carlos-santos.png
+ * - cqp.png, axel-arigato.png, morobe.png, morjas.png, nubikk.png
+ * - crop-shop-boutique.png, lskd.png
+ */
 
 export const BRANDS_DATA: BrandPreview[] = [
+  // ========== EXISTING BRANDS WITH PRODUCTS ==========
   {
     id: 'simkhai',
     name: 'Simkhai',
@@ -9,7 +29,6 @@ export const BRANDS_DATA: BrandPreview[] = [
     countryName: 'United States',
     genderTags: ['womens'],
     styleTags: ['formal', 'smart-casual'],
-
     priceHint: '1,800–7,500 SAR',
     logoImage: '/images/brands/simkhai/image.png',
     products: [
@@ -41,9 +60,8 @@ export const BRANDS_DATA: BrandPreview[] = [
     name: 'Seventh',
     countryCode: 'UK',
     countryName: 'United Kingdom',
-    genderTags: [ 'mens'],
+    genderTags: ['mens'],
     styleTags: ['streetwear'],
-
     priceHint: '500–5,000 SAR',
     logoImage: '/images/brands/seventh/image.png',
     products: [
@@ -56,11 +74,10 @@ export const BRANDS_DATA: BrandPreview[] = [
   {
     id: 'officine-creative',
     name: 'Officine Creative',
-    countryCode: 'Italy',
+    countryCode: 'IT',
     countryName: 'Italy',
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
-
     priceHint: '800–6,000 SAR',
     logoImage: '/images/brands/officine-creative/image.png',
     products: [
@@ -77,7 +94,6 @@ export const BRANDS_DATA: BrandPreview[] = [
     countryName: 'Uruguay',
     genderTags: ['womens'],
     styleTags: ['jewellery'],
-
     priceHint: '900–3,500 SAR',
     logoImage: '/images/brands/anni/image.png',
     products: [
@@ -90,11 +106,10 @@ export const BRANDS_DATA: BrandPreview[] = [
   {
     id: 'the-row',
     name: 'The Row',
-    countryCode: 'GB',
-    countryName: 'United Kingdom',
-    genderTags: ['mens'],
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens', 'womens'],
     styleTags: ['formal'],
-
     priceHint: '600–4,200 SAR',
     logoImage: '/images/brands/the row/image.png',
     products: [
@@ -107,11 +122,10 @@ export const BRANDS_DATA: BrandPreview[] = [
   {
     id: 'salomon',
     name: 'Salomon',
-    countryCode: 'IT',
-    countryName: 'Italy',
+    countryCode: 'FR',
+    countryName: 'France',
     genderTags: ['mens', 'womens'],
     styleTags: ['shoes'],
-
     priceHint: '700–2,500 SAR',
     logoImage: '/images/brands/salomon/image.png',
     products: [
@@ -124,11 +138,10 @@ export const BRANDS_DATA: BrandPreview[] = [
   {
     id: 'represent',
     name: 'Represent',
-    countryCode: 'FR',
-    countryName: 'France',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
     genderTags: ['mens', 'womens'],
     styleTags: ['streetwear'],
-
     priceHint: '1,500–8,500 SAR',
     logoImage: '/images/brands/represent/image.png',
     products: [
@@ -141,18 +154,668 @@ export const BRANDS_DATA: BrandPreview[] = [
   {
     id: 'stax',
     name: 'STAX',
-    countryCode: 'SE',
-    countryName: 'Sweden',
-    genderTags: ['womens','mens'],
+    countryCode: 'AU',
+    countryName: 'Australia',
+    genderTags: ['womens', 'mens'],
     styleTags: ['gymwear'],
-
     priceHint: '150–1,000 SAR',
     logoImage: '/images/brands/STAX/image-copy.png',
     products: [
-      { id: 'tt-1', name: 'Dymo Zip Up', category: 'Jacket', price: 400, isNew: true, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.40.32 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
-      { id: 'tt-2', name: 'Fold Over Flares Airlyte', category: 'Bottoms', price: 450, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.42.09 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
-      { id: 'tt-3', name: 'Zip Jacket NANDEX™', category: 'Jacket', price: 700, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.43.22 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
-      { id: 'tt-4', name: 'Motion Panel Tee', category: 'Tops', price: 300, isNew: true, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.44.34 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
+      { id: 'tt-1', name: 'Dymo Zip Up', category: 'Jacket', price: 400, isNew: true, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.40.32 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
+      { id: 'tt-2', name: 'Fold Over Flares Airlyte', category: 'Bottoms', price: 450, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.42.09 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
+      { id: 'tt-3', name: 'Zip Jacket NANDEX™', category: 'Jacket', price: 700, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.43.22 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
+      { id: 'tt-4', name: 'Motion Panel Tee', category: 'Tops', price: 300, isNew: true, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.44.34 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
     ]
+  },
+
+  // ========== NEW BRANDS (NO PRODUCTS YET) ==========
+  // WOMENWEAR
+  {
+    id: 'joseph-altuzarra',
+    name: 'Joseph Altuzarra',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['womens'],
+    styleTags: ['formal'],
+    priceHint: '2,000–8,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'proenza-schouler',
+    name: 'Proenza Schouler',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['womens'],
+    styleTags: ['formal'],
+    priceHint: '1,500–6,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+
+  // MENWEAR
+  {
+    id: 'gabriela-hearst',
+    name: 'Gabriela Hearst',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['womens'],
+    styleTags: ['formal', 'smart-casual'],
+    priceHint: '2,500–10,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'another-tomorrow',
+    name: 'Another Tomorrow',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['womens'],
+    styleTags: ['smart-casual'],
+    priceHint: '1,800–5,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'thom-browne',
+    name: 'Thom Browne',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['formal'],
+    priceHint: '2,000–15,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'billy-reid',
+    name: 'Billy Reid',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual'],
+    priceHint: '800–3,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'buck-mason',
+    name: 'Buck Mason',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual'],
+    priceHint: '500–2,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'noah-nyc',
+    name: 'Noah NYC',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens'],
+    styleTags: ['streetwear', 'smart-casual'],
+    priceHint: '600–2,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'john-elliott',
+    name: 'John Elliott',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens'],
+    styleTags: ['streetwear', 'smart-casual'],
+    priceHint: '800–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'autry',
+    name: 'Autry',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['shoes'],
+    priceHint: '600–1,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'sebago',
+    name: 'Sebago',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['shoes'],
+    priceHint: '500–1,200 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'gh-bass',
+    name: 'GH Bass',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['shoes'],
+    priceHint: '400–1,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'beams-f',
+    name: 'Beams F',
+    countryCode: 'JP',
+    countryName: 'Japan',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual'],
+    priceHint: '1,000–4,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'todd-snyder',
+    name: 'Todd Snyder',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual', 'formal'],
+    priceHint: '800–3,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'rowing-blazers',
+    name: 'Rowing Blazers',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual'],
+    priceHint: '1,000–4,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+
+  // STREETWEAR
+  {
+    id: 'corridor',
+    name: 'Corridor',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual'],
+    priceHint: '600–2,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'carhartt-wip',
+    name: 'Carhartt WIP',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['streetwear'],
+    priceHint: '400–1,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'fear-of-god',
+    name: 'Fear of God',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens'],
+    styleTags: ['streetwear', 'smart-casual'],
+    priceHint: '1,500–8,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'aime-leon-dore',
+    name: 'Aimé Leon Dore',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens'],
+    styleTags: ['streetwear', 'smart-casual'],
+    priceHint: '800–3,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'cole-buxton',
+    name: 'Cole Buxton',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['streetwear'],
+    priceHint: '600–2,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'illicit-bloc',
+    name: 'Illicit Bloc',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['mens'],
+    styleTags: ['streetwear'],
+    priceHint: '400–1,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'picante',
+    name: 'Picante',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['mens'],
+    styleTags: ['streetwear'],
+    priceHint: '300–1,200 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'daily-paper',
+    name: 'Daily Paper',
+    countryCode: 'NL',
+    countryName: 'Netherlands',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['streetwear'],
+    priceHint: '500–2,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'needles',
+    name: 'Needles',
+    countryCode: 'JP',
+    countryName: 'Japan',
+    genderTags: ['mens'],
+    styleTags: ['streetwear'],
+    priceHint: '800–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'the-real-mccoys',
+    name: "The Real McCoy's",
+    countryCode: 'JP',
+    countryName: 'Japan',
+    genderTags: ['mens'],
+    styleTags: ['streetwear'],
+    priceHint: '1,200–5,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+
+  // SMART-CASUAL
+  {
+    id: 'officine-generale',
+    name: 'Officine Générale',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual', 'formal'],
+    priceHint: '1,000–4,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'aurelien',
+    name: 'Aurélien',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual'],
+    priceHint: '800–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'lemaire',
+    name: 'Lemaire',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['smart-casual'],
+    priceHint: '1,500–6,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'husbands-paris',
+    name: 'Husbands Paris',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual'],
+    priceHint: '800–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'studio-tomboy',
+    name: 'Studio Tomboy',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['womens'],
+    styleTags: ['smart-casual'],
+    priceHint: '600–2,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'casablanca',
+    name: 'Casablanca',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual', 'streetwear'],
+    priceHint: '1,200–5,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'maison-margiela',
+    name: 'Maison Margiela',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['formal', 'smart-casual'],
+    priceHint: '2,000–10,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'drakes',
+    name: "Drake's",
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual', 'formal'],
+    priceHint: '800–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'private-white-vc',
+    name: 'Private White V.C.',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['mens'],
+    styleTags: ['smart-casual'],
+    priceHint: '1,200–4,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'rejina-pyo',
+    name: 'Rejina Pyo',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['womens'],
+    styleTags: ['formal', 'smart-casual'],
+    priceHint: '1,500–5,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'tove',
+    name: 'Tove',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['womens'],
+    styleTags: ['formal', 'smart-casual'],
+    priceHint: '1,200–4,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'joseph',
+    name: 'Joseph',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['womens'],
+    styleTags: ['smart-casual'],
+    priceHint: '1,000–4,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'jw-anderson',
+    name: 'JW Anderson',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['smart-casual'],
+    priceHint: '1,500–6,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+
+  // SHOES
+  {
+    id: 'paraboot',
+    name: 'Paraboot',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['shoes'],
+    priceHint: '1,200–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'bexley',
+    name: 'Bexley',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens'],
+    styleTags: ['shoes'],
+    priceHint: '800–2,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'crockett-and-jones',
+    name: 'Crockett & Jones Handgrade',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['mens'],
+    styleTags: ['shoes'],
+    priceHint: '2,000–5,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'gaziano-and-girling',
+    name: 'Gaziano & Girling',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['mens'],
+    styleTags: ['shoes'],
+    priceHint: '3,000–8,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'baudoin-and-lange',
+    name: 'Baudoin & Lange',
+    countryCode: 'BE',
+    countryName: 'Belgium',
+    genderTags: ['mens'],
+    styleTags: ['shoes'],
+    priceHint: '1,500–3,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'grenson',
+    name: 'Grenson',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['shoes'],
+    priceHint: '1,200–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'stepney-workers-club',
+    name: 'Stepney Workers Club',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['shoes'],
+    priceHint: '400–1,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'fabi-shoes',
+    name: 'Fabi Shoes',
+    countryCode: 'IT',
+    countryName: 'Italy',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['shoes'],
+    priceHint: '1,000–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'loriblu',
+    name: 'Loriblu',
+    countryCode: 'IT',
+    countryName: 'Italy',
+    genderTags: ['womens'],
+    styleTags: ['shoes'],
+    priceHint: '1,200–3,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'agl-shoes',
+    name: 'AGL Shoes',
+    countryCode: 'IT',
+    countryName: 'Italy',
+    genderTags: ['womens'],
+    styleTags: ['shoes'],
+    priceHint: '800–2,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'dear-frances',
+    name: 'Dear Frances',
+    countryCode: 'UK',
+    countryName: 'United Kingdom',
+    genderTags: ['womens'],
+    styleTags: ['shoes'],
+    priceHint: '1,500–4,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'by-far',
+    name: 'By Far',
+    countryCode: 'BG',
+    countryName: 'Bulgaria',
+    genderTags: ['womens'],
+    styleTags: ['shoes', 'accessories'],
+    priceHint: '1,000–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'carlos-santos',
+    name: 'Carlos Santos',
+    countryCode: 'PT',
+    countryName: 'Portugal',
+    genderTags: ['mens'],
+    styleTags: ['shoes'],
+    priceHint: '1,200–2,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'cqp',
+    name: 'CQP',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['mens'],
+    styleTags: ['shoes'],
+    priceHint: '800–1,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'axel-arigato',
+    name: 'Axel Arigato',
+    countryCode: 'SE',
+    countryName: 'Sweden',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['shoes'],
+    priceHint: '900–2,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'morobe',
+    name: 'Morobe',
+    countryCode: 'SE',
+    countryName: 'Sweden',
+    genderTags: ['mens'],
+    styleTags: ['shoes'],
+    priceHint: '1,000–2,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'morjas',
+    name: 'Morjas',
+    countryCode: 'SE',
+    countryName: 'Sweden',
+    genderTags: ['mens'],
+    styleTags: ['shoes'],
+    priceHint: '1,200–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'nubikk',
+    name: 'Nubikk',
+    countryCode: 'NL',
+    countryName: 'Netherlands',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['shoes'],
+    priceHint: '600–1,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+
+  // GYMWEAR
+  {
+    id: 'crop-shop-boutique',
+    name: 'Crop Shop Boutique',
+    countryCode: 'US',
+    countryName: 'United States',
+    genderTags: ['womens'],
+    styleTags: ['gymwear'],
+    priceHint: '200–800 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'lskd',
+    name: 'LSKD',
+    countryCode: 'AU',
+    countryName: 'Australia',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['gymwear'],
+    priceHint: '300–1,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
   },
 ]
