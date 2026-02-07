@@ -155,4 +155,114 @@ export const BRANDS_DATA: BrandPreview[] = [
       { id: 'tt-4', name: 'Motion Panel Tee', category: 'Tops', price: 300, isNew: true, image: '/images/products/STAX/Screenshot 1447-08-14 at 1.44.34 PM.png', sizeType: 'clothing', sizes: ['XS', 'S', 'M', 'L', 'XL'] },
     ]
   },
+  {
+    id: 'acne-studios',
+    name: 'Acne Studios',
+    countryCode: 'SE',
+    countryName: 'Sweden',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['formal', 'streetwear'],
+    priceHint: '1,000–5,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'rick-owens',
+    name: 'Rick Owens',
+    countryCode: 'IT',
+    countryName: 'Italy',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['formal', 'streetwear'],
+    priceHint: '2,000–10,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'lemaire',
+    name: 'Lemaire',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['formal', 'smart-casual'],
+    priceHint: '1,500–6,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'our-legacy',
+    name: 'Our Legacy',
+    countryCode: 'SE',
+    countryName: 'Sweden',
+    genderTags: ['mens'],
+    styleTags: ['streetwear', 'formal'],
+    priceHint: '800–3,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'stone-island',
+    name: 'Stone Island',
+    countryCode: 'IT',
+    countryName: 'Italy',
+    genderTags: ['mens'],
+    styleTags: ['streetwear'],
+    priceHint: '1,200–4,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'apc',
+    name: 'A.P.C.',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['smart-casual'],
+    priceHint: '800–3,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'maison-margiela',
+    name: 'Maison Margiela',
+    countryCode: 'FR',
+    countryName: 'France',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['formal'],
+    priceHint: '2,000–8,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'jil-sander',
+    name: 'Jil Sander',
+    countryCode: 'DE',
+    countryName: 'Germany',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['formal'],
+    priceHint: '1,800–7,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'comme-des-garcons',
+    name: 'Comme des Garçons',
+    countryCode: 'JP',
+    countryName: 'Japan',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['formal', 'streetwear'],
+    priceHint: '1,500–6,500 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
+  {
+    id: 'issey-miyake',
+    name: 'Issey Miyake',
+    countryCode: 'JP',
+    countryName: 'Japan',
+    genderTags: ['mens', 'womens'],
+    styleTags: ['formal'],
+    priceHint: '1,200–5,000 SAR',
+    logoImage: '/images/ui/fallback.svg',
+    products: []
+  },
 ]
