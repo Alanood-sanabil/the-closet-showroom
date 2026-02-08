@@ -404,20 +404,20 @@ export const translations: Record<Language, Translations> = {
 
     // Access Form
     accessForm: {
-      sectionTitle: 'Request Early Access',
+      sectionTitle: 'Don\'t Miss Our Next Pop-Up',
       sectionDescription:
-        "Be the first to explore our collection of international brands. Join our exclusive list",
+        "Be the first to know where we're popping up next. Sign up and get exclusive early access before anyone else.",
       benefits: [
         'Early access to new collections',
-        'First to see international brands',
-        'Priority showroom appointments',
+        'First to know our next pop-up location',
+        'VIP invites & exclusive in-store perks',
       ],
       nameLabel: 'Name',
       namePlaceholder: 'Your full name',
       phoneLabel: 'Phone Number',
       phonePlaceholder: '+966 5XX XXX XXXX',
-      locationLabel: 'Showroom Location',
-      locationPlaceholder: 'Select a location',
+      locationLabel: 'Preferred City',
+      locationPlaceholder: 'Select your city',
       customCityLabel: 'Enter your city',
       customCityPlaceholder: 'Your city',
       preferencesLabel: 'Fashion Preferences',
@@ -428,7 +428,7 @@ export const translations: Record<Language, Translations> = {
       locationRequired: 'Please select a showroom location',
       customCityRequired: 'Please enter your city',
       priceRangeRequired: 'Please select a price range',
-      submitButton: 'Request Early Access',
+      submitButton: 'Get My VIP Access',
       submittingText: 'Processing...',
       successTitle: 'Request Received',
       successMessage: "Thank you — we'll notify you when early access opens.",
@@ -701,20 +701,20 @@ export const translations: Record<Language, Translations> = {
 
     // Access Form
     accessForm: {
-      sectionTitle: 'اطلب دخول مبكر',
+      sectionTitle: 'ما تفوت المعرض القادم',
       sectionDescription:
-        'كن أول واحد يشوف البراندات العالمية. سجّل معنا في القائمة الحصرية',
+        'كن أول من يعرف وين بيكون المعرض القادم. سجّل واحصل على دخول مبكر حصري قبل أي أحد.',
       benefits: [
         'دخول مبكر للمجموعات الجديدة',
-        'أول من يشوف البراندات العالمية',
-        'أولوية في مواعيد المعرض',
+        'أول من يعرف موقع المعرض القادم',
+        'دعوات VIP ومزايا حصرية في المعرض',
       ],
       nameLabel: 'الاسم',
       namePlaceholder: 'اسمك كامل',
       phoneLabel: 'رقم الجوال',
       phonePlaceholder: '+966 5XX XXX XXXX',
-      locationLabel: 'وين المعرض؟',
-      locationPlaceholder: 'اختر موقع',
+      locationLabel: 'المدينة المفضلة',
+      locationPlaceholder: 'اختر مدينتك',
       customCityLabel: 'اكتب مدينتك',
       customCityPlaceholder: 'المدينة',
       preferencesLabel: 'وش تحب من الأزياء؟',
@@ -725,7 +725,7 @@ export const translations: Record<Language, Translations> = {
       locationRequired: 'اختر موقع المعرض',
       customCityRequired: 'اكتب مدينتك',
       priceRangeRequired: 'اختر نطاق سعري',
-      submitButton: 'قدّم الطلب',
+      submitButton: 'احصل على الدخول VIP',
       submittingText: 'جاري الإرسال...',
       successTitle: 'وصلنا طلبك',
       successMessage: 'شكراً — بنخبرك أول ما يفتح التسجيل.',
