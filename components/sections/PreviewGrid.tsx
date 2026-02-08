@@ -7,11 +7,12 @@ import {
   getGenderLabel,
   getStyleLabel,
 } from '@/content'
-import type { BrandPreview, GenderTag, StyleTag, ProductPreview } from '@/lib/types'
+import type { BrandPreview, GenderTag, StyleTag } from '@/lib/types'
 import { track } from '@/lib/track'
 import FilterBar from '@/components/ui/FilterBar'
 import FilterModal from '@/components/ui/FilterModal'
-import ProductPanel from '@/components/ui/ProductPanel'
+import LocationsModal from '@/components/ui/LocationsModal'
+import AccessFormModal from '@/components/ui/AccessFormModal'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { getTranslations } from '@/content/translations'
 
@@ -37,6 +38,11 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
 
   // Brand selection state
   const [selectedBrand, setSelectedBrand] = useState<BrandPreview | null>(null)
+
+  // Modal state
+  const [isLocationsModalOpen, setIsLocationsModalOpen] = useState(false)
+  const [isAccessFormModalOpen, setIsAccessFormModalOpen] = useState(false)
+  const [selectedLocation, setSelectedLocation] = useState('')
 
   // Section visibility observer
   useEffect(() => {
@@ -115,46 +121,31 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
     track('filter_change', { gender: 'all', stylesSelectedCount: 0 })
   }, [])
 
-  // Brand selection
+  // Brand selection - opens locations modal
   const handleBrandSelect = useCallback((brand: BrandPreview) => {
     setSelectedBrand(brand)
+    setIsLocationsModalOpen(true)
     track('brand_select', { brandId: brand.id, brandName: brand.name })
   }, [])
 
-  const handleBrandDeselect = useCallback(() => {
-    setSelectedBrand(null)
-
-    // Scroll back to the preview section
-    if (sectionRef.current) {
-      sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+  // Handle locations modal close
+  const handleLocationsModalClose = useCallback(() => {
+    setIsLocationsModalOpen(false)
   }, [])
 
-  // Product click handler - scroll to access form
-  const handleProductClick = useCallback((product: ProductPreview, brandName: string) => {
-    // Set selected product for form prefill
-    onProductSelect({
-      brandName,
-      productName: product.name,
-    })
+  // Handle view popup click - opens access form modal
+  const handleViewPopup = useCallback((location: string) => {
+    setSelectedLocation(location)
+    setIsLocationsModalOpen(false)
+    setIsAccessFormModalOpen(true)
+    track('view_popup_click', { location, brandName: selectedBrand?.name || '' })
+  }, [selectedBrand])
 
-    // Track scroll to access
-    track('scroll_to_access', { source: 'product_click' })
-
-    // Scroll to access form
-    const accessForm = document.getElementById('access')
-    if (accessForm) {
-      accessForm.scrollIntoView({ behavior: 'smooth', block: 'start' })
-
-      // Focus first input after scroll completes
-      setTimeout(() => {
-        const firstInput = accessForm.querySelector('input')
-        if (firstInput) {
-          firstInput.focus()
-        }
-      }, 800)
-    }
-  }, [onProductSelect])
+  // Handle access form modal close
+  const handleAccessFormModalClose = useCallback(() => {
+    setIsAccessFormModalOpen(false)
+    setSelectedBrand(null)
+  }, [])
 
   const activeFilterCount =
     (selectedGender !== 'all' ? 1 : 0) + selectedStyles.length
@@ -261,15 +252,24 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
           </div>
         )}
 
-        {/* Product Panel */}
-        {selectedBrand && (
-          <ProductPanel
-            key={selectedBrand.id}
-            brand={selectedBrand}
-            onClose={handleBrandDeselect}
-            onProductClick={(product) => handleProductClick(product, selectedBrand.name)}
-          />
-        )}
+        {/* Locations Modal */}
+        <LocationsModal
+          isOpen={isLocationsModalOpen}
+          onClose={handleLocationsModalClose}
+          onViewPopup={handleViewPopup}
+          brandName={selectedBrand?.name}
+        />
+
+        {/* Access Form Modal */}
+        <AccessFormModal
+          isOpen={isAccessFormModalOpen}
+          onClose={handleAccessFormModalClose}
+          selectedProduct={
+            selectedBrand
+              ? { brandName: selectedBrand.name, productName: '' }
+              : null
+          }
+        />
       </div>
     </section>
   )
