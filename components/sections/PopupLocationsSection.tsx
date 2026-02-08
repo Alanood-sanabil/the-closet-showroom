@@ -21,18 +21,25 @@ export default function PopupLocationsSection() {
   return (
     <section className="py-20 lg:py-28 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Title and Note */}
-        <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl lg:text-4xl font-bold mb-4">
-            {t.popup.locationsTitle}
-          </h2>
-          <p className="text-base text-black/50">
-            {t.popup.locationsNote}
-          </p>
-        </div>
+        {/* Semi-transparent container */}
+        <div
+          className="rounded-xl p-6 lg:p-8 backdrop-blur-sm"
+          style={{
+            background: 'rgba(255, 255, 255, 0.8)',
+          }}
+        >
+          {/* Title and Note */}
+          <div className="text-center mb-12">
+            <h2 className="font-serif text-3xl lg:text-4xl font-bold mb-4">
+              {t.popup.locationsTitle}
+            </h2>
+            <p className="text-base text-black/50">
+              {t.popup.locationsNote}
+            </p>
+          </div>
 
-        {/* Layout: Left (Cities) | Middle (Venues) | Right (Image) */}
-        <div className={`grid grid-cols-1 lg:grid-cols-3 gap-8 ${isRTL ? 'lg:grid-cols-3' : ''}`}>
+          {/* Layout: Left (Cities) | Middle (Venues) | Right (Image) */}
+          <div className={`grid grid-cols-1 lg:grid-cols-3 gap-8 ${isRTL ? 'lg:grid-cols-3' : ''}`}>
           {/* Left Column: Cities List */}
           <div className="space-y-3">
             {t.popup.locations.map((city) => {
@@ -110,6 +117,7 @@ export default function PopupLocationsSection() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   )
