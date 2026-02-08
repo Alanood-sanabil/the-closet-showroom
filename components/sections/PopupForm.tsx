@@ -7,19 +7,15 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { getTranslations } from '@/content/translations'
 
 interface FormData {
-  fullName: string
-  email: string
+  name: string
   phone: string
-  city: string
-  preferredLocation: string
+  locations: string[]
 }
 
 interface FormErrors {
-  fullName?: string
-  email?: string
+  name?: string
   phone?: string
-  city?: string
-  preferredLocation?: string
+  locations?: string
 }
 
 export default function PopupForm() {
@@ -34,11 +30,9 @@ export default function PopupForm() {
   const [submitError, setSubmitError] = useState<string | null>(null)
 
   const [formData, setFormData] = useState<FormData>({
-    fullName: '',
-    email: '',
+    name: '',
     phone: '',
-    city: '',
-    preferredLocation: '',
+    locations: [],
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
@@ -64,14 +58,8 @@ export default function PopupForm() {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
 
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = t.popup.fullNameRequired
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = t.popup.emailRequired
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = t.popup.emailInvalid
+    if (!formData.name.trim()) {
+      newErrors.name = t.popup.nameRequired
     }
 
     if (!formData.phone.trim()) {
@@ -80,12 +68,8 @@ export default function PopupForm() {
       newErrors.phone = t.popup.phoneMinLength
     }
 
-    if (!formData.city.trim()) {
-      newErrors.city = t.popup.cityRequired
-    }
-
-    if (!formData.preferredLocation) {
-      newErrors.preferredLocation = t.popup.preferredLocationRequired
+    if (formData.locations.length === 0) {
+      newErrors.locations = t.popup.locationsRequired
     }
 
     setErrors(newErrors)
@@ -105,11 +89,9 @@ export default function PopupForm() {
     try {
       // Submit to Supabase
       const { error } = await supabase.from('popup_requests').insert({
-        full_name: formData.fullName,
-        email: formData.email,
+        name: formData.name,
         phone: formData.phone,
-        city: formData.city,
-        preferred_location: formData.preferredLocation,
+        locations: formData.locations,
       })
 
       if (error) {
@@ -118,8 +100,7 @@ export default function PopupForm() {
 
       // Track submission
       track('popup_form_submit', {
-        city: formData.city,
-        preferredLocation: formData.preferredLocation,
+        locationsCount: formData.locations.length,
       })
 
       setIsSubmitted(true)
@@ -136,13 +117,26 @@ export default function PopupForm() {
   }
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
+    }
+  }
+
+  const handleLocationToggle = (location: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      locations: prev.locations.includes(location)
+        ? prev.locations.filter((l) => l !== location)
+        : [...prev.locations, location],
+    }))
+    // Clear error when user selects a location
+    if (errors.locations) {
+      setErrors((prev) => ({ ...prev, locations: undefined }))
     }
   }
 
@@ -195,57 +189,30 @@ export default function PopupForm() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Full Name */}
+                {/* Name */}
                 <div>
                   <label
-                    htmlFor="fullName"
+                    htmlFor="name"
                     className="block text-sm font-medium mb-2"
                   >
-                    {t.popup.fullNameLabel} <span className="text-black">*</span>
+                    {t.popup.nameLabel} <span className="text-black">*</span>
                   </label>
                   <input
                     type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={formData.fullName}
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleInputChange}
                     className={`w-full px-4 py-3 border bg-white transition-colors ${
-                      errors.fullName
+                      errors.name
                         ? 'border-red-500'
                         : 'border-black/20 focus:border-black'
                     }`}
-                    placeholder={t.popup.fullNamePlaceholder}
+                    placeholder={t.popup.namePlaceholder}
                     dir={isRTL ? 'rtl' : 'ltr'}
                   />
-                  {errors.fullName && (
-                    <p className="mt-1 text-sm text-red-500">{errors.fullName}</p>
-                  )}
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {t.popup.emailLabel} <span className="text-black">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border bg-white transition-colors ${
-                      errors.email
-                        ? 'border-red-500'
-                        : 'border-black/20 focus:border-black'
-                    }`}
-                    placeholder={t.popup.emailPlaceholder}
-                    dir="ltr"
-                  />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                  {errors.name && (
+                    <p className="mt-1 text-sm text-red-500">{errors.name}</p>
                   )}
                 </div>
 
@@ -276,64 +243,33 @@ export default function PopupForm() {
                   )}
                 </div>
 
-                {/* City */}
+                {/* Locations (Multi-select) */}
                 <div>
-                  <label
-                    htmlFor="city"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {t.popup.cityLabel} <span className="text-black">*</span>
+                  <label className="block text-sm font-medium mb-2">
+                    {t.popup.locationsLabel} <span className="text-black">*</span>
                   </label>
-                  <input
-                    type="text"
-                    id="city"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border bg-white transition-colors ${
-                      errors.city
-                        ? 'border-red-500'
-                        : 'border-black/20 focus:border-black'
-                    }`}
-                    placeholder={t.popup.cityPlaceholder}
-                    dir={isRTL ? 'rtl' : 'ltr'}
-                  />
-                  {errors.city && (
-                    <p className="mt-1 text-sm text-red-500">{errors.city}</p>
-                  )}
-                </div>
-
-                {/* Preferred Location */}
-                <div>
-                  <label
-                    htmlFor="preferredLocation"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {t.popup.preferredLocationLabel} <span className="text-black">*</span>
-                  </label>
-                  <select
-                    id="preferredLocation"
-                    name="preferredLocation"
-                    value={formData.preferredLocation}
-                    onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border bg-white transition-colors appearance-none cursor-pointer ${
-                      errors.preferredLocation
-                        ? 'border-red-500'
-                        : 'border-black/20 focus:border-black'
-                    }`}
-                    dir={isRTL ? 'rtl' : 'ltr'}
-                  >
-                    <option value="">{t.popup.preferredLocationPlaceholder}</option>
+                  <div className="space-y-2">
                     {t.popup.locations.map((location) => (
-                      <option key={location} value={location}>
-                        {location}
-                      </option>
+                      <label
+                        key={location}
+                        className={`flex items-center gap-3 px-4 py-3 border cursor-pointer transition-all ${
+                          formData.locations.includes(location)
+                            ? 'border-black bg-black/5'
+                            : 'border-black/20 hover:border-black/40'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={formData.locations.includes(location)}
+                          onChange={() => handleLocationToggle(location)}
+                          className="w-4 h-4 accent-black"
+                        />
+                        <span className="text-sm">{location}</span>
+                      </label>
                     ))}
-                  </select>
-                  {errors.preferredLocation && (
-                    <p className="mt-1 text-sm text-red-500">
-                      {errors.preferredLocation}
-                    </p>
+                  </div>
+                  {errors.locations && (
+                    <p className="mt-1 text-sm text-red-500">{errors.locations}</p>
                   )}
                 </div>
 

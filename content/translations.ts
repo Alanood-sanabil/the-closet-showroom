@@ -254,33 +254,29 @@ interface Translations {
     // Hero
     heroHeadline: string
     heroSubtext: string
-    // Sketch section
-    sketchLabel: string
+    // Locations section
+    locationsTitle: string
+    locationsNote: string
     locations: string[]
+    possibleVenues: string[]
+    viewPopupButton: string
     // Form
     formTitle: string
     formDescription: string
-    fullNameLabel: string
-    fullNamePlaceholder: string
-    emailLabel: string
-    emailPlaceholder: string
+    nameLabel: string
+    namePlaceholder: string
     phoneLabel: string
     phonePlaceholder: string
-    cityLabel: string
-    cityPlaceholder: string
-    preferredLocationLabel: string
-    preferredLocationPlaceholder: string
+    locationsLabel: string
+    locationsPlaceholder: string
     submitButton: string
     submittingText: string
     successMessage: string
     // Validation
-    fullNameRequired: string
-    emailRequired: string
-    emailInvalid: string
+    nameRequired: string
     phoneRequired: string
     phoneMinLength: string
-    cityRequired: string
-    preferredLocationRequired: string
+    locationsRequired: string
   }
 
   // Footer
@@ -624,30 +620,26 @@ export const translations: Record<Language, Translations> = {
     popup: {
       heroHeadline: 'Visit Our Pop-up Locations',
       heroSubtext: 'Our pop-ups feature international brands.',
-      sketchLabel: 'Pop-up locations (coming soon)',
-      locations: ['Riyadh', 'Dubai', 'New York', 'London', 'Paris'],
+      locationsTitle: 'View the pop-up locations',
+      locationsNote: 'Specific location will be announced soon.',
+      locations: ['Riyadh', 'Jeddah', 'Dubai', 'New York', 'Paris', 'London'],
+      possibleVenues: ['Solitaire Mall', 'Kingdom Center', 'Other'],
+      viewPopupButton: 'View Pop-up',
       formTitle: 'Request to View the Pop-up',
-      formDescription: "Submit your details and we'll share the pop-up location.",
-      fullNameLabel: 'Full Name',
-      fullNamePlaceholder: 'Your full name',
-      emailLabel: 'Email',
-      emailPlaceholder: 'your@email.com',
+      formDescription: "Submit your details and we'll contact you.",
+      nameLabel: 'Name',
+      namePlaceholder: 'Your name',
       phoneLabel: 'Phone Number',
       phonePlaceholder: '+966 5XX XXX XXXX',
-      cityLabel: 'City',
-      cityPlaceholder: 'Your city',
-      preferredLocationLabel: 'Preferred Location',
-      preferredLocationPlaceholder: 'Select a location',
+      locationsLabel: 'Locations',
+      locationsPlaceholder: 'Select locations',
       submitButton: 'Request Access',
       submittingText: 'Submitting...',
       successMessage: "Thanks! We'll contact you soon.",
-      fullNameRequired: 'Full name is required',
-      emailRequired: 'Email is required',
-      emailInvalid: 'Please enter a valid email',
+      nameRequired: 'Name is required',
       phoneRequired: 'Phone number is required',
       phoneMinLength: 'Phone number must be at least 8 digits',
-      cityRequired: 'City is required',
-      preferredLocationRequired: 'Please select a preferred location',
+      locationsRequired: 'Please select at least one location',
     },
   },
 
@@ -948,30 +940,26 @@ export const translations: Record<Language, Translations> = {
     popup: {
       heroHeadline: 'زر مواقع معارضنا المتنقلة',
       heroSubtext: 'معارضنا المتنقلة تعرض براندات عالمية.',
-      sketchLabel: 'مواقع المعارض المتنقلة (قريباً)',
-      locations: ['الرياض', 'دبي', 'نيويورك', 'لندن', 'باريس'],
+      locationsTitle: 'شوف مواقع المعارض المتنقلة',
+      locationsNote: 'الموقع المحدد بيتم الإعلان عنه قريب.',
+      locations: ['الرياض', 'جدة', 'دبي', 'نيويورك', 'باريس', 'لندن'],
+      possibleVenues: ['مول سوليتير', 'برج المملكة', 'أخرى'],
+      viewPopupButton: 'شوف المعرض المتنقل',
       formTitle: 'اطلب مشاهدة المعرض المتنقل',
-      formDescription: 'أدخل بياناتك وبنشاركك موقع المعرض المتنقل.',
-      fullNameLabel: 'الاسم الكامل',
-      fullNamePlaceholder: 'اسمك الكامل',
-      emailLabel: 'البريد الإلكتروني',
-      emailPlaceholder: 'your@email.com',
+      formDescription: 'أدخل بياناتك وبنتواصل معك.',
+      nameLabel: 'الاسم',
+      namePlaceholder: 'اسمك',
       phoneLabel: 'رقم الجوال',
       phonePlaceholder: '+966 5XX XXX XXXX',
-      cityLabel: 'المدينة',
-      cityPlaceholder: 'مدينتك',
-      preferredLocationLabel: 'الموقع المفضل',
-      preferredLocationPlaceholder: 'اختر موقع',
+      locationsLabel: 'المواقع',
+      locationsPlaceholder: 'اختر المواقع',
       submitButton: 'اطلب الدخول',
       submittingText: 'جاري الإرسال...',
       successMessage: 'شكراً! بنتواصل معك قريب.',
-      fullNameRequired: 'الاسم الكامل مطلوب',
-      emailRequired: 'البريد الإلكتروني مطلوب',
-      emailInvalid: 'الرجاء إدخال بريد إلكتروني صحيح',
+      nameRequired: 'الاسم مطلوب',
       phoneRequired: 'رقم الجوال مطلوب',
       phoneMinLength: 'رقم الجوال لازم يكون 8 أرقام على الأقل',
-      cityRequired: 'المدينة مطلوبة',
-      preferredLocationRequired: 'الرجاء اختيار موقع مفضل',
+      locationsRequired: 'الرجاء اختيار موقع واحد على الأقل',
     },
   },
 }
