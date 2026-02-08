@@ -152,18 +152,18 @@ export default function PopupForm() {
     <section
       id="popup-form"
       ref={sectionRef}
-      className={`py-24 lg:py-32 px-6 lg:px-8 bg-white transition-all duration-700 ${
+      className={`py-12 md:py-24 lg:py-32 px-6 lg:px-8 bg-white transition-all duration-700 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
       }`}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24">
           {/* Left Column - Content */}
           <div className="max-w-lg">
-            <h2 className="font-serif text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
               {t.popup.formTitle}
             </h2>
-            <p className="text-lg text-black/60 leading-relaxed">
+            <p className="text-base md:text-lg text-black/60 leading-snug md:leading-relaxed">
               {t.popup.formDescription}
             </p>
           </div>
@@ -196,12 +196,12 @@ export default function PopupForm() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
                 {/* Name */}
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium mb-2"
+                    className="block text-sm font-medium mb-1.5 md:mb-2"
                   >
                     {t.popup.nameLabel} <span className="text-black">*</span>
                   </label>
@@ -228,7 +228,7 @@ export default function PopupForm() {
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-sm font-medium mb-2"
+                    className="block text-sm font-medium mb-1.5 md:mb-2"
                   >
                     {t.popup.phoneLabel} <span className="text-black">*</span>
                   </label>
@@ -253,7 +253,7 @@ export default function PopupForm() {
 
                 {/* Location (Single-select) */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label className="block text-sm font-medium mb-1.5 md:mb-2">
                     {t.popup.locationsLabel} <span className="text-black">*</span>
                   </label>
                   <div className="space-y-2">
@@ -293,7 +293,7 @@ export default function PopupForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-8 py-4 bg-black text-white font-medium tracking-wide hover:bg-black-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-8 py-4 md:py-4 bg-black text-white text-base md:text-base font-medium tracking-wide hover:bg-black-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-2 md:mt-0"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center gap-2">

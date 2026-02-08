@@ -23,23 +23,23 @@ export default function PopupBenefits() {
   ]
 
   return (
-    <section className="py-20 lg:py-28 px-6 lg:px-8 bg-white">
+    <section className="py-12 md:py-20 lg:py-28 px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="font-serif text-3xl lg:text-4xl font-bold">
+        <div className="text-center mb-8 md:mb-12 lg:mb-16">
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold">
             {t.popup.whyJoinTitle}
           </h2>
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
           {benefits.map((benefit, index) => (
             <div key={index} className="text-center">
               {/* Checkmark Icon */}
-              <div className="flex items-center justify-center w-12 h-12 mx-auto mb-6 bg-black rounded-full">
+              <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 mx-auto mb-4 md:mb-6 bg-black rounded-full">
                 <svg
-                  className="w-6 h-6 text-white"
+                  className="w-5 h-5 md:w-6 md:h-6 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -55,12 +55,12 @@ export default function PopupBenefits() {
               </div>
 
               {/* Title */}
-              <h3 className="font-serif text-xl lg:text-2xl font-bold mb-4">
+              <h3 className="font-serif text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-4">
                 {benefit.title}
               </h3>
 
               {/* Description */}
-              <p className="text-base text-black/60 leading-relaxed">
+              <p className="text-sm md:text-base text-black/60 leading-snug md:leading-relaxed">
                 {benefit.description}
               </p>
             </div>
