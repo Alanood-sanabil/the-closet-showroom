@@ -10,9 +10,10 @@ export default function PopupPage() {
     <main className="min-h-screen">
       {/* Background Image Container - Hero + Locations sections */}
       <div
-        className="relative bg-cover bg-center bg-no-repeat"
+        className="relative bg-cover bg-no-repeat"
         style={{
           backgroundImage: 'url(/images/assets/thepopup.png)',
+          backgroundPosition: 'center top',
         }}
       >
         {/* Subtle white overlay for readability */}
