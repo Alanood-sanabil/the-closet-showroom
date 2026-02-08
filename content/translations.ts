@@ -249,6 +249,40 @@ interface Translations {
     successMessage: string
   }
 
+  // Pop-up Page
+  popup: {
+    // Hero
+    heroHeadline: string
+    heroSubtext: string
+    // Sketch section
+    sketchLabel: string
+    locations: string[]
+    // Form
+    formTitle: string
+    formDescription: string
+    fullNameLabel: string
+    fullNamePlaceholder: string
+    emailLabel: string
+    emailPlaceholder: string
+    phoneLabel: string
+    phonePlaceholder: string
+    cityLabel: string
+    cityPlaceholder: string
+    preferredLocationLabel: string
+    preferredLocationPlaceholder: string
+    submitButton: string
+    submittingText: string
+    successMessage: string
+    // Validation
+    fullNameRequired: string
+    emailRequired: string
+    emailInvalid: string
+    phoneRequired: string
+    phoneMinLength: string
+    cityRequired: string
+    preferredLocationRequired: string
+  }
+
   // Footer
   footer: {
     brandName: string
@@ -585,6 +619,36 @@ export const translations: Record<Language, Translations> = {
       addToBasket: 'Add to Basket',
       currency: 'SAR',
     },
+
+    // Pop-up Page
+    popup: {
+      heroHeadline: 'Visit Our Pop-up Locations',
+      heroSubtext: 'Our pop-ups feature international brands.',
+      sketchLabel: 'Pop-up locations (coming soon)',
+      locations: ['Riyadh', 'Dubai', 'New York', 'London', 'Paris'],
+      formTitle: 'Request to View the Pop-up',
+      formDescription: "Submit your details and we'll share the pop-up location.",
+      fullNameLabel: 'Full Name',
+      fullNamePlaceholder: 'Your full name',
+      emailLabel: 'Email',
+      emailPlaceholder: 'your@email.com',
+      phoneLabel: 'Phone Number',
+      phonePlaceholder: '+966 5XX XXX XXXX',
+      cityLabel: 'City',
+      cityPlaceholder: 'Your city',
+      preferredLocationLabel: 'Preferred Location',
+      preferredLocationPlaceholder: 'Select a location',
+      submitButton: 'Request Access',
+      submittingText: 'Submitting...',
+      successMessage: "Thanks! We'll contact you soon.",
+      fullNameRequired: 'Full name is required',
+      emailRequired: 'Email is required',
+      emailInvalid: 'Please enter a valid email',
+      phoneRequired: 'Phone number is required',
+      phoneMinLength: 'Phone number must be at least 8 digits',
+      cityRequired: 'City is required',
+      preferredLocationRequired: 'Please select a preferred location',
+    },
   },
 
   ar: {
@@ -878,6 +942,36 @@ export const translations: Record<Language, Translations> = {
       selectSize: 'اختر المقاس',
       addToBasket: 'أضف للسلة',
       currency: 'ر.س',
+    },
+
+    // Pop-up Page
+    popup: {
+      heroHeadline: 'زر مواقع معارضنا المتنقلة',
+      heroSubtext: 'معارضنا المتنقلة تعرض براندات عالمية.',
+      sketchLabel: 'مواقع المعارض المتنقلة (قريباً)',
+      locations: ['الرياض', 'دبي', 'نيويورك', 'لندن', 'باريس'],
+      formTitle: 'اطلب مشاهدة المعرض المتنقل',
+      formDescription: 'أدخل بياناتك وبنشاركك موقع المعرض المتنقل.',
+      fullNameLabel: 'الاسم الكامل',
+      fullNamePlaceholder: 'اسمك الكامل',
+      emailLabel: 'البريد الإلكتروني',
+      emailPlaceholder: 'your@email.com',
+      phoneLabel: 'رقم الجوال',
+      phonePlaceholder: '+966 5XX XXX XXXX',
+      cityLabel: 'المدينة',
+      cityPlaceholder: 'مدينتك',
+      preferredLocationLabel: 'الموقع المفضل',
+      preferredLocationPlaceholder: 'اختر موقع',
+      submitButton: 'اطلب الدخول',
+      submittingText: 'جاري الإرسال...',
+      successMessage: 'شكراً! بنتواصل معك قريب.',
+      fullNameRequired: 'الاسم الكامل مطلوب',
+      emailRequired: 'البريد الإلكتروني مطلوب',
+      emailInvalid: 'الرجاء إدخال بريد إلكتروني صحيح',
+      phoneRequired: 'رقم الجوال مطلوب',
+      phoneMinLength: 'رقم الجوال لازم يكون 8 أرقام على الأقل',
+      cityRequired: 'المدينة مطلوبة',
+      preferredLocationRequired: 'الرجاء اختيار موقع مفضل',
     },
   },
 }
