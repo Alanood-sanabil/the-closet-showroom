@@ -260,6 +260,14 @@ interface Translations {
     locations: string[]
     venuesByCity: Record<string, string[]>
     viewPopupButton: string
+    // Why Join section
+    whyJoinTitle: string
+    benefit1Title: string
+    benefit1Description: string
+    benefit2Title: string
+    benefit2Description: string
+    benefit3Title: string
+    benefit3Description: string
     // Form
     formTitle: string
     formDescription: string
@@ -618,10 +626,10 @@ export const translations: Record<Language, Translations> = {
 
     // Pop-up Page
     popup: {
-      heroHeadline: 'Visit Our Pop-up Locations',
-      heroSubtext: 'Our pop-ups feature international brands.',
-      locationsTitle: 'View the pop-up locations',
-      locationsNote: 'Specific location will be announced soon.',
+      heroHeadline: 'The Closet Pop-Up Is Coming To You',
+      heroSubtext: "Premium international brands. Exclusive collections. Sample pieces. All at prices you won't find anywhere else. Be the first to experience it.",
+      locationsTitle: "Where We're Popping Up",
+      locationsNote: 'Select your city to see upcoming pop-up venues. Spots are limited — join the waitlist to secure your invite.',
       locations: ['Riyadh', 'Jeddah', 'Dubai', 'New York', 'Paris', 'London'],
       venuesByCity: {
         'Riyadh': ['Solitaire Mall', 'Kingdom Centre', 'Centria Mall'],
@@ -632,15 +640,22 @@ export const translations: Record<Language, Translations> = {
         'London': ['Harrods (Knightsbridge)', 'Bond Street (Mayfair)', 'Selfridges (Oxford Street)'],
       },
       viewPopupButton: 'View Pop-up',
-      formTitle: 'Request to View the Pop-up',
-      formDescription: "Submit your details and we'll contact you.",
+      whyJoinTitle: 'Why Join The Waitlist?',
+      benefit1Title: 'Premium Brands, Better Prices',
+      benefit1Description: "Shop international designer brands at exclusive pop-up prices you won't find online or in-store.",
+      benefit2Title: 'Exclusive Samples & Limited Pieces',
+      benefit2Description: 'Get access to sample collections and limited-edition pieces before they sell out — only available at our pop-ups.',
+      benefit3Title: 'First Access, No Crowds',
+      benefit3Description: 'Waitlist members get priority entry and early access before the pop-up opens to the public.',
+      formTitle: 'Join The Waitlist',
+      formDescription: 'Be the first to know when we pop up in your city. Waitlist members get priority entry and exclusive early access.',
       nameLabel: 'Name',
       namePlaceholder: 'Your name',
       phoneLabel: 'Phone Number',
       phonePlaceholder: '+966 5XX XXX XXXX',
       locationsLabel: 'Locations',
       locationsPlaceholder: 'Select locations',
-      submitButton: 'Request Access',
+      submitButton: 'Join The Waitlist',
       submittingText: 'Submitting...',
       successMessage: "Thanks! We'll contact you soon.",
       nameRequired: 'Name is required',
@@ -945,10 +960,10 @@ export const translations: Record<Language, Translations> = {
 
     // Pop-up Page
     popup: {
-      heroHeadline: 'زر مواقع معارضنا المتنقلة',
-      heroSubtext: 'معارضنا المتنقلة تعرض براندات عالمية.',
-      locationsTitle: 'شوف مواقع المعارض المتنقلة',
-      locationsNote: 'الموقع المحدد بيتم الإعلان عنه قريب.',
+      heroHeadline: 'معرض ذا كلوزت المتنقل جاي عندك',
+      heroSubtext: 'براندات عالمية مميزة. كولكشنات حصرية. قطع سامبل. كلها بأسعار ما بتلقاها في أي مكان ثاني. كن أول من يجربها.',
+      locationsTitle: 'وين بنكون',
+      locationsNote: 'اختر مدينتك عشان تشوف المواقع الجاية. الأماكن محدودة — سجل في القائمة عشان تضمن دعوتك.',
       locations: ['الرياض', 'جدة', 'دبي', 'نيويورك', 'باريس', 'لندن'],
       venuesByCity: {
         'الرياض': ['مول سوليتير', 'برج المملكة', 'سنتريا مول'],
@@ -959,15 +974,22 @@ export const translations: Record<Language, Translations> = {
         'لندن': ['هارودز (نايتسبريدج)', 'شارع بوند (مايفير)', 'سيلفريدجز (أكسفورد ستريت)'],
       },
       viewPopupButton: 'شوف المعرض المتنقل',
-      formTitle: 'اطلب مشاهدة المعرض المتنقل',
-      formDescription: 'أدخل بياناتك وبنتواصل معك.',
+      whyJoinTitle: 'ليش تسجل في القائمة؟',
+      benefit1Title: 'براندات مميزة، أسعار أحسن',
+      benefit1Description: 'تسوق براندات ديزاينر عالمية بأسعار حصرية للمعرض المتنقل ما بتلقاها أونلاين ولا في المحلات.',
+      benefit2Title: 'سامبلات حصرية و قطع محدودة',
+      benefit2Description: 'احصل على كولكشنات سامبل وقطع محدودة قبل ما تخلص — متوفرة بس في معارضنا المتنقلة.',
+      benefit3Title: 'دخول مبكر، بدون زحمة',
+      benefit3Description: 'الأعضاء في القائمة يحصلون على أولوية الدخول ووصول مبكر قبل ما يفتح المعرض للعامة.',
+      formTitle: 'سجل في القائمة',
+      formDescription: 'كن أول من يعرف متى بنجي لمدينتك. الأعضاء في القائمة يحصلون على أولوية الدخول ووصول حصري مبكر.',
       nameLabel: 'الاسم',
       namePlaceholder: 'اسمك',
       phoneLabel: 'رقم الجوال',
       phonePlaceholder: '+966 5XX XXX XXXX',
       locationsLabel: 'المواقع',
       locationsPlaceholder: 'اختر المواقع',
-      submitButton: 'اطلب الدخول',
+      submitButton: 'سجل في القائمة',
       submittingText: 'جاري الإرسال...',
       successMessage: 'شكراً! بنتواصل معك قريب.',
       nameRequired: 'الاسم مطلوب',

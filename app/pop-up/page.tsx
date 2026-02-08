@@ -2,6 +2,7 @@
 
 import PopupHero from '@/components/sections/PopupHero'
 import PopupLocationsSection from '@/components/sections/PopupLocationsSection'
+import PopupBenefits from '@/components/sections/PopupBenefits'
 import PopupForm from '@/components/sections/PopupForm'
 import Footer from '@/components/layout/Footer'
 
@@ -26,7 +27,8 @@ export default function PopupPage() {
         </div>
       </div>
 
-      {/* Form and Footer - no background */}
+      {/* Benefits, Form, and Footer - no background */}
+      <PopupBenefits />
       <PopupForm />
       <Footer />
     </main>

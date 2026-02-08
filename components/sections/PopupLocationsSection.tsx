@@ -56,10 +56,10 @@ export default function PopupLocationsSection() {
               })}
             </div>
 
-            {/* Right Column: Possible Venues for Selected City */}
+            {/* Right Column: Upcoming Venues for Selected City */}
             <div>
               <h3 className="text-sm font-medium text-black/60 mb-4 uppercase tracking-wide">
-                {language === 'en' ? 'Possible Venues' : 'الأماكن المحتملة'}
+                {language === 'en' ? 'Upcoming Venues' : 'الأماكن القادمة'}
               </h3>
               <ul className="space-y-3">
                 {t.popup.venuesByCity[selectedCity]?.map((venue, index) => (
