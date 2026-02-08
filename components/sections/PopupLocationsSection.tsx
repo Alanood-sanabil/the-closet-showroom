@@ -11,13 +11,6 @@ export default function PopupLocationsSection() {
 
   const [selectedCity, setSelectedCity] = useState(t.popup.locations[0])
 
-  const handleViewPopup = () => {
-    const formElement = document.getElementById('popup-form')
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section className="py-20 lg:py-28 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -64,32 +57,20 @@ export default function PopupLocationsSection() {
           </div>
 
           {/* Middle Column: Possible Venues */}
-          <div className="flex flex-col justify-between">
-            <div>
-              <h3 className="text-sm font-medium text-black/60 mb-4 uppercase tracking-wide">
-                {language === 'en' ? 'Possible Venues' : 'الأماكن المحتملة'}
-              </h3>
-              <ul className="space-y-3">
-                {t.popup.possibleVenues.map((venue, index) => (
-                  <li
-                    key={index}
-                    className="text-base text-black/50 pl-4 border-l-2 border-black/10"
-                  >
-                    {venue}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* View Pop-up Button */}
-            <div className="mt-8">
-              <button
-                onClick={handleViewPopup}
-                className="w-full px-8 py-4 bg-black text-white font-medium tracking-wide hover:bg-black/90 transition-colors"
-              >
-                {t.popup.viewPopupButton}
-              </button>
-            </div>
+          <div>
+            <h3 className="text-sm font-medium text-black/60 mb-4 uppercase tracking-wide">
+              {language === 'en' ? 'Possible Venues' : 'الأماكن المحتملة'}
+            </h3>
+            <ul className="space-y-3">
+              {t.popup.possibleVenues.map((venue, index) => (
+                <li
+                  key={index}
+                  className="text-base text-black/50 pl-4 border-l-2 border-black/10"
+                >
+                  {venue}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Right Column: Location Image Placeholder */}
