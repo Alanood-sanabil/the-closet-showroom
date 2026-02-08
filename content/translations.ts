@@ -258,7 +258,7 @@ interface Translations {
     locationsTitle: string
     locationsNote: string
     locations: string[]
-    possibleVenues: string[]
+    venuesByCity: Record<string, string[]>
     viewPopupButton: string
     // Form
     formTitle: string
@@ -623,7 +623,14 @@ export const translations: Record<Language, Translations> = {
       locationsTitle: 'View the pop-up locations',
       locationsNote: 'Specific location will be announced soon.',
       locations: ['Riyadh', 'Jeddah', 'Dubai', 'New York', 'Paris', 'London'],
-      possibleVenues: ['Solitaire Mall', 'Kingdom Center', 'Other'],
+      venuesByCity: {
+        'Riyadh': ['Solitaire Mall', 'Kingdom Centre', 'Centria Mall'],
+        'Jeddah': ['Red Sea Mall', 'Mall of Arabia', 'Le Prestige Mall'],
+        'Dubai': ['Dubai Mall (Fashion Avenue)', 'Mall of the Emirates', 'City Walk'],
+        'New York': ['Fifth Avenue', 'SoHo', 'Hudson Yards'],
+        'Paris': ['Avenue Montaigne', 'Rue Saint-Honoré', 'Le Bon Marché'],
+        'London': ['Harrods (Knightsbridge)', 'Bond Street (Mayfair)', 'Selfridges (Oxford Street)'],
+      },
       viewPopupButton: 'View Pop-up',
       formTitle: 'Request to View the Pop-up',
       formDescription: "Submit your details and we'll contact you.",
@@ -943,7 +950,14 @@ export const translations: Record<Language, Translations> = {
       locationsTitle: 'شوف مواقع المعارض المتنقلة',
       locationsNote: 'الموقع المحدد بيتم الإعلان عنه قريب.',
       locations: ['الرياض', 'جدة', 'دبي', 'نيويورك', 'باريس', 'لندن'],
-      possibleVenues: ['مول سوليتير', 'برج المملكة', 'أخرى'],
+      venuesByCity: {
+        'الرياض': ['مول سوليتير', 'برج المملكة', 'سنتريا مول'],
+        'جدة': ['ريد سي مول', 'مول العرب', 'لي بريستيج مول'],
+        'دبي': ['دبي مول (فاشن أفنيو)', 'مول الإمارات', 'سيتي ووك'],
+        'نيويورك': ['الشارع الخامس', 'سوهو', 'هدسن ياردز'],
+        'باريس': ['شارع مونتين', 'شارع سان أونوريه', 'لو بون مارشيه'],
+        'لندن': ['هارودز (نايتسبريدج)', 'شارع بوند (مايفير)', 'سيلفريدجز (أكسفورد ستريت)'],
+      },
       viewPopupButton: 'شوف المعرض المتنقل',
       formTitle: 'اطلب مشاهدة المعرض المتنقل',
       formDescription: 'أدخل بياناتك وبنتواصل معك.',

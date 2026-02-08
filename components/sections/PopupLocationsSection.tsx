@@ -32,79 +32,47 @@ export default function PopupLocationsSection() {
             </p>
           </div>
 
-          {/* Layout: Left (Cities) | Middle (Venues) | Right (Image) */}
-          <div className={`grid grid-cols-1 lg:grid-cols-3 gap-8 ${isRTL ? 'lg:grid-cols-3' : ''}`}>
-          {/* Left Column: Cities List */}
-          <div className="space-y-3">
-            {t.popup.locations.map((city) => {
-              const isSelected = selectedCity === city
-              return (
-                <button
-                  key={city}
-                  onClick={() => setSelectedCity(city)}
-                  className={`w-full text-left px-6 py-4 border transition-all duration-200 ${
-                    isSelected
-                      ? 'border-black bg-black text-white'
-                      : 'border-black/10 bg-white text-black hover:border-black/30'
-                  }`}
-                >
-                  <div className="font-medium text-base">
-                    {city}
-                  </div>
-                </button>
-              )
-            })}
-          </div>
+          {/* Layout: Left (Cities) | Right (Venues) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Left Column: Cities List */}
+            <div className="space-y-3">
+              {t.popup.locations.map((city) => {
+                const isSelected = selectedCity === city
+                return (
+                  <button
+                    key={city}
+                    onClick={() => setSelectedCity(city)}
+                    className={`w-full text-left px-6 py-4 border transition-all duration-200 ${
+                      isSelected
+                        ? 'border-black bg-black text-white'
+                        : 'border-black/10 bg-white text-black hover:border-black/30'
+                    }`}
+                  >
+                    <div className="font-medium text-base">
+                      {city}
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
 
-          {/* Middle Column: Possible Venues */}
-          <div>
-            <h3 className="text-sm font-medium text-black/60 mb-4 uppercase tracking-wide">
-              {language === 'en' ? 'Possible Venues' : 'الأماكن المحتملة'}
-            </h3>
-            <ul className="space-y-3">
-              {t.popup.possibleVenues.map((venue, index) => (
-                <li
-                  key={index}
-                  className="text-base text-black/50 pl-4 border-l-2 border-black/10"
-                >
-                  {venue}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Right Column: Location Image Placeholder */}
-          <div
-            className="relative bg-white border flex items-center justify-center self-start lg:max-w-[280px] lg:h-[280px] w-full h-[240px]"
-            style={{
-              zIndex: 2,
-              borderColor: 'rgba(0, 0, 0, 0.1)',
-            }}
-          >
-            <div className="text-center text-black/30">
-              <svg
-                className="w-12 h-12 mx-auto mb-3"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              <div className="text-sm">{selectedCity}</div>
+            {/* Right Column: Possible Venues for Selected City */}
+            <div>
+              <h3 className="text-sm font-medium text-black/60 mb-4 uppercase tracking-wide">
+                {language === 'en' ? 'Possible Venues' : 'الأماكن المحتملة'}
+              </h3>
+              <ul className="space-y-3">
+                {t.popup.venuesByCity[selectedCity]?.map((venue, index) => (
+                  <li
+                    key={index}
+                    className="text-base text-black/50 pl-4 border-l-2 border-black/10"
+                  >
+                    {venue}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
       </div>
       </div>
     </section>
