@@ -9,13 +9,13 @@ import { getTranslations } from '@/content/translations'
 interface FormData {
   name: string
   phone: string
-  locations: string[]
+  location: string
 }
 
 interface FormErrors {
   name?: string
   phone?: string
-  locations?: string
+  location?: string
 }
 
 export default function PopupForm() {
@@ -32,7 +32,7 @@ export default function PopupForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '',
-    locations: [],
+    location: '',
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
@@ -68,8 +68,8 @@ export default function PopupForm() {
       newErrors.phone = t.popup.phoneMinLength
     }
 
-    if (formData.locations.length === 0) {
-      newErrors.locations = t.popup.locationsRequired
+    if (!formData.location) {
+      newErrors.location = t.popup.locationsRequired
     }
 
     setErrors(newErrors)
@@ -91,7 +91,7 @@ export default function PopupForm() {
       const { error } = await supabase.from('popup_requests').insert({
         name: formData.name,
         phone: formData.phone,
-        locations: formData.locations,
+        location: formData.location,
       })
 
       if (error) {
@@ -100,7 +100,7 @@ export default function PopupForm() {
 
       // Track submission
       track('popup_form_submit', {
-        locationsCount: formData.locations.length,
+        location: formData.location,
       })
 
       setIsSubmitted(true)
@@ -127,16 +127,14 @@ export default function PopupForm() {
     }
   }
 
-  const handleLocationToggle = (location: string) => {
+  const handleLocationChange = (location: string) => {
     setFormData((prev) => ({
       ...prev,
-      locations: prev.locations.includes(location)
-        ? prev.locations.filter((l) => l !== location)
-        : [...prev.locations, location],
+      location,
     }))
     // Clear error when user selects a location
-    if (errors.locations) {
-      setErrors((prev) => ({ ...prev, locations: undefined }))
+    if (errors.location) {
+      setErrors((prev) => ({ ...prev, location: undefined }))
     }
   }
 
@@ -243,7 +241,7 @@ export default function PopupForm() {
                   )}
                 </div>
 
-                {/* Locations (Multi-select) */}
+                {/* Location (Single-select) */}
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t.popup.locationsLabel} <span className="text-black">*</span>
@@ -253,23 +251,24 @@ export default function PopupForm() {
                       <label
                         key={location}
                         className={`flex items-center gap-3 px-4 py-3 border cursor-pointer transition-all ${
-                          formData.locations.includes(location)
+                          formData.location === location
                             ? 'border-black bg-black/5'
                             : 'border-black/20 hover:border-black/40'
                         }`}
                       >
                         <input
-                          type="checkbox"
-                          checked={formData.locations.includes(location)}
-                          onChange={() => handleLocationToggle(location)}
+                          type="radio"
+                          name="location"
+                          checked={formData.location === location}
+                          onChange={() => handleLocationChange(location)}
                           className="w-4 h-4 accent-black"
                         />
                         <span className="text-sm">{location}</span>
                       </label>
                     ))}
                   </div>
-                  {errors.locations && (
-                    <p className="mt-1 text-sm text-red-500">{errors.locations}</p>
+                  {errors.location && (
+                    <p className="mt-1 text-sm text-red-500">{errors.location}</p>
                   )}
                 </div>
 
