@@ -338,7 +338,7 @@ export const translations: Record<Language, Translations> = {
     preview: {
       sectionTitle: 'Brands & Collections',
       sectionDescription:
-        'Brands from around the world. New collections arriving regularly through our showroom',
+        'Featuring these brands and many more. Discover new collections from around the world at every pop-up.',
       genderLabel: 'Gender',
       styleLabel: 'Style',
       clearFilters: 'Clear filters',
@@ -636,7 +636,7 @@ export const translations: Record<Language, Translations> = {
     preview: {
       sectionTitle: 'البراندات والمجموعات',
       sectionDescription:
-        'براندات من كل مكان في العالم. مجموعات جديدة توصل بشكل دوري',
+        'هالبراندات وغيرها كثير. اكتشف مجموعات جديدة من حول العالم في كل معرض متنقل.',
       genderLabel: 'النوع',
       styleLabel: 'الستايل',
       clearFilters: 'امسح الفلتر',
