@@ -78,12 +78,9 @@ export default function LocationsModal({
         {/* Content */}
         <div className="p-8 lg:p-12">
           {/* Title */}
-          <h2 className="font-serif text-2xl lg:text-3xl font-bold mb-2">
+          <h2 className="font-serif text-2xl lg:text-3xl font-bold mb-8">
             View the pop-up locations
           </h2>
-          {brandName && (
-            <p className="text-sm text-black/50 mb-8">Selected brand: {brandName}</p>
-          )}
 
           {/* Layout: Left (locations) | Middle (details) | Right (image) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">

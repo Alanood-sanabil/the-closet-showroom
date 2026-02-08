@@ -219,19 +219,6 @@ export default function AccessForm({ selectedProduct }: AccessFormProps) {
             {/* Basket Summary */}
             {!isSubmitted && <BasketSummary />}
 
-            {/* Selected Product Banner */}
-            {selectedProduct && !isSubmitted && (
-              <div className="mb-6 p-4 bg-black/5 border border-black/20 rounded-md">
-                <p className="text-sm text-black">
-                  <span className="font-medium">You're requesting access to view:</span>
-                  <br />
-                  <span className="font-serif text-base mt-1 inline-block">
-                    {selectedProduct.brandName} — {selectedProduct.productName}
-                  </span>
-                </p>
-              </div>
-            )}
-
             {isSubmitted ? (
               <div className="bg-black/5 border border-black/20 p-8 lg:p-10">
                 <div className="flex items-center gap-3 mb-4">
