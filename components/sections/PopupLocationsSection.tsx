@@ -23,9 +23,10 @@ export default function PopupLocationsSection() {
       <div className="max-w-7xl mx-auto">
         {/* Semi-transparent container */}
         <div
-          className="rounded-xl p-6 lg:p-8 backdrop-blur-sm"
+          className="relative rounded-xl p-6 lg:p-8 backdrop-blur-sm"
           style={{
             background: 'rgba(255, 255, 255, 0.8)',
+            zIndex: 1,
           }}
         >
           {/* Title and Note */}
@@ -92,7 +93,13 @@ export default function PopupLocationsSection() {
           </div>
 
           {/* Right Column: Location Image Placeholder */}
-          <div className="aspect-[4/3] bg-black/5 border border-black/10 flex items-center justify-center">
+          <div
+            className="relative bg-white border flex items-center justify-center self-start lg:max-w-[280px] lg:h-[280px] w-full h-[240px]"
+            style={{
+              zIndex: 2,
+              borderColor: 'rgba(0, 0, 0, 0.1)',
+            }}
+          >
             <div className="text-center text-black/30">
               <svg
                 className="w-12 h-12 mx-auto mb-3"
