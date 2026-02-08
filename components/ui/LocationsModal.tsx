@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 
 const LOCATIONS = [
@@ -23,6 +24,11 @@ export default function LocationsModal({
   brandName,
 }: LocationsModalProps) {
   const [selectedLocation, setSelectedLocation] = useState('riyadh')
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     if (!isOpen) return
@@ -40,17 +46,17 @@ export default function LocationsModal({
     }
   }, [isOpen, onClose])
 
-  if (!isOpen) return null
+  if (!isOpen || !mounted) return null
 
   const selectedLocationData = LOCATIONS.find((loc) => loc.id === selectedLocation)
 
-  return (
+  const modalContent = (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50"
       onClick={onClose}
     >
       <div
-        className="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto relative"
+        className="bg-white w-full max-w-4xl max-h-[calc(100vh-80px)] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -162,4 +168,6 @@ export default function LocationsModal({
       </div>
     </div>
   )
+
+  return createPortal(modalContent, document.body)
 }

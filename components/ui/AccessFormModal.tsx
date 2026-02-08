@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import AccessForm from '@/components/sections/AccessForm'
 
 interface AccessFormModalProps {
@@ -17,6 +18,12 @@ export default function AccessFormModal({
   onClose,
   selectedProduct,
 }: AccessFormModalProps) {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   useEffect(() => {
     if (!isOpen) return
 
@@ -33,15 +40,15 @@ export default function AccessFormModal({
     }
   }, [isOpen, onClose])
 
-  if (!isOpen) return null
+  if (!isOpen || !mounted) return null
 
-  return (
+  const modalContent = (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50"
       onClick={onClose}
     >
       <div
-        className="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto relative"
+        className="bg-white w-full max-w-4xl max-h-[calc(100vh-80px)] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -67,4 +74,6 @@ export default function AccessFormModal({
       </div>
     </div>
   )
+
+  return createPortal(modalContent, document.body)
 }

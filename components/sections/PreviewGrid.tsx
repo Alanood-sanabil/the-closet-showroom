@@ -123,10 +123,13 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
 
   // Brand selection - opens locations modal
   const handleBrandSelect = useCallback((brand: BrandPreview) => {
+    // Prevent double-opening if modal is already open
+    if (isLocationsModalOpen) return
+
     setSelectedBrand(brand)
     setIsLocationsModalOpen(true)
     track('brand_select', { brandId: brand.id, brandName: brand.name })
-  }, [])
+  }, [isLocationsModalOpen])
 
   // Handle locations modal close
   const handleLocationsModalClose = useCallback(() => {
@@ -235,7 +238,6 @@ export default function PreviewGrid({ onProductSelect }: PreviewGridProps) {
                 brand={brand}
                 index={index}
                 isVisible={isVisible}
-                isSelected={selectedBrand?.id === brand.id}
                 onSelect={() => handleBrandSelect(brand)}
               />
             ))}
@@ -279,7 +281,6 @@ interface BrandCardProps {
   brand: BrandPreview
   index: number
   isVisible: boolean
-  isSelected: boolean
   onSelect: () => void
 }
 
@@ -287,7 +288,6 @@ function BrandCard({
   brand,
   index,
   isVisible,
-  isSelected,
   onSelect,
 }: BrandCardProps) {
   const [imgError, setImgError] = useState(false)
@@ -295,7 +295,7 @@ function BrandCard({
 
   return (
     <article
-      className={`group cursor-pointer transition-all duration-500 ${
+      className={`group cursor-pointer transition-all duration-500 focus:outline-none focus-visible:outline-none ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
       }`}
       style={{ transitionDelay: `${index * 50}ms` }}
@@ -308,16 +308,9 @@ function BrandCard({
           onSelect()
         }
       }}
-      aria-pressed={isSelected}
     >
       {/* Brand Image */}
-      <div
-        className={`aspect-[3/4] bg-white mb-4 relative overflow-hidden transition-all ${
-          isSelected
-            ? 'ring-2 ring-black ring-offset-2'
-            : ''
-        }`}
-      >
+      <div className="aspect-[3/4] bg-white mb-4 relative overflow-hidden transition-all">
         {/* Brand Logo */}
         <div className="absolute inset-0 flex items-center justify-center p-8">
           <div className="relative w-full h-full transition-transform duration-300 group-hover:scale-105">
@@ -333,42 +326,13 @@ function BrandCard({
           </div>
         </div>
 
-        {/* Selected Indicator */}
-        {isSelected && (
-          <div className="absolute top-3 right-3">
-            <span className="w-6 h-6 flex items-center justify-center bg-black text-white rounded-full">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </span>
-          </div>
-        )}
-
         {/* Hover Overlay */}
-        <div
-          className={`absolute inset-0 transition-colors ${
-            isSelected ? 'bg-black/5' : 'bg-black/0 group-hover:bg-black/5'
-          }`}
-        />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
       </div>
 
       {/* Brand Info */}
       <div className="space-y-2">
-        <h3
-          className={`font-medium text-sm lg:text-base tracking-wide transition-colors ${
-            isSelected ? 'text-black' : ''
-          }`}
-        >
+        <h3 className="font-medium text-sm lg:text-base tracking-wide transition-colors">
           {brand.name}
         </h3>
         <p className="text-xs text-black/50 tracking-wide">
