@@ -19,7 +19,7 @@ export default function PopupLocationsSection() {
   }
 
   return (
-    <section className="py-20 lg:py-28 px-6 lg:px-8 bg-white">
+    <section className="py-20 lg:py-28 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Title and Note */}
         <div className="text-center mb-12">

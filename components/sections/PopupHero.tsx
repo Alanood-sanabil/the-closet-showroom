@@ -8,7 +8,7 @@ export default function PopupHero() {
   const t = getTranslations(language)
 
   return (
-    <section className="relative min-h-[60vh] flex items-center justify-center px-6 lg:px-8 pt-20 bg-white">
+    <section className="relative min-h-[60vh] flex items-center justify-center px-6 lg:px-8 pt-20">
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto text-center py-20">
         {/* Headline */}
