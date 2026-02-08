@@ -110,7 +110,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
               {/* Locations */}
               <div className="mb-8">
                 <h4 className="text-sm font-medium text-black/70 uppercase tracking-wider mb-4">
-                  {language === 'en' ? 'Locations' : 'المواقع'}
+                  {language === 'en' ? 'Pop-up Spots' : 'نقاط المعرض'}
                 </h4>
                 <ul className="space-y-3">
                   {selectedShowroom.locations.map((location, index) => (
@@ -123,15 +123,6 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
                   ))}
                 </ul>
               </div>
-
-              {/* Appointment Note (Customer) */}
-              {selectedShowroom.appointmentNote && (
-                <div className="py-4 px-5 bg-black/5 border-l-2 border-black mb-6">
-                  <p className="text-sm font-medium text-black">
-                    {selectedShowroom.appointmentNote}
-                  </p>
-                </div>
-              )}
 
               {/* Pricing Note (Partner) */}
               {selectedShowroom.pricingNote && (

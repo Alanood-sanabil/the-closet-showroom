@@ -95,15 +95,15 @@ const customerAr = {
 
   // Showrooms Section
   showrooms: {
-    sectionTitle: 'معارضنا في المنطقة',
-    intro: 'اختر الموقع اللي يناسبك عشان تكتشف الأزياء العالمية بنفسك.',
+    sectionTitle: 'لقّينا قريب منك',
+    intro: 'احنا موجودين في أفضل المولات في المنطقة. لقّي أقرب معرض متنقل لك وجرّب البراندات بنفسك.',
     riyadh: 'الرياض',
     jeddah: 'جدة',
     dubai: 'دبي',
     riyadhLocations: 'مواقع متعددة في الرياض تشمل مول سوليتير، برج المملكة، وويست فيلد.',
     jeddahLocations: 'مواقع في جدة: ريد سي مول، بوليفارد مول، ومركز الخياط.',
     dubaiLocations: 'مواقع في دبي: دبي مول ومول الإمارات.',
-    appointmentNote: 'بالموعد',
+    appointmentNote: '',
     bottomLine: '',
     pricingNoteRiyadh: '',
     pricingNoteJeddah: '',

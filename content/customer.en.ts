@@ -95,15 +95,15 @@ const customerEn = {
 
   // Showrooms Section
   showrooms: {
-    sectionTitle: 'Our Showrooms Across the Region',
-    intro: 'Choose the showroom location that suits you to discover international fashion in person.',
+    sectionTitle: 'Find Us Near You',
+    intro: "We're popping up at the best malls across the region. Find your nearest pop-up and experience the brands in person.",
     riyadh: 'Riyadh',
     jeddah: 'Jeddah',
     dubai: 'Dubai',
     riyadhLocations: 'Multiple locations in Riyadh including Solitaire Mall, Kingdom Centre, and Westfield.',
     jeddahLocations: 'Locations in Jeddah: Red Sea Mall, Boulevard Mall, and Al Khayat Center.',
     dubaiLocations: 'Locations in Dubai: Dubai Mall and Mall of the Emirates.',
-    appointmentNote: 'By appointment',
+    appointmentNote: '',
     bottomLine: '',
     pricingNoteRiyadh: '',
     pricingNoteJeddah: '',
