@@ -88,28 +88,39 @@ export default function PopupForm() {
 
     try {
       // Submit to Supabase (same table as customer form)
-      const { error } = await supabase.from('customer_requests').insert({
+      const payload = {
         name: formData.name,
         phone: formData.phone,
         location: formData.location,
-        source: 'popup',
         basket_items: [],
-      })
+      }
+
+      console.log('Submitting popup form with payload:', payload)
+
+      const { data, error } = await supabase.from('customer_requests').insert(payload)
 
       if (error) {
-        throw new Error(error.message)
+        console.error('Supabase error details:', {
+          code: error.code,
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+        })
+        throw error
       }
+
+      console.log('Submission successful:', data)
 
       // Track submission
       track('popup_form_submit', {
         location: formData.location,
-        source: 'popup',
       })
 
       setIsSubmitted(true)
     } catch (error) {
       console.error('Submission error:', error)
-      setSubmitError('Failed to submit form. Please try again.')
+      const errorMessage = error instanceof Error ? error.message : 'Failed to submit form. Please try again.'
+      setSubmitError(errorMessage)
     } finally {
       setIsSubmitting(false)
     }
