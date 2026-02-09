@@ -9,13 +9,11 @@ import { getTranslations } from '@/content/translations'
 interface FormData {
   name: string
   phone: string
-  location: string
 }
 
 interface FormErrors {
   name?: string
   phone?: string
-  location?: string
 }
 
 export default function PopupForm() {
@@ -31,7 +29,6 @@ export default function PopupForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '',
-    location: '',
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
@@ -67,10 +64,6 @@ export default function PopupForm() {
       newErrors.phone = t.popup.phoneMinLength
     }
 
-    if (!formData.location) {
-      newErrors.location = t.popup.locationsRequired
-    }
-
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -90,7 +83,6 @@ export default function PopupForm() {
       const payload = {
         name: formData.name,
         phone: formData.phone,
-        location: formData.location,
         basket_items: [],
       }
 
@@ -111,9 +103,7 @@ export default function PopupForm() {
       console.log('Submission successful:', data)
 
       // Track submission
-      track('popup_form_submit', {
-        location: formData.location,
-      })
+      track('popup_form_submit', {})
 
       setIsSubmitted(true)
     } catch (error) {
@@ -133,17 +123,6 @@ export default function PopupForm() {
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
-    }
-  }
-
-  const handleLocationChange = (location: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      location,
-    }))
-    // Clear error when user selects a location
-    if (errors.location) {
-      setErrors((prev) => ({ ...prev, location: undefined }))
     }
   }
 
@@ -246,37 +225,6 @@ export default function PopupForm() {
                   />
                   {errors.phone && (
                     <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
-                  )}
-                </div>
-
-                {/* Location (Single-select) */}
-                <div>
-                  <label className="block text-sm font-medium mb-1.5 md:mb-2">
-                    {t.popup.locationsLabel} <span className="text-black">*</span>
-                  </label>
-                  <div className="space-y-2">
-                    {t.popup.locations.map((location) => (
-                      <label
-                        key={location}
-                        className={`flex items-center gap-3 px-4 py-3 border cursor-pointer transition-all ${
-                          formData.location === location
-                            ? 'border-black bg-black/5'
-                            : 'border-black/20 hover:border-black/40'
-                        }`}
-                      >
-                        <input
-                          type="radio"
-                          name="location"
-                          checked={formData.location === location}
-                          onChange={() => handleLocationChange(location)}
-                          className="w-4 h-4 accent-black"
-                        />
-                        <span className="text-sm">{location}</span>
-                      </label>
-                    ))}
-                  </div>
-                  {errors.location && (
-                    <p className="mt-1 text-sm text-red-500">{errors.location}</p>
                   )}
                 </div>
 
