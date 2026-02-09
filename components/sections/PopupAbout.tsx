@@ -48,7 +48,7 @@ export default function PopupAbout() {
           {/* Left Column - Headline with quotation mark */}
           <div className="relative">
             {/* Decorative quotation mark */}
-            <div className="absolute -top-8 -left-4 md:-left-8 text-6xl md:text-8xl lg:text-9xl font-serif text-black/10 leading-none">
+            <div className="absolute -top-8 -left-12 md:-left-20 lg:-left-24 text-6xl md:text-8xl lg:text-9xl font-serif text-black/[0.08] leading-none z-0">
               &ldquo;
             </div>
 
