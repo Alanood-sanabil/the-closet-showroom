@@ -31,34 +31,45 @@ export default function PopupLocationsSection() {
             </p>
           </div>
 
-          {/* Cities List - Centered */}
-          <div className="max-w-2xl mx-auto">
-            <div className="space-y-3 md:space-y-4">
+          {/* Layout: Stacked on mobile, Side-by-side on desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
+            {/* Cities List */}
+            <div className="space-y-2 md:space-y-3">
               {t.popup.locations.map((city) => {
                 const isSelected = selectedCity === city
                 return (
                   <button
                     key={city}
-                    onClick={() => {
-                      setSelectedCity(city)
-                      // Smooth scroll to form
-                      const formElement = document.getElementById('popup-form')
-                      if (formElement) {
-                        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                      }
-                    }}
-                    className={`w-full text-left px-6 py-4 md:px-8 md:py-5 border transition-all duration-200 ${
+                    onClick={() => setSelectedCity(city)}
+                    className={`w-full text-left px-4 py-3 md:px-6 md:py-4 border transition-all duration-200 ${
                       isSelected
                         ? 'border-black bg-black text-white'
                         : 'border-black/10 bg-white text-black hover:border-black/30'
                     }`}
                   >
-                    <div className="font-medium text-base md:text-lg">
+                    <div className="font-medium text-sm md:text-base">
                       {city}
                     </div>
                   </button>
                 )
               })}
+            </div>
+
+            {/* Upcoming Venues for Selected City */}
+            <div className="mt-2 lg:mt-0">
+              <h3 className="text-xs md:text-sm font-medium text-black/60 mb-3 md:mb-4 uppercase tracking-wide">
+                {language === 'en' ? 'Upcoming Venues' : 'الأماكن القادمة'}
+              </h3>
+              <ul className="space-y-2 md:space-y-3">
+                {t.popup.venuesByCity[selectedCity]?.map((venue, index) => (
+                  <li
+                    key={index}
+                    className="text-sm md:text-base text-black/50 pl-3 md:pl-4 border-l-2 border-black/10"
+                  >
+                    {venue}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
       </div>
