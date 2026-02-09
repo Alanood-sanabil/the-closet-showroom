@@ -631,10 +631,10 @@ const englishTranslations: Translations = {
       locationsNote: 'Select your city to see upcoming pop-up venues. Spots are limited — join the waitlist to secure your invite.',
       locations: ['Riyadh', 'Dubai', 'Paris', 'London', 'New York'],
       venuesByCity: {
-        'Riyadh': ['Solitaire Mall', 'Kingdom Centre', 'VIA Riyadh'],
-        'Dubai': ['Dubai Mall', 'Mall of the Emirates', 'City Walk'],
+        'Riyadh': ['Solitaire Mall', 'VIA Riyadh'],
+        'Dubai': ['Dubai Mall', 'City Walk'],
         'Paris': ['Avenue Montaigne', 'Rue Saint-Honoré', 'Le Bon Marché'],
-        'London': ['Harrods', 'Bond Street', 'Selfridges'],
+        'London': ['Bond Street', 'Selfridges'],
         'New York': ['Fifth Avenue', 'SoHo', 'Hudson Yards'],
       },
       viewPopupButton: 'View Pop-up',
