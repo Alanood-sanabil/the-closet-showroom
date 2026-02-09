@@ -631,7 +631,7 @@ const englishTranslations: Translations = {
       locationsNote: 'Select your city to see upcoming pop-up venues. Spots are limited — join the waitlist to secure your invite.',
       locations: ['Riyadh', 'Jeddah', 'Dubai', 'New York', 'Paris', 'London'],
       venuesByCity: {
-        'Riyadh': ['Solitaire Mall', 'Kingdom Centre', 'Centria Mall'],
+        'Riyadh': ['Solitaire Mall', 'Kingdom Centre', 'VIA Riyadh'],
         'Jeddah': ['Red Sea Mall', 'Mall of Arabia', 'Le Prestige Mall'],
         'Dubai': ['Dubai Mall', 'Mall of the Emirates', 'City Walk'],
         'New York': ['Fifth Avenue', 'SoHo', 'Hudson Yards'],
