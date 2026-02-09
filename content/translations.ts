@@ -49,6 +49,12 @@ interface Translations {
     secondaryCta: string
   }
 
+  // Customer About Section
+  customerAbout: {
+    headline: string
+    body: string
+  }
+
   // Preview/Brands Section
   preview: {
     sectionTitle: string
@@ -372,6 +378,12 @@ const englishTranslations: Translations = {
         'A pop-up showroom experience bringing exclusive international fashion brands to malls and locations across Saudi.',
       primaryCta: 'Find Our Next Pop-Up',
       secondaryCta: 'Explore Featured Brands',
+    },
+
+    // Customer About
+    customerAbout: {
+      headline: 'From Saudi To The World — And Back',
+      body: "The Closet was born from a simple frustration: international brands that don't ship here, and online orders that never fit or feel the way you expect.\n\nThe Closet travels the world, connects with international designers, and brings their collections together in one place. New York. London. Paris. Tokyo. Now Saudi.\n\nDiscover brands you've never had access to. Try them before you buy. Welcome to The Closet.",
     },
 
     // Preview/Brands
