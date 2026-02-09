@@ -7,7 +7,6 @@ import { getTranslations } from '@/content/translations'
 export default function PopupLocationsSection() {
   const { language } = useLanguage()
   const t = getTranslations(language)
-  const isRTL = language === 'ar'
 
   const [selectedCity, setSelectedCity] = useState(t.popup.locations[0])
 

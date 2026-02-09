@@ -20,7 +20,6 @@ interface ShowroomLocation {
 export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSectionProps) {
   const { language } = useLanguage()
   const t = mode === 'customer' ? getCustomerContent(language) : getBrandsContent(language)
-  const isRTL = language === 'ar'
 
   // Showroom data - easy to edit
   const showrooms: ShowroomLocation[] = [
@@ -66,7 +65,7 @@ export default function ShowroomsSection({ mode = 'customer' }: ShowroomsSection
         </div>
 
         {/* Showroom Selector + Details Layout */}
-        <div className={`flex flex-col lg:flex-row gap-8 lg:gap-16 ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
           {/* Left: City Selector Cards */}
           <div className="lg:w-80 flex-shrink-0">
             <div className="flex flex-col gap-3">

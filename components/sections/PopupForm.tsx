@@ -21,7 +21,6 @@ interface FormErrors {
 export default function PopupForm() {
   const { language } = useLanguage()
   const t = getTranslations(language)
-  const isRTL = language === 'ar'
 
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -217,7 +216,6 @@ export default function PopupForm() {
                         : 'border-black/20 focus:border-black'
                     }`}
                     placeholder={t.popup.namePlaceholder}
-                    dir={isRTL ? 'rtl' : 'ltr'}
                   />
                   {errors.name && (
                     <p className="mt-1 text-sm text-red-500">{errors.name}</p>
