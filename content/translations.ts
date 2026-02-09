@@ -285,6 +285,9 @@ interface Translations {
     phoneRequired: string
     phoneMinLength: string
     locationsRequired: string
+    // About section
+    aboutHeadline: string
+    aboutBody: string
   }
 
   // Footer
@@ -660,6 +663,8 @@ const englishTranslations: Translations = {
       phoneRequired: 'Phone number is required',
       phoneMinLength: 'Phone number must be at least 8 digits',
       locationsRequired: 'Please select at least one location',
+      aboutHeadline: 'From Saudi To The World — And Back',
+      aboutBody: "The Closet started with a simple idea: why can't we access the brands we love? So we went out and got them ourselves. A group of Saudi women connected with international designers and fashion houses across Europe, the US, and beyond — curating exclusive pop-up experiences in cities around the world. Now, we're bringing that same experience home. Welcome to The Closet.",
     },
   }
 
