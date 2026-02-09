@@ -5,7 +5,6 @@ import Hero from '@/components/sections/Hero'
 import PreviewGrid from '@/components/sections/PreviewGrid'
 import ShowroomsSection from '@/components/sections/ShowroomsSection'
 import AccessForm from '@/components/sections/AccessForm'
-import CustomerAbout from '@/components/sections/CustomerAbout'
 import Footer from '@/components/layout/Footer'
 
 export default function CustomerPage() {
@@ -20,7 +19,6 @@ export default function CustomerPage() {
       <PreviewGrid onProductSelect={setSelectedProduct} />
       <ShowroomsSection mode="customer" />
       <AccessForm selectedProduct={selectedProduct} />
-      <CustomerAbout />
       <Footer />
     </main>
   )

@@ -49,12 +49,6 @@ interface Translations {
     secondaryCta: string
   }
 
-  // Customer About Section
-  customerAbout: {
-    headline: string
-    body: string
-  }
-
   // Preview/Brands Section
   preview: {
     sectionTitle: string
@@ -380,12 +374,6 @@ const englishTranslations: Translations = {
       secondaryCta: 'Explore Featured Brands',
     },
 
-    // Customer About
-    customerAbout: {
-      headline: 'From Saudi To The World — And Back',
-      body: "The Closet was born from a simple frustration: international brands that don't ship here, and online orders that never fit or feel the way you expect.\n\nThe Closet travels the world, connects with international designers, and brings their collections together in one place. New York. London. Paris. Tokyo. Now Saudi.\n\nDiscover brands you've never had access to. Try them before you buy. Welcome to The Closet.",
-    },
-
     // Preview/Brands
     preview: {
       sectionTitle: 'Brands & Collections',
@@ -676,7 +664,7 @@ const englishTranslations: Translations = {
       phoneMinLength: 'Phone number must be at least 8 digits',
       locationsRequired: 'Please select at least one location',
       aboutHeadline: 'From Saudi To The World — And Back',
-      aboutBody: "The Closet started with a simple idea: why can't we access the brands we love? So we went out and got them ourselves. A group of Saudi women connected with international designers and fashion houses across Europe, the US, and beyond — curating exclusive pop-up experiences in cities around the world. Now, we're bringing that same experience home. Welcome to The Closet.",
+      aboutBody: "The Closet was born from a simple frustration: international brands that don't ship here, and online orders that never fit or feel the way you expect.\n\nThe Closet travels the world, connects with international designers, and brings their collections together in one place. New York. London. Paris. Tokyo. Now Saudi.\n\nDiscover brands you've never had access to. Try them before you buy. Welcome to The Closet.",
     },
   }
 

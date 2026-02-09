@@ -59,7 +59,7 @@ export default function PopupAbout() {
 
           {/* Right Column - Body Text */}
           <div>
-            <p className="text-base md:text-lg lg:text-xl text-black/70 leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-black/70 leading-relaxed whitespace-pre-line">
               {t.popup.aboutBody}
             </p>
           </div>
