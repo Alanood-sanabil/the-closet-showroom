@@ -629,12 +629,10 @@ const englishTranslations: Translations = {
       heroSubtext: "Discover premium international brands, exclusive collections, and rare sample pieces you won't find anywhere else. Be the first to experience The Closet pop-up.",
       locationsTitle: "Where We're Popping Up",
       locationsNote: 'Select your city to see upcoming pop-up venues. Spots are limited — join the waitlist to secure your invite.',
-      locations: ['Riyadh', 'Jeddah', 'Dubai', 'New York', 'Paris', 'London'],
+      locations: ['Riyadh', 'Dubai', 'Paris', 'London'],
       venuesByCity: {
         'Riyadh': ['Solitaire Mall', 'Kingdom Centre', 'VIA Riyadh'],
-        'Jeddah': ['Red Sea Mall', 'Mall of Arabia', 'Le Prestige Mall'],
         'Dubai': ['Dubai Mall', 'Mall of the Emirates', 'City Walk'],
-        'New York': ['Fifth Avenue', 'SoHo', 'Hudson Yards'],
         'Paris': ['Avenue Montaigne', 'Rue Saint-Honoré', 'Le Bon Marché'],
         'London': ['Harrods', 'Bond Street', 'Selfridges'],
       },
