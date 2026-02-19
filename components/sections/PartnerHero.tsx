@@ -20,11 +20,6 @@ export default function PartnerHero() {
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-transparent pointer-events-none" />
 
       <div className="max-w-4xl mx-auto text-center relative">
-        {/* Badge */}
-        <div className="inline-block px-4 py-1.5 bg-black/5 rounded-full mb-6">
-          <span className="text-sm font-medium text-black/70">{t.partnerHero.badge}</span>
-        </div>
-
         {/* Headline */}
         <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
           {t.partnerHero.headline.map((line, i) => (
