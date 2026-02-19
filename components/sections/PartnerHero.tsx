@@ -35,18 +35,12 @@ export default function PartnerHero() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+        <div className="flex items-center justify-center mb-6">
           <button
             onClick={() => scrollToSection('partner-form')}
-            className="w-full sm:w-auto px-8 py-3.5 bg-black text-white rounded-md hover:bg-gray-900 transition-all duration-200 font-medium tracking-wide"
+            className="px-8 py-3.5 bg-black text-white rounded-md hover:bg-gray-900 transition-all duration-200 font-medium tracking-wide"
           >
             {t.partnerHero.primaryCta}
-          </button>
-          <button
-            onClick={() => scrollToSection('partnership-info')}
-            className="w-full sm:w-auto px-8 py-3.5 border border-black/20 rounded-md hover:bg-black/5 transition-all duration-200 font-medium tracking-wide"
-          >
-            {t.partnerHero.secondaryCta}
           </button>
         </div>
 
